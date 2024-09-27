@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Trainer</title>
+    <link rel="stylesheet" href="../../css/style-home.css">
+</head>
+<body>
+    <!-- Pulsante di Accesso -->
+    <button class="login-btn" id="loginBtn">
+        <img src="../../images/immagine-profilo.png" alt="Icona di Accesso" />
+        Accedi
+    </button>
+
+    <!-- Modulo di Accesso -->
+    <div id="loginForm" class="form-container">
+        <div class="form-content">
+            <span class="close">&times;</span>
+            <h2>Accesso</h2>
+            <form>
+                <label for="username">Nome Utente:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Accedi</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Home -->
+    <section id="home" class="section">
+        <div class="content">
+            <h2>Master Trainer</h2>
+            <img src="../../images/pokeball.png" alt="Icona Pokeball" class="pokeball" />
+            <div class="buttons">
+                <button onclick="window.location.href='personal-area.html'">Area Personale</button>
+                <button onclick="window.location.href='pokedex.html'">Pokedex</button>
+                <button onclick="window.location.href='deck-builder.html'">Costruttore di Mazzi</button>
+                <button onclick="window.location.href='deck.html'">Mazzo</button>
+                <button onclick="window.location.href='series-sets.html'">Serie & Set</button>
+                <button onclick="window.location.href='top-cards.html'">Top Carte</button>
+            </div>
+        </div>
+    </section>
+
+    <script src="../../script/script-home.js"></script>
+</body>
+</html>
