@@ -18,24 +18,26 @@ import jakarta.persistence.Table;
  * </p>
  */
 @Entity
-@Table(name = "User")
+@Table(name = "userlogin")
 public class User {
 
 	/**
      * The unique identifier for the user. This field is the primary key in the database.
      */
     @Id
+    @Column(name = "id_user")
     private String idUser;
 
     /**
      * A boolean flag that indicates if the user's profile is private or public.
      */
-    @Column(nullable = false)
+    @Column(nullable = false, name = "private_profile")
     private boolean isPrivate;
 
     /**
      * The user's first name.
      */
+    @Column(name = "first_name")
     private String name;
 
     /**
@@ -54,7 +56,7 @@ public class User {
      * The password of the user, which is stored securely using BCrypt hashing.
      * This field cannot be null.
      */
-    @Column(name = "password", nullable = false)
+    @Column(name = "passw", nullable = false)
     private String password;
 
     /**

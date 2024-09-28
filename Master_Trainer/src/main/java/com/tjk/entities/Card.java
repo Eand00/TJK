@@ -11,18 +11,20 @@ import jakarta.persistence.Table;
  * This class maps to the "Card" table in the database.
  */
 @Entity
-@Table(name = "Card")
+@Table(name = "pokemoncard")
 public class Card {
 
     /**
      * The unique identifier for the card.
      */
     @Id
+    @Column(name = "id_card")
     private String idCard;  
     
     /**
      * The set to which this card belongs.
      */
+    @Column(name = "set_name")
     private String set;
 
     /**
@@ -43,7 +45,7 @@ public class Card {
     /**
      * The release date of the card.
      */
-    private Date releaseDate;  
+    private String releaseDate;  
     
     /**
      * The artist who designed the card (nullable).
@@ -54,22 +56,25 @@ public class Card {
     /**
      * The name of the card.
      */
+    @Column(name = "name_card")
     private String name;
 
     /**
      * The set number of the card.
      */
-    private int setNum;
+    @Column(name = "set_num")
+    private String setNum;
 
     /**
      * The types of the card (nullable).
      */
-    @Column(nullable = true)
+    @Column(nullable = true, name = "types_card")
     private String types;
     
     /**
      * The supertypes of the card.
      */
+    @Column(name = "supertype")
     private String supertypes;
     
     /**
@@ -81,14 +86,14 @@ public class Card {
     /**
      * The level of the card (nullable).
      */
-    @Column(nullable = true)
-    private Integer level;  
+    @Column(nullable = true, name = "level_card")
+    private String level;  
     
     /**
      * The health points (HP) of the card (nullable).
      */
     @Column(nullable = true)
-    private Integer hp;  
+    private String hp;  
     
     /**
      * The name of the card this card evolves from (nullable).
@@ -130,7 +135,7 @@ public class Card {
      * The converted retreat cost of the card (nullable).
      */
     @Column(nullable = true)
-    private Integer converted;  
+    private String converted;  
     
     /**
      * The rarity of the card (nullable).
@@ -148,7 +153,7 @@ public class Card {
      * The national Pokédex number of the card (nullable).
      */
     @Column(nullable = true)
-    private Integer nationalPokedexNumbers;  
+    private String nationalPokedexNumbers;  
     
     /**
      * The legalities of the card.
@@ -228,11 +233,11 @@ public class Card {
         this.generation = generation;
     }
 
-    public Date getReleaseDate() {
+    public String getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(Date releaseDate) {
+    public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }
 
@@ -252,11 +257,11 @@ public class Card {
         this.name = name;
     }
 
-    public int getSetNum() {
+    public String getSetNum() {
         return setNum;
     }
 
-    public void setSetNum(int setNum) {
+    public void setSetNum(String setNum) {
         this.setNum = setNum;
     }
 
@@ -284,19 +289,19 @@ public class Card {
         this.subtypes = subtypes;
     }
 
-    public Integer getLevel() {
+    public String getLevel() {
         return level;
     }
 
-    public void setLevel(Integer level) {
+    public void setLevel(String level) {
         this.level = level;
     }
 
-    public Integer getHp() {
+    public String getHp() {
         return hp;
     }
 
-    public void setHp(Integer hp) {
+    public void setHp(String hp) {
         this.hp = hp;
     }
 
@@ -348,11 +353,11 @@ public class Card {
         this.retreatCost = retreatCost;
     }
 
-    public Integer getConverted() {
+    public String getConverted() {
         return converted;
     }
 
-    public void setConverted(Integer converted) {
+    public void setConverted(String converted) {
         this.converted = converted;
     }
 
@@ -372,11 +377,11 @@ public class Card {
         this.flavourText = flavourText;
     }
 
-    public Integer getNationalPokedexNumbers() {
+    public String getNationalPokedexNumbers() {
         return nationalPokedexNumbers;
     }
 
-    public void setNationalPokedexNumbers(Integer nationalPokedexNumbers) {
+    public void setNationalPokedexNumbers(String nationalPokedexNumbers) {
         this.nationalPokedexNumbers = nationalPokedexNumbers;
     }
 
@@ -420,11 +425,24 @@ public class Card {
         this.ancientTrait = ancientTrait;
     }
 
-    public String getImg() {
+	public String getImg() {
         return img;
     }
 
     public void setImg(String img) {
         this.img = img;
+    }
+    
+    @Override
+    public String toString() {
+    	return "Card [idCard=" + idCard + ", set=" + set + ", series=" + series + ", publisher=" + publisher
+    			+ ", generation=" + generation + ", releaseDate=" + releaseDate + ", artist=" + artist + ", name="
+    			+ name + ", setNum=" + setNum + ", types=" + types + ", supertypes=" + supertypes + ", subtypes="
+    			+ subtypes + ", level=" + level + ", hp=" + hp + ", evolvesFrom=" + evolvesFrom + ", evolvesTo="
+    			+ evolvesTo + ", abilities=" + abilities + ", attacks=" + attacks + ", weakness=" + weakness
+    			+ ", retreatCost=" + retreatCost + ", converted=" + converted + ", rarity=" + rarity + ", flavourText="
+    			+ flavourText + ", nationalPokedexNumbers=" + nationalPokedexNumbers + ", legalities=" + legalities
+    			+ ", resistances=" + resistances + ", rules=" + rules + ", regulationMark=" + regulationMark
+    			+ ", ancientTrait=" + ancientTrait + ", img=" + img + "]";
     }
 }

@@ -1,5 +1,7 @@
 package com.tjk.entities;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -39,6 +41,8 @@ public class DeckCards {
     @ManyToOne
     @JoinColumn(name = "card_id", nullable = false)  // Foreign key to the Card entity
     private Card card;
+    
+    private Integer quantity;
 
     // Getters and Setters
 
@@ -65,10 +69,20 @@ public class DeckCards {
     public void setCard(Card card) {
         this.card = card;
     }
+   
+    
 
     //To String
     
-    @Override
+    public Integer getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
+
+	@Override
     public String toString() {
         return "DeckCards [id=" + id + ", deck=" + deck + ", card=" + card + "]";
     }
