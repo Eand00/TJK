@@ -47,3 +47,14 @@ CREATE TABLE UserLogin(
     username varchar not null,
     passw varchar not null
 );
+
+-- creation of the table Collection
+CREATE TABLE Collection(
+	id_card varchar not null,
+	id_user int not null,
+	favourite boolean,
+	quantity int,
+	FOREIGN KEY (id_card) REFERENCES PokemonCard(id_card),
+	FOREIGN KEY (id_user) REFERENCES UserLogin(id_user),
+	PRIMARY KEY (id_card, id_user)
+);
