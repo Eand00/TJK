@@ -36,4 +36,14 @@ CREATE TABLE PokemonCard(
     regulationMark varchar,
     ancientTrait varchar,
     img varchar not null
-)
+);
+
+-- creation of the table User
+CREATE TABLE UserLogin(
+    id_user int not null PRIMARY KEY,       -- primary key
+    private_profile boolean not null,
+    first_name varchar,
+    surname varchar,
+    username varchar not null,
+    passw varchar not null
+);
