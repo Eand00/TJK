@@ -4,26 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Master Trainer</title>
-    <link rel="stylesheet" href="../../css/style-SV-sets.css">
+    <link rel="stylesheet" href="../../css/style-series-sets.css">
 </head>
 <body>
     <!-- Login Button -->
     <button class="login-btn" id="loginBtn">
         <img src="../../images/immagine-profilo.png" alt="Login Icon" />
-        Accedi
+        Login
     </button>
 
     <!-- Login Form -->
     <div id="loginForm" class="form-container">
         <div class="form-content">
             <span class="close">&times;</span>
-            <h2>Accedi</h2>
+            <h2>Login</h2>
             <form>
-                <label for="username">Nome Utente:</label>
+                <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
-                <button type="submit">Accedi</button>
+                <button type="submit">Login</button>
             </form>
         </div>
     </div>
@@ -31,34 +31,40 @@
     <!-- Buttons -->
     <section id="home" class="section">
         <div class="content">
-            <h2>Set Pokémon Scarletto & Violetto</h2>
             <div class="buttons">
                 <button onclick="window.location.href='home.html'">Home</button>
-                <button onclick="window.location.href='personal-area.html'">Area Personale</button>
+                <button onclick="window.location.href='personal-area.html'">Personal Area</button>
                 <button onclick="window.location.href='pokedex.html'">Pokedex</button>
-                <button onclick="window.location.href='deck-builder.html'">Costruttore di Mazzi</button>
-                <button onclick="window.location.href='deck.html'">Mazzi</button>
-                <button onclick="window.location.href='top-cards.html'">Top Carte</button>
+                <button onclick="window.location.href='deck-builder.html'">Deck Builder</button>
+                <button onclick="window.location.href='deck.html'">Decks</button>
+                <button onclick="window.location.href='top-cards.html'">Top Cards</button>
             </div>
+            <h2>Pokémon TCG Series</h2>
         </div>
     </section>
 
-    <!-- Sets -->
+    <!-- Series -->
     <div class="container">
         <div class="card-grid">
-            <a class="link" href="#">
+            <a href="SV-sets.html">
                 <div class="card">
-                    <img src="../../images/series-sets/sv1.webp" alt="SV1">
+                    <img src="../../images/series-sets/scarlet-violet.png" alt="Scarlet & Violet">
                 </div>
             </a>
             <div class="card">
-                <img src="../../images/series-sets/sv2.webp" alt="SV2">
+                <img src="../../images/series-sets/sword-shield.png" alt="Sword & Shield">
             </div>
             <div class="card">
-                <img src="../../images/series-sets/sv3.webp" alt="SV3">
+                <img src="../../images/series-sets/sun-moon.png" alt="Sun & Moon">
             </div>
             <div class="card">
-                <img src="../../images/series-sets/sv4.webp" alt="SV4">
+                <img src="../../images/series-sets/xy.png" alt="X & Y">
+            </div>
+            <div class="card">
+                <img src="../../images/series-sets/black-white.png" alt="Black & White">
+            </div>
+            <div class="card">
+                <img src="../../images/series-sets/heartgold-soulsilver.png" alt="HeartGold & SoulSilver">
             </div>
         </div>
     </div>
