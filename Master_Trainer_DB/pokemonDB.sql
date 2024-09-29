@@ -58,3 +58,35 @@ CREATE TABLE Collection(
 	FOREIGN KEY (id_user) REFERENCES UserLogin(id_user),
 	PRIMARY KEY (id_card, id_user)
 );
+
+-- creation of the table Deck
+
+CREATE TABLE deck (
+    ID_DECK INT PRIMARY KEY AUTO_INCREMENT,
+    deck_name VARCHAR(255),
+    format VARCHAR(255),
+    legal BOOLEAN,
+    private BOOLEAN,
+    ID_USER INT,
+    COVER_CARD INT,
+    FOREIGN KEY (ID_USER) REFERENCES UserLogin(ID_USER)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    FOREIGN KEY (COVER_CARD) REFERENCES PokemonCard(ID_CARD)
+        ON DELETE SET NULL
+        ON UPDATE CASCADE
+);
+
+-- creation of the table card_deck
+
+CREATE TABLE card_deck (
+    ID_CARD INT,
+    ID_DECK INT,
+    PRIMARY KEY (ID_CARD, ID_DECK),
+    FOREIGN KEY (ID_CARD) REFERENCES PokemonCard(ID_CARD)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    FOREIGN KEY (ID_DECK) REFERENCES deck(ID_DECK)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
