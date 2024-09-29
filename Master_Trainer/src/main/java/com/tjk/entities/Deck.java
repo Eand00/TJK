@@ -42,7 +42,7 @@ public class Deck {
     /**
      * Indicates if the deck is private.
      */
-    private boolean privateDeck;
+    private boolean isPrivate;
 
     /**
      * The user who owns the deck. This is a many-to-one relationship.
@@ -67,7 +67,7 @@ public class Deck {
         this.deckName = deckName;
         this.format = format;
         this.legal = legal;
-        this.privateDeck = privateDeck;
+        this.isPrivate = privateDeck;
         this.user = user;
         this.deckCards = deckCards;
     }
@@ -106,11 +106,11 @@ public class Deck {
         this.legal = legal;
     }
  boolean isPrivateDeck() {
-        return privateDeck;
+        return isPrivate;
     }
 
     public void setPrivateDeck(boolean privateDeck) {
-        this.privateDeck = privateDeck;
+        this.isPrivate = privateDeck;
     }
 
     public User getUser() {
