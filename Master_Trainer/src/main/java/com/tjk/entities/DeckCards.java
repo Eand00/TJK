@@ -1,9 +1,8 @@
 package com.tjk.entities;
 
-import java.util.List;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -15,76 +14,62 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = "DeckCards")  // Specifies the table name for this entity in the database
+@IdClass(DeckCardsId.class)
 public class DeckCards {
-
-    /**
-     * The unique identifier for each DeckCards entry.
-     * This ID uniquely identifies the relationship between a Deck and a Card.
-     */
-    @Id
-    private String id;
-
-    /**
-     * The deck to which the card belongs. This establishes a many-to-one relationship 
-     * where multiple cards can belong to a single deck.
-     * The deck is referenced by the foreign key 'deck_id' in the database.
-     */
-    @ManyToOne
-    @JoinColumn(name = "deck_id", nullable = false)  // Foreign key to the Deck entity
-    private Deck deck;
 
     /**
      * The card that is part of the deck. This establishes a many-to-one relationship
      * where a card can appear in multiple decks.
      * The card is referenced by the foreign key 'card_id' in the database.
      */
+    @Id
     @ManyToOne
-    @JoinColumn(name = "card_id", nullable = false)  // Foreign key to the Card entity
-    private Card card;
+    @JoinColumn(name = "id_card", referencedColumnName = "id_card", nullable = false)
+    private String idCard;
+
+    /**
+     * The deck to which the card belongs. This establishes a many-to-one relationship 
+     * where multiple cards can belong to a single deck.
+     * The deck is referenced by the foreign key 'deck_id' in the database.
+     */
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "id_deck", referencedColumnName = "id_deck", nullable = false)  // Foreign key to the Deck entity
+    private Deck idDeck;
     
     private Integer quantity;
 
     // Getters and Setters
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public Deck getDeck() {
-        return deck;
-    }
-
-    public void setDeck(Deck deck) {
-        this.deck = deck;
-    }
-
-    public Card getCard() {
-        return card;
-    }
-
-    public void setCard(Card card) {
-        this.card = card;
-    }
-   
-    
-
-    //To String
-    
-    public Integer getQuantity() {
+  public Integer getQuantity() {
 		return quantity;
+	}
+
+	public String getIdCard() {
+		return idCard;
+	}
+
+	public void setIdCard(String idCard) {
+		this.idCard = idCard;
+	}
+
+	public Deck getIdDeck() {
+		return idDeck;
+	}
+
+	public void setIdDeck(Deck idDeck) {
+		this.idDeck = idDeck;
 	}
 
 	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
-
+	
+    //To String
+	
 	@Override
-    public String toString() {
-        return "DeckCards [id=" + id + ", deck=" + deck + ", card=" + card + "]";
-    }
+	public String toString() {
+		return "DeckCards [idCard=" + idCard + ", idDeck=" + idDeck + ", quantity=" + quantity + "]";
+	}   
+
 }
 

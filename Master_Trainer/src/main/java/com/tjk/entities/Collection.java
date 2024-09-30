@@ -1,6 +1,5 @@
 package com.tjk.entities;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
@@ -14,25 +13,18 @@ import jakarta.persistence.Table;
 public class Collection {
 	
 	@Id
-    @Column(name = "id_card", nullable = false)
+	@ManyToOne
+    @JoinColumn(name = "id_card", referencedColumnName = "id_card", nullable = false)
     private String idCard;
 
     @Id
-    @Column(name = "id_user", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "id_user", referencedColumnName = "id_user", nullable = false)
     private Integer idUser;
 
     private Boolean favourite;
 
     private Integer quantity;
-
-    // Foreign Key Relationships
-    @ManyToOne
-    @JoinColumn(name = "id_card", insertable = false, updatable = false)
-    private Card card;
-
-    @ManyToOne
-    @JoinColumn(name = "id_user", insertable = false, updatable = false)
-    private User user;
 
     // Getters and Setters
     public String getIdCard() {
@@ -67,20 +59,5 @@ public class Collection {
         this.quantity = quantity;
     }
 
-    public Card getCard() {
-        return card;
-    }
-
-    public void seCard(Card card) {
-        this.card = card;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user= user;
-    }
-
+    
 }

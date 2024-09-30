@@ -1,12 +1,10 @@
 package com.tjk.entities;
 
-import java.util.List;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 /**
@@ -49,27 +47,27 @@ public class Deck {
      * Mapped by the "user_id" column.
      */
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", referencedColumnName = "id_user", nullable = false)
     private User user;
 
     /**
-     * The list of deck cards. This is a one-to-many relationship with the DeckCards entity.
-     * Mapped by the "deck" field in the DeckCards entity.
+     * TBI
      */
-    @OneToMany(mappedBy = "deck")
-    private List<DeckCards> deckCards;
+    @ManyToOne
+    @JoinColumn(name = "cover_card", referencedColumnName = "id_card", nullable = false)
+    private Card coverCard; 
     
     // Constructors
     public Deck() {}
 
-    public Deck(String idDeck, String deckName, String format, boolean legal, boolean privateDeck, User user, List<DeckCards> deckCards) {
+    public Deck(String idDeck, String deckName, String format, boolean legal, boolean privateDeck, User user, Card coverCard) {
         this.idDeck = idDeck;
         this.deckName = deckName;
         this.format = format;
         this.legal = legal;
         this.isPrivate = privateDeck;
         this.user = user;
-        this.deckCards = deckCards;
+        this.coverCard = coverCard;
     }
 
     // Getters and Setters
@@ -121,11 +119,11 @@ public class Deck {
         this.user = user;
     }
 
-    public List<DeckCards> getDeckCards() {
-        return deckCards;
+    public Card getDeckCards() {
+        return coverCard;
     }
 
-    public void setDeckCards(List<DeckCards> deckCards) {
-        this.deckCards = deckCards;
+    public void setDeckCards(Card coverCard) {
+        this.coverCard = coverCard;
     }
 }
