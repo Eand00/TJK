@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Cards</title>
+    <link rel="stylesheet" href="../../css/style-pokedex.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="header">
+        <h1>Top Cards</h1>
+        <!-- Navigation Menu within the Header -->
+        <nav class="nav">
+            <button onclick="window.location.href='home.html'">Home</button>
+            <button onclick="window.location.href='personal-area.html'">Personal Area</button>
+            <button onclick="window.location.href='deck-builder.html'">Deck Builder</button>
+            <button onclick="window.location.href='deck.html'">Deck</button>
+            <button onclick="window.location.href='series-sets.html'">Series & Sets</button>
+            <button onclick="window.location.href='top-cards.html'">Top Cards</button>
+        </nav>
+        <!-- Login Button -->
+        <button class="login-btn" id="loginBtn">
+            <img src="../../images/immagine-profilo.png" alt="Login Icon" />
+            Login
+        </button>
+    </div>
+
+    <!-- Login Form -->
+    <div id="loginForm" class="form-container">
+        <div class="form-content">
+            <span class="close">&times;</span>
+            <h2>Login</h2>
+            <form>
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Filter Popup -->
+    <div id="filter-popup" class="filter-popup">
+        <div class="filter-row">
+            <label for="type">Type:</label>
+            <select id="type">
+                <option value="">Any</option>
+                <option value="grass">Grass</option>
+                <option value="fire">Fire</option>
+                <option value="ice">Ice</option>
+                <option value="water">Water</option>
+                <option value="fighting">Fighting</option>
+                <option value="psychic">Psychic</option>
+                <option value="electric">Electic</option>
+                <option value="rock">Rock</option>
+                <option value="dark">Dark</option>
+            </select>
+
+            <label for="element">Element:</label>
+            <select id="element">
+                <option value="">Any</option>
+                <option value="grass">Grass</option>
+                <option value="fire">Fire</option>
+                <option value="ice">Ice</option>
+                <option value="water">Water</option>
+                <option value="fighting">Fighting</option>
+                <option value="psychic">Psychic</option>
+                <option value="electric">Electic</option>
+                <option value="rock">Rock</option>
+                <option value="dark">Dark</option>
+            </select>    
+        </div>
+
+        <div class="filter-row">
+            <label for="subtype">Sub-Type:</label>
+            <select id="subtype">
+                <option value="">Any</option>
+                <option value="basic">Basic</option>
+                <option value="stage1">Stage 1</option>
+                <!-- More options -->
+            </select>
+
+            <label for="pack">Pack:</label>
+            <select id="pack">
+                <option value="">Any</option>
+                <option value="pack1">Stellar Crown</option>
+                <option value="pack2">Trick or Trade 2024</option>
+                <option value="pack3">Shrouded Fable</option>
+                <option value="pack4">Twilight Masquerade</option>
+                <option value="pack5">Temporal Forces</option>
+                <option value="pack6">Paldean Fates</option>
+                <option value="pack7">Paradox Rift</option>
+                <option value="pack8">Scarlet & Violet - 151</option>  
+            </select>
+        </div>
+        <div class="filter-row">
+            <label for="format">Format:</label>
+            <select id="format">
+                <option value="">Any</option>
+                <option value="standard">Standard</option>
+                <option value="expanded">Expanded</option>
+            </select>
+
+            <label for="rarity">Rarity:</label>
+            <select id="rarity">
+                <option value="">Any</option>
+                <option value="common">Common</option>
+                <option value="uncommon">Uncommon</option>
+                <option value="rare">Rare</option>
+                <option value="promo">Promo</option>
+            </select>
+        </div>
+
+        <!-- checkbox -->
+        <div class="filter-checkbox">
+            <label for="favourite">Favourite:</label>
+            <input type="checkbox" id="favourite">
+            
+            <label for="owned">Owned:</label>
+            <input type="checkbox" id="owned">
+        </div>
+    </div>
+
+    <!-- Pokedex Section -->
+    <section id="pokedex" class="section">
+        <div class="search-bar">
+            <button class="filter-btn">Filters</button>
+            <input type="text" placeholder="Value" />
+            <button>Search</button>
+        </div>
+
+        <div class="card-grid">
+            <!-- Examples of Pokémon Cards -->
+            <div class="card">
+                <img src="../../images/pokedex-cards/basep-47.png" alt="Mew">
+                <p>Mew</p>
+                <p>Found in 321 sets</p>
+            </div>
+            
+            <div class="card">
+                <img src="../../images/pokedex-cards/base1-10.png" alt="Mewtwo">
+                <p>Mewtwo</p>
+                <p>Found in 321 sets</p>
+            </div>
+
+            <div class="card">
+                <img src="../../images/pokedex-cards/base1-12.png" alt="Ninetales">
+                <p>Ninetales</p>
+                <p>Found in 321 sets</p>
+            </div>
+
+            <div class="card">
+                <img src="../../images/pokedex-cards/base1-19.png" alt="Dugtrio">
+                <p>Dugtrio</p>
+                <p>Found in 321 sets</p>
+            </div>
+
+            <div class="card">
+                <img src="../../images/pokedex-cards/base1-23.png" alt="Arcanine">
+                <p>Arcanine</p>
+                <p>Found in 321 sets</p>
+            </div>
+
+            <div class="card">
+                <img src="../../images/pokedex-cards/base1-24.png" alt="Charmeleon">
+                <p>Charmeleon</p>
+                <p>Found in 321 sets</p>
+            </div>
+
+            <div class="card">
+                <img src="../../images/pokedex-cards/base1-3.png" alt="Chansey">
+                <p>Chansey</p>
+                <p>Found in 321 sets</p>
+            </div>
+
+            <div class="card">
+                <img src="../../images/pokedex-cards/base1-33.png" alt="Kakuna">
+                <p>Kakuna</p>
+                <p>Found in 321 sets</p>
+            </div>
+
+            <div class="card">
+                <img src="../../images/pokedex-cards/base1-39.png" alt="Porygon">
+                <p>Porygon</p>
+                <p>Found in 321 sets</p>
+            </div>
+
+            <div class="card">
+                <img src="../../images/pokedex-cards/base1-4.png" alt="Charizard">
+                <p>Charizard</p>
+                <p>Found in 321 sets</p>
+            </div>
+
+            <div class="card">
+                <img src="../../images/pokedex-cards/base1-40.png" alt="Raticate">
+                <p>Raticate</p>
+                <p>Found in 321 sets</p>
+            </div>
+
+            <div class="card">
+                <img src="../../images/pokedex-cards/base1-44.png" alt="Bulbasaur">
+                <p>Bulbasaur</p>
+                <p>Found in 321 sets</p>
+            </div>
+
+            <div class="card">
+                <img src="../../images/pokedex-cards/base1-45.png" alt="Caterpie">
+                <p>Caterpie</p>
+                <p>Found in 321 sets</p>
+            </div>
+
+            <div class="card">
+                <img src="../../images/pokedex-cards/base1-46.png" alt="Charmander">
+                <p>Charmander</p>
+                <p>Found in 321 sets</p>
+            </div>
+
+            <div class="card">
+                <img src="../../images/pokedex-cards/base1-5.png" alt="Clefairy">
+                <p>Clefairy</p>
+                <p>Found in 321 sets</p>
+            </div>
+
+            <div class="card">
+                <img src="../../images/pokedex-cards/base1-51.png" alt="Koffing">
+                <p>Koffing</p>
+                <p>Found in 321 sets</p>
+            </div>
+
+            <div class="card">
+                <img src="../../images/pokedex-cards/base1-64.png" alt="Starmie">
+                <p>Starmie</p>
+                <p>Found in 321 sets</p>
+            </div>
+
+            <div class="card">
+                <img src="../../images/pokedex-cards/basep-21.png" alt="Moltres">
+                <p>Moltres</p>
+                <p>Found in 321 sets</p>
+            </div>
+
+            <div class="card">
+                <img src="../../images/pokedex-cards/base4-25.png" alt="Electrode">
+                <p>Electrode</p>
+                <p>Found in 321 sets</p>
+            </div>
+
+            <div class="card">
+                <img src="../../images/pokedex-cards/base4-27.png" alt="Mr. Mime">
+                <p>Mr. Mime</p>
+                <p>Found in 321 sets</p>
+            </div>
+
+            <div class="card">
+                <img src="../../images/pokedex-cards/base4-31.png" alt="Venomoth">
+                <p>Venomoth</p>
+                <p>Found in 321 sets</p>
+            </div>
+
+            <div class="card">
+                <img src="../../images/pokedex-cards/base4-55.png" alt="Parasect">
+                <p>Parasect</p>
+                <p>Found in 321 sets</p>
+            </div>
+
+            <div class="card">
+                <img src="../../images/pokedex-cards/base4-34.png" alt="Butterfree">
+                <p>Butterfree</p>
+                <p>Found in 321 sets</p>
+            </div>
+
+            <div class="card">
+                <img src="../../images/pokedex-cards/neo2-62.png" alt="Poliwag">
+                <p>Poliwag</p>
+                <p>Found in 321 sets</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Include JavaScript file for Login and Filter -->
+    <script src="../../script/script-pokedex.js"></script>
+</body>
+</html>
