@@ -15,49 +15,46 @@ public class Collection {
 	@Id
 	@ManyToOne
     @JoinColumn(name = "id_card", referencedColumnName = "id_card", nullable = false)
-    private String idCard;
+    private Card idCard;
 
     @Id
     @ManyToOne
     @JoinColumn(name = "id_user", referencedColumnName = "id_user", nullable = false)
-    private Integer idUser;
+    private User idUser;
 
     private Boolean favourite;
 
     private Integer quantity;
 
-    // Getters and Setters
-    public String getIdCard() {
-        return idCard;
-    }
+	public Card getIdCard() {
+		return idCard;
+	}
 
-    public void setIdCard(String idCard) {
-        this.idCard = idCard;
-    }
+	public void setIdCard(Card idCard) {
+		this.idCard = idCard;
+	}
 
-    public Integer getIdUser() {
-        return idUser;
-    }
+	public User getIdUser() {
+		return idUser;
+	}
 
-    public void setIdUser(Integer idUser) {
-        this.idUser = idUser;
-    }
+	public void setIdUser(User idUser) {
+		this.idUser = idUser;
+	}
 
-    public Boolean getFavourite() {
-        return favourite;
-    }
+	public Boolean getFavourite() {
+		return favourite;
+	}
 
-    public void setFavourite(Boolean favourite) {
-        this.favourite = favourite;
-    }
+	public void setFavourite(Boolean favourite) {
+		this.favourite = favourite;
+	}
 
-    public Integer getQuantity() {
-        return quantity;
-    }
+	public Integer getQuantity() {
+		return quantity;
+	}
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
-
-    
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	} 
 }

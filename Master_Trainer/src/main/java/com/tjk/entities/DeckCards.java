@@ -13,7 +13,7 @@ import jakarta.persistence.Table;
  * Each instance of DeckCards represents one card in a specific deck.
  */
 @Entity
-@Table(name = "DeckCards")  // Specifies the table name for this entity in the database
+@Table(name = "deck_cards")  // Specifies the table name for this entity in the database
 @IdClass(DeckCardsId.class)
 public class DeckCards {
 
@@ -25,7 +25,7 @@ public class DeckCards {
     @Id
     @ManyToOne
     @JoinColumn(name = "id_card", referencedColumnName = "id_card", nullable = false)
-    private String idCard;
+    private Card idCard;
 
     /**
      * The deck to which the card belongs. This establishes a many-to-one relationship 
@@ -40,15 +40,15 @@ public class DeckCards {
     private Integer quantity;
 
     // Getters and Setters
-  public Integer getQuantity() {
+    public Integer getQuantity() {
 		return quantity;
 	}
 
-	public String getIdCard() {
+	public Card getIdCard() {
 		return idCard;
 	}
 
-	public void setIdCard(String idCard) {
+	public void setIdCard(Card idCard) {
 		this.idCard = idCard;
 	}
 

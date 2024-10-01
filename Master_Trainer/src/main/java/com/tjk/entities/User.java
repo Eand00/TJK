@@ -4,6 +4,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -26,7 +28,8 @@ public class User {
      */
     @Id
     @Column(name = "id_user")
-    private String idUser;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idUser;
 
     /**
      * A boolean flag that indicates if the user's profile is private or public.
@@ -66,21 +69,25 @@ public class User {
     }
 
     // Constructor with parameters
-    public User(boolean isPrivate, String name, String surname, String username, String password) {
-        this.isPrivate = isPrivate;
-        this.name = name;
-        this.surname = surname;
-        this.username = username;
-        this.password = password;
+
+    public User(Integer idUser, boolean isPrivate, String name, String surname, String username, String password) {
+    	super();
+    	this.idUser = idUser;
+    	this.isPrivate = isPrivate;
+    	this.name = name;
+    	this.surname = surname;
+    	this.username = username;
+    	this.password = password;
     }
 
     // Getters and Setters
     
-    public String getIdUser() {
+    public Integer getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(String idUser) {
+
+	public void setIdUser(Integer idUser) {
         this.idUser = idUser;
     }
 

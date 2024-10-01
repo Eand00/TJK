@@ -5,14 +5,14 @@ import java.util.Objects;
 
 public class DeckCardsId implements Serializable {
 
-	private Integer idCard;
+	private String idCard;
 	private Integer idDeck;
 	
     // Default constructor
     public DeckCardsId() {
     }
 
-	public DeckCardsId(Integer idCard, Integer idDeck) {
+	public DeckCardsId(String idCard, Integer idDeck) {
 		super();
 		this.idCard = idCard;
 		this.idDeck = idDeck;
@@ -20,11 +20,11 @@ public class DeckCardsId implements Serializable {
 
 	// Getters and Setters
 	
-	public Integer getIdCard() {
+	public String getIdCard() {
 		return idCard;
 	}
 
-	public void setIdCard(Integer idCard) {
+	public void setIdCard(String idCard) {
 		this.idCard = idCard;
 	}
 

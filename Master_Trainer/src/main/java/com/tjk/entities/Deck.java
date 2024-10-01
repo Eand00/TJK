@@ -12,18 +12,20 @@ import jakarta.persistence.Table;
  * This class maps to the "Deck" table and holds information about a deck of cards.
  */
 @Entity
-@Table(name = "Deck")
+@Table(name = "deck")
 public class Deck {
 	
     /**
      * The unique identifier for the deck.
      */
     @Id
-    private String idDeck;
+    @Column(name = "id_deck")
+    private Integer idDeck;
 
     /**
      * The name of the deck.
      */
+    @Column(name = "deck_name")
     private String deckName;
 
     /**
@@ -40,6 +42,7 @@ public class Deck {
     /**
      * Indicates if the deck is private.
      */
+    @Column(name = "is_private")
     private boolean isPrivate;
 
     /**
@@ -47,7 +50,7 @@ public class Deck {
      * Mapped by the "user_id" column.
      */
     @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id_user", nullable = false)
+    @JoinColumn(name = "id_user", referencedColumnName = "id_user", nullable = false)
     private User user;
 
     /**
@@ -60,23 +63,23 @@ public class Deck {
     // Constructors
     public Deck() {}
 
-    public Deck(String idDeck, String deckName, String format, boolean legal, boolean privateDeck, User user, Card coverCard) {
+    public Deck(Integer idDeck, String deckName, String format, boolean legal, boolean isPrivate, User user, Card coverCard) {
         this.idDeck = idDeck;
         this.deckName = deckName;
         this.format = format;
         this.legal = legal;
-        this.isPrivate = privateDeck;
+        this.isPrivate = isPrivate;
         this.user = user;
         this.coverCard = coverCard;
     }
 
     // Getters and Setters
 
-    public String getIdDeck() {
+    public Integer getIdDeck() {
         return idDeck;
     }
 
-    public void setIdDeck(String idDeck) {
+    public void setIdDeck(Integer idDeck) {
         this.idDeck = idDeck;
     }
 
