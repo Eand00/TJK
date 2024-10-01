@@ -11,69 +11,69 @@
     color: #ffffff;
     min-height: 100vh;
   }
+
+   /* Header Section */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #333;
+}
+
+/* Header Title */
+.header h1 {
+  color: #ccc;
+}
+
+/* Navigation Menu within Header */
+.nav {
+  display: flex;
+  margin-right: 215px;
+  gap: 10px;
+}
+
+.nav button {
+  padding: 10px 15px;
+  background-color: #555;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.nav button:hover {
+  background-color: #777;
+}
   
-  /* Title style */
-  .header h1 {
-    color: #ccc;
-    font-size: 1.8rem;
-  }
-  
-  /* Login Button */
-  .login-btn {
-    position: absolute;
-    right: 20px; /* Position the login button to the right */
-    top: 10px;
-    background-color: #444;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-  }
-  
-  .login-btn img {
-    width: 30px; /* Increase the width of the image */
-    height: 30px; /* Increase the height of the image */
-    margin-right: 5px;
-  }
-  
-  /* Main Content Section */
-  .section {
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    justify-content: center;
-    height: 15vh;
-    text-align: center;
-  }
-  
-  .section h2 {
-    font-size: 2.5rem;
-    margin-top: 27px;
-  }
-  
-  /* Buttons Section */
-  .buttons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-  
-  .buttons button {
-    padding: 10px 20px;
-    background-color: #555;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .buttons button:hover {
-    background-color: #777;
-  }
+/* Login Button in Header */
+.login-btn {
+  background-color: #444;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.login-btn img {
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+}
+
+.section {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
 
   .container {
     display: flex;
@@ -84,10 +84,10 @@
 }
 
 .card-grid {
-    margin-top: 6%;
+    margin-top: 7%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 50px;
+    gap: 75px;
     justify-items: center;
 }
 
