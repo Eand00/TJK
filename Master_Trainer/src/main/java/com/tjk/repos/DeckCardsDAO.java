@@ -15,17 +15,17 @@ import java.util.List;
 public interface DeckCardsDAO extends JpaRepository<DeckCards, DeckCardsId> {
 
     /**
-     * Finds a list of cards in the deck by the ID of the deck.
+     * Finds a list of cards in the deck by the name of the deck.
     */
     List<DeckCards> findAllCardsByDeckName(String deckName);
 
     /**
-     * Finds a list of decks that use a card by the ID of the card.
+     * Finds a list of decks that use a card by the name of the card.
     */
     List<DeckCards> findAllDeckByCardName(String cardName);
 
     /**
-     * find how many copies of a card are in a specific deck by the ID of the card and the ID of the deck.
+     * find how many copies of a card are in a specific deck by the name of the card and the name of the deck.
     */
     List<DeckCards> findAllByDeckNameAndCardName(String deckName, String cardName);
 }

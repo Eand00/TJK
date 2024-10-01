@@ -12,11 +12,21 @@ import java.util.Optional;
  * deck entities in the database.
 */
 public interface DeckDAO extends JpaRepository<Deck, String> {
+	
+	 /**
+     * Finds a deck by its Id.
+    */
+    Optional<Deck> findByDeckId(String deckId);
 
     /**
      * Finds a deck by its name.
     */
     Optional<Deck> findByDeckName(String deckName);
+    
+    /**
+     * Finds a deck by its format.
+    */
+    Optional<Deck> findByFormat(String deckFormat);
 
     /**
      * Finds all decks owned by a specific user.
@@ -33,3 +43,7 @@ public interface DeckDAO extends JpaRepository<Deck, String> {
     */
     List<Deck> findByLegal(boolean legal);
 }
+
+
+
+
