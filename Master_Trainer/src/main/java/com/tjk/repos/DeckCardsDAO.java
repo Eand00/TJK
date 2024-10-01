@@ -3,6 +3,8 @@ package com.tjk.repos;
 
 
 import com.tjk.entities.DeckCards;
+import com.tjk.entities.DeckCardsId;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
@@ -10,7 +12,7 @@ import java.util.List;
  * The {@code DeckCardsDAO} interface provides methods for accessing and manipulating
  * DeckCards entities in the database.
 */
-public interface DeckCardsDAO extends JpaRepository<DeckCards, String> {
+public interface DeckCardsDAO extends JpaRepository<DeckCards, DeckCardsId> {
 
     /**
      * Finds a list of cards in the deck by the ID of the deck.
