@@ -9,61 +9,31 @@ body {
   font-family: Arial, sans-serif;
   background-color: #121212;
   color: #ffffff;
-  min-height: 100vh;
 }
 
-/* Title style */
+/* Header Section */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #333;
+}
+
+/* Header Title */
 .header h1 {
   color: #ccc;
-  font-size: 1.8rem;
 }
 
-/* Login Button */
-.login-btn {
-  position: absolute;
-  right: 20px; /* Position the login button to the right */
-  top: 10px;
-  background-color: #444;
-  color: #fff;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-.login-btn img {
-  width: 30px; /* Increase the width of the image */
-  height: 30px; /* Increase the height of the image */
-  margin-right: 5px;
-}
-
-/* Main Content Section */
-.section {
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  justify-content: center;
-  height: 15vh;
-  text-align: center;
-}
-
-.section h2 {
-  font-size: 2.5rem;
-  margin-top: 27px;
-}
-
-/* Buttons Section */
-.buttons {
+/* Navigation Menu within Header */
+.nav {
   display: flex;
   justify-content: center;
   gap: 10px;
-  flex-wrap: wrap;
 }
 
-.buttons button {
-  padding: 10px 20px;
+.nav button {
+  padding: 10px 15px;
   background-color: #555;
   color: #fff;
   border: none;
@@ -71,47 +41,44 @@ body {
   cursor: pointer;
 }
 
-.buttons button:hover {
+.nav button:hover {
   background-color: #777;
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 20px;
-}
-
-.card-grid {
-  margin-top: 6%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  justify-items: center;
-}
-
-.card {
+/* Login Button in Header */
+.login-btn {
   background-color: #444;
-  width: 28vw;
-  height: 14vw;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
   display: flex;
-  border-radius: 10px;
-  padding: 10px;
+  align-items: center;
+  cursor: pointer;
 }
 
-.card:hover {
-  background-color: #777;
+.login-btn img {
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
 }
 
-.card img {
-  width: 90%;
-  height: auto;
-  object-fit: contain;
-  margin: auto;
+/* Style for the close button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
 }
 
-/* Styles for the login form */
+.close:hover,
+.close:focus {
+  color: #ff0000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Form styles */
 .form-container {
   display: none; /* Hide form by default */
   position: fixed;
@@ -121,17 +88,17 @@ body {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0,0,0,0.5); /* Transparent background */
+  background-color: rgba(0, 0, 0, 0.5); /* Transparent background */
 }
 
 .form-content {
   color: #000000;
   background-color: #fff;
-  margin: 15% auto; /* Center the form content */
+  margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 30%; /* Form width */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  width: 30%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .close {
@@ -148,43 +115,136 @@ body {
   cursor: pointer;
 }
 
-/* Add padding for form fields */
 form {
   display: flex;
-  flex-direction: column; /* Arrange elements in a column */
+  flex-direction: column;
 }
 
 label {
   color: #000000;
-  margin-bottom: 5px; /* Space between the label and the input field */
+  margin-bottom: 5px;
 }
 
 input {
-  padding: 10px; /* Padding for input fields */
-  margin-bottom: 10px; /* Margin between fields */
-  border: 1px solid #ccc; /* Border of the input fields */
-  border-radius: 4px; /* Rounded corners */
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 button[type="submit"] {
-  background-color: #363836; /* Background color of the button */
-  color: white; /* Text color */
+  background-color: #363836;
+  color: white;
   border: none;
   padding: 10px;
-  border-radius: 50px; /* Rounded corners */
+  border-radius: 50px;
   cursor: pointer;
 }
 
 button[type="submit"]:hover {
-  background-color: #45a049; /* Background color on hover */
+  background-color: #45a049;
 }
 #user-input {
-  width:80%;
+  margin-top:300px;
 }
-#user-input input,label {
+
+#user-input label {
+  color:#cccccc;
+}
+
+#user-input input:not(:last-of-type),label:not(:last-of-type){
   position:relative;
-  width:40%;
-  left: 50%;
+  margin-right:20%;
+  margin-left:60%;
+}
+#user-input button {
+  margin-bottom: 5px;
+  width:100px;
+  align-self: center;
+  text-align: center;
 }
 #username {
+  position:relative;
+  bottom:70px;
+  margin-right:60%;
+  margin-left:20%;
 }
+
+label[for="username"] {
+  position:relative;
+  bottom:70px;
+  margin-left:20%;
+}
+
+#propic {
+  position:absolute;
+  margin-right:60%;
+  margin-left:20%;
+  width:500px;
+  margin-top:-150px;
+}
+
+/* Private switch */
+/* The box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
