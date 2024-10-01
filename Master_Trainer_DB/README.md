@@ -3,16 +3,19 @@ Brief introduction
 
 
 ## Sections
+
 + [Creation of the database](#creation-of-the-database)
 + [Creation of the tables](#creation-of-the-tables)
 + [Data dump](#data-dump)
 
 
 ## Creation of the database
+
 At the beginning of the file ([lines 1-27](./master_trainer.sql#L1)) there are multiple lines to create (if necessary) and use the `master_trainer` database.
 
 
 ## Creation of the tables
+
 After that, there is a part of the SQL code that creates the 5 following tables in the database ([lines 29-210](./master_trainer.sql#L31)).
 
 + `pokemoncards`: the table containing all the Pokemon cards records.
@@ -26,8 +29,10 @@ Then there is the part that creates the primary, foreign and unique keys to the 
 
 ## Data dump
 
+[Start dumping data](./master_trainer.sql#L207)
+
+
 #### References to the code:
-+ [Start dumping data](./master_trainer.sql#L207)
 + [Dump for the table `userslogin`](./master_trainer.sql#L211)
 + [Dump for the table `cards`](./master_trainer.sql#L221)
 + [Dump for the table `decks`](./master_trainer.sql#L17707)
