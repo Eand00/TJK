@@ -1,5 +1,7 @@
 # Master Trainer DB
-Brief introduction
+
+Here is a brief description about the database, how it is created and how the different tables interacts between them. To use the database, just import the [SQL file](./master_trainer.sql) in 
+your MariaDB client.
 
 
 ## Sections
@@ -36,6 +38,3 @@ In the end, there is the part of the code that inserts records in all the tables
 + [Data dump for the table `decks`](./master_trainer.sql#L17715)
 + [Data dump for the table `collections`](./master_trainer.sql#L17725)
 + [Data dump for the table `decks_cards`](./master_trainer.sql#L17767)
-
-
-<!-- Insert introduction -->
