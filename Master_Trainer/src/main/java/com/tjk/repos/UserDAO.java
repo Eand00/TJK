@@ -9,7 +9,7 @@ import java.util.Optional;
  * The {@code UserDAO} interface provides methods for accessing and manipulating
  * user entities in the database.
 */
-public interface UserDAO extends JpaRepository<User, String> {
+public interface UserDAO extends JpaRepository<User, Integer> {
 
     /**
      * Finds a user by username.
@@ -19,6 +19,6 @@ public interface UserDAO extends JpaRepository<User, String> {
     /**
      * Finds a user by their id.
     */
-    Optional<User> findById(String id);
+    Optional<User> findByIdUser(Integer id);
 
 }
