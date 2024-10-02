@@ -123,6 +123,10 @@ public class User {
         this.username = username;
     }
     
+    public String getPassword() {
+        return password;
+    }
+    
     /**
      * Sets the user's password, automatically hashing it using the BCrypt hashing algorithm.
      * 

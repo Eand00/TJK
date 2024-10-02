@@ -11,15 +11,26 @@ import com.tjk.entities.CollectionId;
 public interface CollectionDAO extends JpaRepository<Collection, CollectionId> {
 	
 	// Finds if present a Collection using the ids of the user and the card 
+<<<<<<< Updated upstream
 	//Optional<Collection> findAllByIdUserAndIdCard(Integer idUser, String idCard);
 	
     // Finds a list of cards in owned by a user.
     //List<Collection> findByIdUser(Integer idUser);
+=======
+	Optional<Collection> findAllByIdUserAndIdCard(Integer idUser, String idCard);
+	
+    // Finds a list of cards in owned by a user.
+    List<Collection> findAllCardsByIdUser(Integer idUser);
+>>>>>>> Stashed changes
 
     // Finds a list of users that own a card by the ID of the card.
     //List<Collection> findAllUserByCardName(String cardName);
 
     // Finds a list of cards with a specific cardName owned by a user.
+<<<<<<< Updated upstream
     //List<Collection> findAllByIdUserAndCardName(Integer idUser, String cardName);
+=======
+    List<Collection> findAllByIdUserAndCardName(Integer idUser, String cardName);
+>>>>>>> Stashed changes
 
 }
