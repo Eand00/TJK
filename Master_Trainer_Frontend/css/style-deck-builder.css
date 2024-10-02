@@ -63,7 +63,7 @@ body {
     margin-right: 5px;
 }
 
-/* Search Bar */
+/* Search Bars */
 .search-bar {
     display: flex;
     justify-content: center;
@@ -190,7 +190,6 @@ body {
     text-decoration: none;
     cursor: pointer;
 }
-
 
 /* Form styles */
 .form-container {
