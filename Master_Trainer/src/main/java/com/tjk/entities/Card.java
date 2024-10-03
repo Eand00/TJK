@@ -99,21 +99,25 @@ public class Card {
     /**
      * The name of the card this card evolves from (nullable).
      */
+    @Column(name = "evolves_from")
     private String evolvesFrom;
     
     /**
      * The name of the card this card evolves to (nullable).
      */
+    @Column(name = "evolves_to")
     private String evolvesTo;
     
     /**
      * The abilities of the card (nullable).
      */
+    @Column(columnDefinition = "TEXT")
     private String abilities;
 
     /**
      * The attacks of the card (nullable).
      */
+    @Column(columnDefinition = "TEXT")
     private String attacks;
 
     /**
@@ -125,6 +129,7 @@ public class Card {
     /**
      * The retreat cost of the card (nullable).
      */
+    @Column(name = "retreat_cost")
     private String retreatCost;
 
     /**
@@ -140,11 +145,13 @@ public class Card {
     /**
      * The flavor text of the card (nullable).
      */
+    @Column(name = "flavour_text", columnDefinition = "TEXT")
     private String flavourText;
 
     /**
      * The national Pokédex number of the card (nullable).
      */
+    @Column(name = "national_pokedex_numbers")
     private String nationalPokedexNumbers;  
     
     /**
@@ -161,22 +168,25 @@ public class Card {
     /**
      * The rules associated with the card (nullable).
      */
+    @Column(columnDefinition = "TEXT")
     private String rules;
 
     /**
      * The regulation mark of the card (nullable).
      */
+    @Column(name = "regulation_mark")
     private String regulationMark;
 
     /**
      * The ancient trait of the card (nullable).
      */
+    @Column(name = "ancient_trait", columnDefinition = "TEXT")
     private String ancientTrait;
 
     /**
      * The image URL of the card.
      */
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String img;
 
     // Getters and Setters
