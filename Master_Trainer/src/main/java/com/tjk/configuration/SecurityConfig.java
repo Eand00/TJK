@@ -18,7 +18,7 @@ public class SecurityConfig {
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests(requests -> requests
-                .requestMatchers("/login", "/resources/**").permitAll()  // Permetti accesso al login e risorse pubbliche
+                .requestMatchers("/login", "/resources/**", "master_trainer/cards/**").permitAll()  // Permetti accesso al login e risorse pubbliche
                 .anyRequest().authenticated())
             .formLogin(login -> login
                 .permitAll())  // Usa la pagina di login predefinita

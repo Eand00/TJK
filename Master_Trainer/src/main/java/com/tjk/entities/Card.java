@@ -10,7 +10,7 @@ import jakarta.persistence.Table;
  * This class maps to the "Card" table in the database.
  */
 @Entity
-@Table(name = "pokemoncard")
+@Table(name = "pokemoncards")
 public class Card {
 
     /**
@@ -47,7 +47,7 @@ public class Card {
     /**
      * The release date of the card.
      */
-    @Column(nullable = false)
+    @Column(name = "release_date", nullable = false)
     private String releaseDate;  
     
     /**
@@ -119,6 +119,7 @@ public class Card {
     /**
      * The weaknesses of the card (nullable).
      */
+    @Column(name = "weaknesses")
     private String weakness;
 
     /**

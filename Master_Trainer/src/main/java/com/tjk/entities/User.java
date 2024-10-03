@@ -20,7 +20,7 @@ import jakarta.persistence.Table;
  * </p>
  */
 @Entity
-@Table(name = "userlogin")
+@Table(name = "userslogin")
 public class User {
 
 	/**

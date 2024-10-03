@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
  * Each instance of DeckCards represents one card in a specific deck.
  */
 @Entity
-@Table(name = "deck_cards")  // Specifies the table name for this entity in the database
+@Table(name = "decks_cards")  // Specifies the table name for this entity in the database
 @IdClass(DeckCardsId.class)
 public class DeckCards {
 

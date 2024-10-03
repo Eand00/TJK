@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
  * This class maps to the "Deck" table and holds information about a deck of cards.
  */
 @Entity
-@Table(name = "deck")
+@Table(name = "decks")
 public class Deck {
 	
     /**
