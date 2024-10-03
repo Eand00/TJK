@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="it">  
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Regolamento</title>
+        <link href="../../css/style-regulation-page.css" rel="stylesheet" />
+    </head>
+
+    <body>
+        <!-- Sezione Header -->
+        <div class="header">
+            <h1>Regolamento</h1>
+            <!-- Menu di navigazione nell'header -->
+            <nav class="nav">
+                <button onclick="window.location.href='home.html'">Home</button>
+                <button onclick="window.location.href='personal-area.html'">Area Personale</button>
+                <button onclick="window.location.href='pokedex.html'">Pokedex</button>
+                <button onclick="window.location.href='deck-builder.html'">Costruttore di Mazzi</button>
+                <button onclick="window.location.href='deck.html'">Mazzi</button>
+                <button onclick="window.location.href='top-cards.html'">Top Carte</button>
+            </nav>
+            <!-- Pulsante di accesso -->
+            <button class="login-btn" id="loginBtn">
+                <img src="../../images/immagine-profilo.png" alt="Icona Login" />
+                Login
+            </button>
+        </div>
+
+        <!-- Modulo di Login -->
+        <div id="loginForm" class="form-container">
+            <div class="form-content">
+                <span class="close">&times;</span>
+                <h2>Login</h2>
+                <form>
+                    <label for="username">Nome utente</label>
+                    <input type="text" id="username" name="username" required>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+
+        <!--Regole-->
+        <h1 id="title">Ecco alcune regole per creare il tuo mazzo!</h1>
+        <div class="container">
+            <p>Durante la costruzione di un mazzo, dovrai seguire alcune regole. Una delle più importanti prevede che il tuo mazzo includa esattamente 60 carte: 
+                non una in più e non una in meno!</p>
+
+            <p>Inoltre, a eccezione delle carte Energia base, potrai avere un massimo di quattro carte con lo stesso nome all’interno del tuo mazzo. Ciò significa 
+                che puoi avere solo quattro carte “Pignite” nel tuo mazzo, anche se ciascuna presenta attacchi diversi. Infine, il tuo mazzo deve includere almeno 
+                un Pokémon Base.</p>
+            
+            <p>I tipi di carte seguenti hanno nomi diversi rispetto alla loro versione normale, quindi, per esempio, Miraidon ex e Miraidon hanno nomi
+                diversi e puoi averne fino a quattro ciascuno nel tuo mazzo:</p>
+            
+            <ul>
+                <li>Pokémon-EX</li>
+                <li>Pokémon-GX</li>
+                <li>Pokémon ex</li>
+                <li>Pokémon gx</li>
+                <li>Evoluzione TURBO</li>
+                <li>Megaevoluzione</li>
+            </ul>
+
+            <p>Il tuo mazzo può includere solo una carta ASSO TATTICO e un Pokémon Lucente.
+                Può includere diverse carte stella prisma ma solo una per nome invece di quattro.</p>
+            
+            <p>Le carte Pokémon Lucente hanno anche nomi diversi rispetto alla loro versione normale, e puoi avere, as esempio, un Greninja Lucente
+                e quattro Greninja normali.</p>
+
+            <p>Le quattro “parti” di un Pokémon-V UNIONE hanno tutte lo stesso nome 
+                (per esempio, “Mewtwo-V UNIONE”), perciò puoi avere un totale di 
+                quattro carte chiamate Mewtwo-V UNIONE nel tuo mazzo e non quattro 
+                copie di ciascuna “parte”. Tutte le quattro carte che compongono un 
+                Pokémon-V UNIONE nel tuo mazzo devono essere parte della stessa 
+                espansione e avere un’illustrazione realizzata dallo stesso artista.</p>
+
+            <p>Neanche i Pokémon Ricreati sono Pokémon Base, perciò non possono assolvere quel ruolo.</p>
+
+            <p>Per sapere di più sulle regole del gioco visita <a href="https://www.pokemon.com/static-assets/content-assets/cms2-it-it/pdf/trading-card-game/rulebook/twm_rulebook_it.pdf">questo link</a>.</p>
+        </div>
+    </body>
+
+</html>
