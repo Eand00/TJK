@@ -145,27 +145,32 @@ button[type="submit"]:hover {
   background-color: #45a049;
 }
 
-p {
-  margin-top:50px;
-  margin-left:20%;
-  margin-right:20%;
-  font-size:20px;
+ul {
+  margin-bottom:20px;
+  margin-left:20px;
 }
 
-
-ul {
-  margin-top:20px;
-  margin-left:22%;
-  font-size:20px;
+p {
+  margin-bottom:20px;
 }
 
 #title {
   margin-top:20px;
   margin-left:10%;
   margin-right:10%;
+  margin-bottom:10px;
   text-align:center;
 }
 
 a {
   color:#45a049;
+}
+
+.container {
+  font-size:20px;
+  background-color: #444;
+  margin-left:20%;
+  margin-right:20%;
+  border-radius: 10px;
+  padding: 20px;
 }

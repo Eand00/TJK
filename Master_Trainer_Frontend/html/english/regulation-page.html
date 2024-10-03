@@ -1,83 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">  
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Regulation Page</title>
-    <link href="../../css/style-regulation-page.css" rel="stylesheet" />
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Regulation Page</title>
+        <link href="../../css/style-regulation-page.css" rel="stylesheet" />
+    </head>
 
-<body>
-    <!-- Header Section -->
-    <div class="header">
-        <h1>Regulation Page</h1>
-        <!-- Navigation Menu within the Header -->
-        <nav class="nav">
-            <button onclick="window.location.href='home.html'">Home</button>
-            <button onclick="window.location.href='personal-area.html'">Personal Area</button>
-            <button onclick="window.location.href='deck-builder.html'">Deck Builder</button>
-            <button onclick="window.location.href='deck.html'">Deck</button>
-            <button onclick="window.location.href='series-sets.html'">Series & Sets</button>
-            <button onclick="window.location.href='top-cards.html'">Top Cards</button>
-        </nav>
-        <!-- Login Button -->
-        <button class="login-btn" id="loginBtn">
-            <img src="../../images/immagine-profilo.png" alt="Login Icon" />
-            Login
-        </button>
-    </div>
-
-    <!-- Login Form -->
-    <div id="loginForm" class="form-container">
-        <div class="form-content">
-            <span class="close">&times;</span>
-            <h2>Login</h2>
-            <form>
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" required>
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
-                <button type="submit">Login</button>
-            </form>
+    <body>
+        <!-- Header Section -->
+        <div class="header">
+            <h1>Regulation Page</h1>
+            <!-- Navigation Menu within the Header -->
+            <nav class="nav">
+                <button onclick="window.location.href='home.html'">Home</button>
+                <button onclick="window.location.href='personal-area.html'">Personal Area</button>
+                <button onclick="window.location.href='deck-builder.html'">Deck Builder</button>
+                <button onclick="window.location.href='deck.html'">Deck</button>
+                <button onclick="window.location.href='series-sets.html'">Series & Sets</button>
+                <button onclick="window.location.href='top-cards.html'">Top Cards</button>
+            </nav>
+            <!-- Login Button -->
+            <button class="login-btn" id="loginBtn">
+                <img src="../../images/immagine-profilo.png" alt="Login Icon" />
+                Login
+            </button>
         </div>
-    </div>
 
-    <!--Rules-->
-    <h1 id="title">Here are a few rules to create your own deck!</h1>
-    <p>When building most decks, you’ll need to follow a few rules. One of the most important ones is that
-        your deck must be exactly 60 cards; it can’t be any more or less, even 59 or 61 cards!</p>
+        <!-- Login Form -->
+        <div id="loginForm" class="form-container">
+            <div class="form-content">
+                <span class="close">&times;</span>
+                <h2>Login</h2>
+                <form>
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+        </div>
 
-    <p>Also, except for Basic Energy, you can only have 4 cards with the same name in your deck. This means
-        you can have only 4 cards called “Pignite” in your deck, even if they all have different attacks.
-        Finally, your deck must have at least one Basic Pokémon in it.</p>
-    
-    <p>The following card types have different names from their regular version, so, for example, Miraidon ex
-        and Miraidon have different names and you can have up to 4 of each in you deck:</p>
-    
-    <ul>
-        <li>Pokémon-EX</li>
-        <li>Pokémon-GX</li>
-        <li>Pokémon ex</li>
-        <li>Pokémon gx</li>
-        <li>BREAK Evolution</li>
-        <li>Mega Evolution</li>
-    </ul>
+        <!--Rules-->
+        <h1 id="title">Here are a few rules to create your own deck!</h1>
+        <div class="container">
+            <p>When building most decks, you’ll need to follow a few rules. One of the most important ones is that
+                your deck must be exactly 60 cards; it can’t be any more or less, even 59 or 61 cards!</p>
 
-    <p>Your deck can include only one ACE SPEC card and one Radiant Pokémon.
-        It can include different Prism Star cards but only one for each name instead of four.</p>
-    
-    <p>Radiant Pokémon cards also have different names form their regular version, and you can have, for
-        example, one Radiant Greninja and four regular Greninja.</p>
+            <p>Also, except for Basic Energy, you can only have 4 cards with the same name in your deck. This means
+                you can have only 4 cards called “Pignite” in your deck, even if they all have different attacks.
+                Finally, your deck must have at least one Basic Pokémon in it.</p>
+            
+            <p>The following card types have different names from their regular version, so, for example, Miraidon ex
+                and Miraidon have different names and you can have up to 4 of each in you deck:</p>
+            
+            <ul>
+                <li>Pokémon-EX</li>
+                <li>Pokémon-GX</li>
+                <li>Pokémon ex</li>
+                <li>Pokémon gx</li>
+                <li>BREAK Evolution</li>
+                <li>Mega Evolution</li>
+            </ul>
 
-    <p>All four “pieces” of a Pokémon V-UNION have the same name (for example, “Mewtwo V-UNION”). Therefore,
-        you can only have four total cards named Mewtwo V-UNION in your deck, not four of each individual
-        piece. All four copies of a Pokémon V-UNION in your deck must be part of the same set and illustrated
-        by the same artist. Furthermore, they don't count as regular Pokémon, so you will need at least
-        another card in your deck that is a basic Pokémon.</p>
+            <p>Your deck can include only one ACE SPEC card and one Radiant Pokémon.
+                It can include different Prism Star cards but only one for each name instead of four.</p>
+            
+            <p>Radiant Pokémon cards also have different names form their regular version, and you can have, for
+                example, one Radiant Greninja and four regular Greninja.</p>
 
-    <p>Restored Pokémon are also not basic Pokémon and therefore can't fulfill that role.</p>
+            <p>All four “pieces” of a Pokémon V-UNION have the same name (for example, “Mewtwo V-UNION”). Therefore,
+                you can only have four total cards named Mewtwo V-UNION in your deck, not four of each individual
+                piece. All four copies of a Pokémon V-UNION in your deck must be part of the same set and illustrated
+                by the same artist. Furthermore, they don't count as regular Pokémon, so you will need at least
+                another card in your deck that is a basic Pokémon.</p>
 
-    <p>To know more about the rules of the game visit <a href="https://www.pokemon.com/static-assets/content-assets/cms2/pdf/trading-card-game/rulebook/twm_rulebook_en.pdf">this link</a>.</p>
-</body>
+            <p>Restored Pokémon are also not basic Pokémon and therefore can't fulfill that role.</p>
+
+            <p>To know more about the rules of the game visit <a href="https://www.pokemon.com/static-assets/content-assets/cms2/pdf/trading-card-game/rulebook/twm_rulebook_en.pdf">this link</a>.</p>
+        </div>
+    </body>
 
 </html>
