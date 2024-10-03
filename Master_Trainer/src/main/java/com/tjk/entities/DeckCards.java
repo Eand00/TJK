@@ -1,5 +1,6 @@
 package com.tjk.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
@@ -37,6 +38,7 @@ public class DeckCards {
     @JoinColumn(name = "id_deck", referencedColumnName = "id_deck", nullable = false)  // Foreign key to the Deck entity
     private Deck idDeck;
     
+    @Column(nullable = false)
     private Integer quantity;
 
     // Getters and Setters

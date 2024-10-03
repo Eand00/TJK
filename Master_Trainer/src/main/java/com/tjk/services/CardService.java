@@ -1,22 +1,12 @@
 package com.tjk.services;
 
-<<<<<<< Updated upstream
-=======
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.tjk.entities.Card;
 import com.tjk.repos.CardDAO;
->>>>>>> Stashed changes
 import java.util.List;
+import java.util.Optional;
 
-<<<<<<< Updated upstream
-import com.tjk.entities.Card;
-
-public interface CardService {
-	
-	List<Card> findByCardName(String name);
-}
-=======
 @Service
 public class CardService {
 
@@ -77,6 +67,10 @@ public class CardService {
     public List<Card> getAllCards() {
         return cardRepository.findAll();
     }
+    
+    public List<Card> getCardsByName(String name) {
+        return cardRepository.findByName(name);
+    }
 
     // Validates the essential fields of the card
     private void validateCard(Card card) throws IllegalArgumentException {
@@ -94,4 +88,3 @@ public class CardService {
         }
     }
 }
->>>>>>> Stashed changes

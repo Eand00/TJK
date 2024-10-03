@@ -2,6 +2,8 @@ package com.tjk.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -19,30 +21,32 @@ public class Deck {
      * The unique identifier for the deck.
      */
     @Id
-    @Column(name = "id_deck")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_deck", nullable = false)
     private Integer idDeck;
 
     /**
      * The name of the deck.
      */
-    @Column(name = "deck_name")
+    @Column(name = "deck_name", nullable = false)
     private String deckName;
 
     /**
      * The format of the deck (nullable).
      */
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String format;
 
     /**
      * Indicates if the deck is legal for tournament play.
      */
+    @Column(nullable = false)
     private boolean legal;
 
     /**
      * Indicates if the deck is private.
      */
-    @Column(name = "is_private")
+    @Column(name = "is_private", nullable = false)
     private boolean isPrivate;
 
     /**

@@ -27,14 +27,14 @@ public class User {
      * The unique identifier for the user. This field is the primary key in the database.
      */
     @Id
-    @Column(name = "id_user")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_user", nullable = false)
     private Integer idUser;
 
     /**
      * A boolean flag that indicates if the user's profile is private or public.
      */
-    @Column(nullable = false, name = "private_profile")
+    @Column(name = "private_profile", nullable = false)
     private boolean isPrivate;
 
     /**
@@ -63,7 +63,7 @@ public class User {
     private String password;
 
     /**
-     * Default constructor for the {@code User} class. This is required by JPA.
+     * Default constructor for the {User} class. This is required by JPA.
      */
     public User() {
     }

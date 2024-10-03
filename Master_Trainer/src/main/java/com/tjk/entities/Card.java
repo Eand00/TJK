@@ -2,8 +2,6 @@ package com.tjk.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -19,58 +17,60 @@ public class Card {
      * The unique identifier for the card.
      */
     @Id
-    @Column(name = "id_card")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_card", nullable = false)
     private String idCard;  
     
     /**
      * The set to which this card belongs.
      */
-    @Column(name = "set_name")
+    @Column(name = "set_name", nullable = false)
     private String set;
 
     /**
      * The series of the card.
      */
+    @Column(nullable = false)
     private String series;
 
     /**
      * The publisher of the card.
      */
+    @Column(nullable = false)
     private String publisher;
 
     /**
      * The generation of the card.
      */
+    @Column(nullable = false)
     private String generation;
 
     /**
      * The release date of the card.
      */
+    @Column(nullable = false)
     private String releaseDate;  
     
     /**
-     * The artist who designed the card (nullable).
+     * The artist who designed the card.
      */
-    @Column(nullable = true)
     private String artist;
     
     /**
      * The name of the card.
      */
-    @Column(name = "name_card")
+    @Column(name = "name_card", nullable = false)
     private String name;
 
     /**
      * The set number of the card.
      */
-    @Column(name = "set_num")
+    @Column(name = "set_num", nullable = false)
     private String setNum;
 
     /**
-     * The types of the card (nullable).
+     * The types of the card.
      */
-    @Column(nullable = true, name = "types_card")
+    @Column(name = "types_card")
     private String types;
     
     /**
@@ -80,115 +80,102 @@ public class Card {
     private String supertypes;
     
     /**
-     * The subtypes of the card (nullable).
+     * The subtypes of the card.
      */
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String subtypes;
 
     /**
      * The level of the card (nullable).
      */
-    @Column(nullable = true, name = "level_card")
+    @Column(name = "level_card")
     private String level;  
     
     /**
      * The health points (HP) of the card (nullable).
      */
-    @Column(nullable = true)
     private String hp;  
     
     /**
      * The name of the card this card evolves from (nullable).
      */
-    @Column(nullable = true)
     private String evolvesFrom;
     
     /**
      * The name of the card this card evolves to (nullable).
      */
-    @Column(nullable = true)
     private String evolvesTo;
     
     /**
      * The abilities of the card (nullable).
      */
-    @Column(nullable = true)
     private String abilities;
 
     /**
      * The attacks of the card (nullable).
      */
-    @Column(nullable = true)
     private String attacks;
 
     /**
      * The weaknesses of the card (nullable).
      */
-    @Column(nullable = true)
     private String weakness;
 
     /**
      * The retreat cost of the card (nullable).
      */
-    @Column(nullable = true)
     private String retreatCost;
 
     /**
      * The converted retreat cost of the card (nullable).
      */
-    @Column(nullable = true)
     private String converted;  
     
     /**
      * The rarity of the card (nullable).
      */
-    @Column(nullable = true)
     private String rarity;
 
     /**
      * The flavor text of the card (nullable).
      */
-    @Column(nullable = true)
     private String flavourText;
 
     /**
      * The national Pokédex number of the card (nullable).
      */
-    @Column(nullable = true)
     private String nationalPokedexNumbers;  
     
     /**
      * The legalities of the card.
      */
+    @Column(nullable = false)
     private String legalities;
 
     /**
      * The resistances of the card (nullable).
      */
-    @Column(nullable = true)
     private String resistances;
 
     /**
      * The rules associated with the card (nullable).
      */
-    @Column(nullable = true)
     private String rules;
 
     /**
      * The regulation mark of the card (nullable).
      */
-    @Column(nullable = true)
     private String regulationMark;
 
     /**
      * The ancient trait of the card (nullable).
      */
-    @Column(nullable = true)
     private String ancientTrait;
 
     /**
      * The image URL of the card.
      */
+    @Column(nullable = false)
     private String img;
 
     // Getters and Setters

@@ -16,20 +16,20 @@ public interface DeckDAO extends JpaRepository<Deck, Integer> {
     /**
      * Finds a deck by its name.
     */
-    //Optional<Deck> findByDeckName(String deckName);
+    Optional<Deck> findByDeckName(String deckName);
 
     /**
      * Finds all decks owned by a specific user.
     */
-    //List<Deck> findByUser(Integer userId);
+    List<Deck> findByUserIdUser(Integer idUser);
 
     /**
      * Finds all decks that are marked as private.
     */
-    //List<Deck> findByIsPrivate(boolean privateDeck);
+    List<Deck> findByIsPrivate(boolean privateDeck);
 
     /**
      * Finds all decks that are legal for tournament play.
     */
-    //List<Deck> findByLegal(boolean legal);
+    List<Deck> findByLegal(boolean legal);
 }

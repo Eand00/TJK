@@ -3,11 +3,16 @@ package com.tjk.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import jakarta.persistence.Column;
+
 public class DeckCardsId implements Serializable {
 
+    @Column(name = "id_card")
 	private String idCard;
+    
+    @Column(name = "id_deck")                        
 	private Integer idDeck;
-	
+	           
     // Default constructor
     public DeckCardsId() {
     }

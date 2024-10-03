@@ -3,9 +3,14 @@ package com.tjk.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import jakarta.persistence.Column;
+
 public class CollectionId implements Serializable {
 	
+	@Column(name = "id_card")
 	private String idCard;
+	
+	@Column(name = "id_user")
     private Integer idUser;
 
     // Default constructor

@@ -13,15 +13,20 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 
 @RestController
-@RequestMapping("master_trainer")
+@RequestMapping("master_trainer/cards")
 public class CardREST {
 	
 	@Autowired
 	private CardService service;
 	
-	@GetMapping("/cards/{name}")
+	@GetMapping
+	public List<Card> getAllCards(){
+		return service.getAllCards();
+	}
+	
+	@GetMapping("/name/{name}")
 	public List<Card> getCardByName(@PathVariable String name) {
-		return service.findByCardName(name);
+		return service.getCardsByName(name);
 	}
 	
 
