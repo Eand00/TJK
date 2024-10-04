@@ -26,10 +26,10 @@ public interface DeckDAO extends JpaRepository<Deck, Integer> {
     /**
      * Finds all decks that are marked as private.
     */
-    List<Deck> findByIsPrivate(boolean privateDeck);
+    List<Deck> findByIsPrivate(boolean isPrivate);
 
     /**
      * Finds all decks that are legal for tournament play.
     */
-    List<Deck> findByLegal(boolean legal);
+    List<Deck> findByIsLegal(boolean isLegal);
 }

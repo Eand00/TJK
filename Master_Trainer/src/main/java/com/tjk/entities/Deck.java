@@ -41,7 +41,7 @@ public class Deck {
      * Indicates if the deck is legal for tournament play.
      */
     @Column(nullable = false)
-    private boolean legal;
+    private boolean isLegal;
 
     /**
      * Indicates if the deck is private.
@@ -71,7 +71,7 @@ public class Deck {
         this.idDeck = idDeck;
         this.deckName = deckName;
         this.format = format;
-        this.legal = legal;
+        this.isLegal = legal;
         this.isPrivate = isPrivate;
         this.user = user;
         this.coverCard = coverCard;
@@ -104,11 +104,11 @@ public class Deck {
     }
 
     public boolean isLegal() {
-        return legal;
+        return isLegal;
     }
 
     public void setLegal(boolean legal) {
-        this.legal = legal;
+        this.isLegal = legal;
     }
  boolean isPrivateDeck() {
         return isPrivate;
