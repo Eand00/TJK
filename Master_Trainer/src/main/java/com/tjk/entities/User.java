@@ -102,8 +102,7 @@ public class User {
 
     // Setter for password with encryption using BCrypt
     public void setPassword(String password) {
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        this.password = encoder.encode(password); // Encoding the password before storing it
+    	this.password = password;
     }
 
     // Getter and setter for user role

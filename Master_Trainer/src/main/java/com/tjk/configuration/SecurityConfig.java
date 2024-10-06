@@ -34,10 +34,12 @@ public class SecurityConfig {
                 .requestMatchers("/login", "/resources/**").permitAll()
                 // Allow access to all card-related endpoints for everyone
                 .requestMatchers("/master_trainer/cards/**").permitAll()
+                // Allow access to the user creation endpoint for everyone
+                .requestMatchers("/master_trainer/users/create_user").permitAll()
                 // Restrict access to user management endpoints to ADMIN role only
-                .requestMatchers("/api/users/**").hasRole("ADMIN")
+                .requestMatchers("/master_trainer/users/**").hasRole("ADMIN")
                 // Require authentication for changing passwords
-                .requestMatchers("/api/users/change-password").authenticated()
+                .requestMatchers("/master_trainer/users/change-password").authenticated()
                 // All other requests require authentication
                 .anyRequest().authenticated())
             .formLogin(login -> login.permitAll()) // Allow all users to access the login form

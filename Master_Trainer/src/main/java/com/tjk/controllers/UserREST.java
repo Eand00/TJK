@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController 
-@RequestMapping("/api/users") 
+@RequestMapping("master_trainer/users") 
 public class UserREST {
 
     @Autowired
@@ -47,7 +47,7 @@ public class UserREST {
      * @param user the user details for the new user
      * @return ResponseEntity containing the newly created user
      */
-    @PostMapping // Endpoint to create a new user
+    @PostMapping("/create_user") // Endpoint to create a new user
     public ResponseEntity<User> createUser(@RequestBody User user) {
         User newUser = userService.createUser(user); // Create the new user
         return ResponseEntity.ok(newUser); // Return the created user
