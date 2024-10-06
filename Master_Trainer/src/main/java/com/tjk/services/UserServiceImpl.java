@@ -1,126 +1,198 @@
 package com.tjk.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import com.tjk.entities.User;
 import com.tjk.repos.UserDAO;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserDAO userRepository; //change userRepository to userDAO or dao
+    private UserDAO userDAO;
 
-    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
-    /*
-      Creates a new user with the given information.
-      This method checks for several restrictions before saving the user.
-    */
-    public User createUser(User user) throws IllegalArgumentException {
+    /**
+     * Validates the given password based on specified criteria:
+     * - Minimum length of 8 characters
+     * - At least one uppercase letter
+     * - At least one lowercase letter
+     * - At least one digit
+     * - At least one symbol
+     *
+     * @param password the password to validate
+     * @return true if the password is valid, false otherwise
+     */
+    private boolean isValidPassword(String password) {
+        // Check that the length is at least 8
+        if (password.length() < 8) {
+            return false;
+        }
+        // Check for at least one uppercase letter
+        if (!Pattern.compile("[A-Z]").matcher(password).find()) {
+            return false;
+        }
+        // Check for at least one lowercase letter
+        if (!Pattern.compile("[a-z]").matcher(password).find()) {
+            return false;
+        }
+        // Check for at least one digit
+        if (!Pattern.compile("[0-9]").matcher(password).find()) {
+            return false;
+        }
+        // Check for at least one symbol
+        if (!Pattern.compile("[^a-zA-Z0-9]").matcher(password).find()) {
+            return false;
+        }
+        return true; // Password is valid if all checks passed
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return userDAO.findAll(); // Retrieve all users from the database
+    }
+
+    @Override
+    public Optional<User> getUserById(Integer id) {
+        return userDAO.findById(id); // Retrieve a user by their ID
+    }
+
+    @Override
+    public Optional<User> getUserByUsername(String username) {
+        Optional<User> userOptional = userDAO.findByUsername(username);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            // Check if the user's profile is private
+            if (user.isPrivate()) {
+                User userPublic = new User();
+                userPublic.setUsername(user.getUsername()); // Return only the username if the profile is private
+                return Optional.of(userPublic);
+            } else {
+                return userOptional; // Return full user details if the profile is public
+            }
+        }
+        return Optional.empty(); // Return empty if the user is not found
+    }
+
+    @Override
+    public User createUser(User user) {
         // Check if username is already taken
-        if (userRepository.findByUsername(user.getUsername()).isPresent()) {
-            throw new IllegalArgumentException("Username is already taken.");
+        if (userDAO.findByUsername(user.getUsername()).isPresent()) {
+            throw new IllegalArgumentException("Username is already taken."); // Throw exception if username exists
         }
 
         // Check if name and surname are not null or empty
         if (user.getName() == null || user.getName().trim().isEmpty()) {
-            throw new IllegalArgumentException("First name cannot be empty.");
+            throw new IllegalArgumentException("First name cannot be empty."); // Throw exception if first name is empty
         }
         if (user.getSurname() == null || user.getSurname().trim().isEmpty()) {
-            throw new IllegalArgumentException("Surname cannot be empty.");
+            throw new IllegalArgumentException("Surname cannot be empty."); // Throw exception if surname is empty
         }
 
-        // Validate the strength of the password
-        if (!isPasswordStrong(user.getPassword())) {
-            throw new IllegalArgumentException("Password must be at least 8 characters long, contain at least one number, one uppercase letter, and one special character.");
+        // Validate password before creating a user
+        if (!isValidPassword(user.getPassword())) {
+            throw new IllegalArgumentException("Password must be at least 8 characters long, contain an uppercase letter, a lowercase letter, a digit, and a symbol."); // Throw exception if password is invalid
         }
 
         // Encrypt the password before saving
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setPassword(passwordEncoder.encode(user.getPassword())); // Encode password
 
         // Save the user in the database
-        return userRepository.save(user);
+        return userDAO.save(user); // Save the new user to the database
     }
 
-    /*
-      Updates the user's information.
-      Ensures that certain fields are not null or invalid.
-    */
-    
-    public User updateUser(String id, User updatedUser) throws IllegalArgumentException {
-        Optional<User> optionalUser = userRepository.findById(id);
-        if (!optionalUser.isPresent()) {
-            throw new IllegalArgumentException("User not found.");
-        }
+    @Override
+    public Optional<User> updateUser(Integer id, User userDetails) {
+        Optional<User> userOptional = userDAO.findById(id);
+        if (userOptional.isPresent()) {
+            User existingUser = userOptional.get();
 
-        User existingUser = optionalUser.get();
-
-        // Validate new username if changed
-        if (!existingUser.getUsername().equals(updatedUser.getUsername()) &&
-            userRepository.findByUsername(updatedUser.getUsername()).isPresent()) {
-            throw new IllegalArgumentException("Username is already taken.");
-        }
-
-        // Validate name and surname
-        if (updatedUser.getName() == null || updatedUser.getName().trim().isEmpty()) {
-            throw new IllegalArgumentException("First name cannot be empty.");
-        }
-        if (updatedUser.getSurname() == null || updatedUser.getSurname().trim().isEmpty()) {
-            throw new IllegalArgumentException("Surname cannot be empty.");
-        }
-
-        // Optionally allow password change, ensuring it meets strength requirements.
-        if (updatedUser.getPassword() != null && !updatedUser.getPassword().isEmpty()) {
-            if (!isPasswordStrong(updatedUser.getPassword())) {
-                throw new IllegalArgumentException("Password must be strong.");
+            // Validate new username if changed
+            if (!existingUser.getUsername().equals(userDetails.getUsername()) &&
+                userDAO.findByUsername(userDetails.getUsername()).isPresent()) {
+                throw new IllegalArgumentException("Username is already taken."); // Throw exception if username exists
             }
-            existingUser.setPassword(passwordEncoder.encode(updatedUser.getPassword()));
+
+            // Validate name and surname
+            if (userDetails.getName() == null || userDetails.getName().trim().isEmpty()) {
+                throw new IllegalArgumentException("First name cannot be empty."); // Throw exception if first name is empty
+            }
+            if (userDetails.getSurname() == null || userDetails.getSurname().trim().isEmpty()) {
+                throw new IllegalArgumentException("Surname cannot be empty."); // Throw exception if surname is empty
+            }
+
+            // Optionally allow password change, ensuring it meets strength requirements
+            if (userDetails.getPassword() != null && !userDetails.getPassword().isEmpty()) {
+                if (!isValidPassword(userDetails.getPassword())) {
+                    throw new IllegalArgumentException("Password must be at least 8 characters long, contain an uppercase letter, a lowercase letter, a digit, and a symbol."); // Throw exception if password is invalid
+                }
+                existingUser.setPassword(passwordEncoder.encode(userDetails.getPassword())); // Encode new password
+            }
+
+            // Update user details
+            existingUser.setName(userDetails.getName());
+            existingUser.setSurname(userDetails.getSurname());
+            existingUser.setUsername(userDetails.getUsername());
+            existingUser.setPrivate(userDetails.isPrivate());
+            existingUser.setRole(userDetails.getRole());
+
+            // Save updated user to the database
+            return Optional.of(userDAO.save(existingUser)); // Save updated user
         }
-
-        existingUser.setName(updatedUser.getName());
-        existingUser.setSurname(updatedUser.getSurname());
-        existingUser.setPrivate(updatedUser.isPrivate());
-
-        // Save the updated user
-        return userRepository.save(existingUser);
+        return Optional.empty(); // Return empty if user not found
     }
 
-    // Deletes a user by ID
-    public void deleteUser(String id) {
-        userRepository.deleteById(id);
-    }
-
-    // Retrieves a user by username
-    public Optional<User> getUserByUsername(String username) {
-        return userRepository.findByUsername(username);
-    }
-
-    /*
-      Checks if a password meets the strength requirements.
-      The password should be at least 8 characters long, 
-      contain at least one number, one uppercase letter, and one special character.
-    */
-    private boolean isPasswordStrong(String password) {
-        if (password.length() < 8) {
-            return false;
+    @Override
+    public boolean deleteUser(Integer id) {
+        // Check if user exists before deleting
+        if (userDAO.existsById(id)) {
+            userDAO.deleteById(id); // Delete the user from the database
+            return true; // Return true if the user was deleted successfully
         }
-        boolean hasUppercase = false;
-        boolean hasDigit = false;
-        boolean hasSpecialChar = false;
-        
-        for (char c : password.toCharArray()) {
-            if (Character.isUpperCase(c)) {
-                hasUppercase = true;
-            } else if (Character.isDigit(c)) {
-                hasDigit = true;
-            } else if (!Character.isLetterOrDigit(c)) {
-                hasSpecialChar = true;
+        return false; // Return false if user does not exist
+    }
+
+    @Override
+    public Optional<String> changePassword(String username, String oldPassword, String newPassword) {
+        Optional<User> userOptional = userDAO.findByUsername(username);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            // Check if the old password matches
+            if (passwordEncoder.matches(oldPassword, user.getPassword())) {
+                // Validate the new password before updating
+                if (!isValidPassword(newPassword)) {
+                    throw new IllegalArgumentException("Password must be at least 8 characters long, contain an uppercase letter, a lowercase letter, a digit, and a symbol."); // Throw exception if password is invalid
+                }
+                user.setPassword(passwordEncoder.encode(newPassword)); // Encode new password
+                userDAO.save(user); // Save updated user to the database
+                return Optional.of("Password changed successfully."); // Return success message
+            } else {
+                return Optional.of("Incorrect old password."); // Return error message if old password is incorrect
             }
         }
+        return Optional.empty(); // Return empty if user is not found
+    }
 
-        return hasUppercase && hasDigit && hasSpecialChar;
+    @Override
+    public Optional<String> changeUserPassword(Integer id, String newPassword) {
+        Optional<User> userOptional = userDAO.findById(id);
+        if (userOptional.isPresent()) {
+            // Validate the new password before updating
+            if (!isValidPassword(newPassword)) {
+                throw new IllegalArgumentException("Password must be at least 8 characters long, contain an uppercase letter, a lowercase letter, a digit, and a symbol."); // Throw exception if password is invalid
+            }
+            User user = userOptional.get();
+            user.setPassword(passwordEncoder.encode(newPassword)); // Encode new password
+            userDAO.save(user); // Save updated user to the database
+            return Optional.of("User password updated successfully."); // Return success message
+        }
+        return Optional.empty(); // Return empty if user is not found
     }
 }
