@@ -1,96 +1,65 @@
 package com.tjk.entities;
 
+import jakarta.persistence.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
-/**
- * The {@code User} class represents a user entity mapped to the "User" table in the database.
- * It includes attributes such as name, surname, username, password, and privacy status.
- * The password is securely stored using the BCrypt hashing algorithm.
- * 
- * <p>
- * The class makes use of JPA annotations to define mappings to the database table and
- * uses {@link BCryptPasswordEncoder} to encrypt passwords before storing them.
- * </p>
- */
+// Annotating the class as a JPA entity to be mapped to a database table
 @Entity
 @Table(name = "userslogin")
 public class User {
 
-	/**
-     * The unique identifier for the user. This field is the primary key in the database.
-     */
+    // Declaring the user ID as the primary key with auto-incrementing strategy
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_user", nullable = false)
     private Integer idUser;
 
-    /**
-     * A boolean flag that indicates if the user's profile is private or public.
-     */
+    // Declaring a boolean to indicate if the profile is private
     @Column(name = "private_profile", nullable = false)
     private boolean isPrivate;
 
-    /**
-     * The user's first name.
-     */
+    // Declaring fields for the user's first name and surname
     @Column(name = "first_name")
     private String name;
 
-    /**
-     * The user's surname.
-     */
     private String surname;
 
-    /**
-     * The username of the user, which is unique in the database.
-     * This field cannot be null.
-     */
+    // Declaring a unique username for the user, which cannot be null
     @Column(nullable = false, unique = true)
     private String username;
 
-    /**
-     * The password of the user, which is stored securely using BCrypt hashing.
-     * This field cannot be null.
-     */
+    // Declaring the password for the user, which cannot be null
     @Column(name = "passw", nullable = false)
     private String password;
 
-    /**
-     * Default constructor for the {User} class. This is required by JPA.
-     */
-    public User() {
+    // Declaring a role field to define the user's role (e.g., ADMIN or USER)
+    @Column(name = "role", nullable = false)
+    private String role;  // User role: e.g., ADMIN or USER
+
+    // Default constructor
+    public User() {}
+
+    // Constructor to initialize all fields
+    public User(Integer idUser, boolean isPrivate, String name, String surname, String username, String password, String role) {
+        this.idUser = idUser;
+        this.isPrivate = isPrivate;
+        this.name = name;
+        this.surname = surname;
+        this.username = username;
+        this.password = password;
+        this.role = role;
     }
 
-    // Constructor with parameters
-
-    public User(Integer idUser, boolean isPrivate, String name, String surname, String username, String password) {
-    	super();
-    	this.idUser = idUser;
-    	this.isPrivate = isPrivate;
-    	this.name = name;
-    	this.surname = surname;
-    	this.username = username;
-    	this.password = password;
-    }
-
-    // Getters and Setters
-    
+    // Getter and setter for user ID
     public Integer getIdUser() {
         return idUser;
     }
 
-
-	public void setIdUser(Integer idUser) {
+    public void setIdUser(Integer idUser) {
         this.idUser = idUser;
     }
 
+    // Getter and setter for private profile status
     public boolean isPrivate() {
         return isPrivate;
     }
@@ -99,6 +68,7 @@ public class User {
         isPrivate = aPrivate;
     }
 
+    // Getter and setter for first name
     public String getName() {
         return name;
     }
@@ -107,6 +77,7 @@ public class User {
         this.name = name;
     }
 
+    // Getter and setter for surname
     public String getSurname() {
         return surname;
     }
@@ -115,6 +86,7 @@ public class User {
         this.surname = surname;
     }
 
+    // Getter and setter for username
     public String getUsername() {
         return username;
     }
@@ -122,30 +94,30 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
-    
+
+    // Getter for password
     public String getPassword() {
         return password;
     }
-    
-    /**
-     * Sets the user's password, automatically hashing it using the BCrypt hashing algorithm.
-     * 
-     * @param password the raw password to be hashed and stored
-     */
-    public void setPassword(String password) {
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        this.password = encoder.encode(password);
-    }
-    
-    /**
-     * Returns a string representation of the {@code User} object, excluding the password.
-     * 
-     * @return a string containing the user’s ID, privacy status, name, surname, and username
-     */
-	@Override
-	public String toString() {
-		return "User [idUser=" + idUser + ", isPrivate=" + isPrivate + ", name=" + name + ", surname=" + surname
-				+ ", username=" + username + "]";
-	}
 
+    // Setter for password with encryption using BCrypt
+    public void setPassword(String password) {
+    	this.password = password;
+    }
+
+    // Getter and setter for user role
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    // Overriding the toString method to provide a string representation of the User object
+    @Override
+    public String toString() {
+        return "User [idUser=" + idUser + ", isPrivate=" + isPrivate + ", name=" + name + ", surname=" + surname
+                + ", username=" + username + ", role=" + role + "]";
+    }
 }
