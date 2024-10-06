@@ -1,3 +1,16 @@
+/*
+bottoni filter e search responsive (inline block non va)
+mettere inline senza creare container?
+
+spostare sezione filtri popup
+inserire carte
+add cards buttons
+
+cambiare nomi
+controllo codice
+commenti
+
+*/
 /* Reset CSS */
 * {
     margin: 0;
@@ -63,34 +76,45 @@ body {
     margin-right: 5px;
 }
 
-/* Search Bars */
-.search-bar {
+/* Search Bar */
+
+ .search-bar, .deck-input {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
+    justify-content: space-between; 
+    align-items: center; 
+    width: 100%; /* Make search-bar take the full width of its container */
+    margin-bottom: 20px; 
+    flex-wrap: wrap; /* Allow items to wrap to the next line if needed */
 }
 
-.search-bar button {
+.search-bar input, .deck-section input{
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin: 0 10px;
+    width: 250px;
+    
+    max-width: 60%;
+
+    display: inline-block;
+}
+
+.search-bar button,.save-btn {
     padding: 10px 15px;
     background-color: #555;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    max-width: 100px; /* Optional: Limit the maximum width of the buttons */
+    flex-shrink: 0; /* Prevent the button from shrinking */
 }
 
-.search-bar button:hover {
+.search-bar button:hover, .save-btn:hover{
     background-color: #777;
 }
 
-.search-bar input {
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    margin: 0 10px;
-    width: 250px;
-}
+
 
 /* Card Grid */
 .card-grid {
@@ -112,7 +136,6 @@ body {
     width: 100%; /* Ensure image fits within card */
     border-radius: 5px;
 }
-
 
 /* Filter Popup */
 .filter-popup {
@@ -256,4 +279,100 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
     background-color: #45a049;
+}
+
+
+
+
+/*
+check
+*/
+
+/*inizio deck section*/
+
+
+
+.container {
+    display: flex;
+    margin: 20px;
+}
+
+.deck-section {
+    background-color: #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    margin-right: 20px;
+    width: 70%;
+}
+
+.deck-name {
+    padding-bottom: 20px;
+}
+
+
+/*sezione carte
+preview*/
+.card-preview {
+    background-color: #999;
+    height: 300px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+/*related*/
+.related-cards {
+    background-color: #999;
+    height: 100px;
+    margin-top: 20px; /* Abbassa le carte correlate */
+}
+
+
+/* right section */
+.test {
+    background-color: #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+} 
+
+/*save deck button*/
+.save-btn {
+    padding: 10px 20px;
+    background-color: #555;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+/* Related Cards Section */
+.related-cards-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1; /* Permette alla sezione di espandersi per riempire lo spazio rimanente */
+}
+
+.related-cards {
+    background-color: #999;
+    width: 100%;
+    flex-grow: 1; /* Fa espandere il rettangolo per riempire tutto lo spazio rimanente */
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+/* sopra related cards */
+/* Rectangle Above Related Cards */
+.rectangle-above {
+    background-color: #999; /* Same color as related cards */
+    height: 100px; /* Adjust height as needed */
+    width: 100%;
+    border-radius: 10px; /* Same border-radius as related cards */
+    margin-bottom: 20px; /* Space between the rectangle and the "Related Cards" title */
 }

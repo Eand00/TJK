@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deck Builder</title>
-    <link rel="stylesheet" href="../../css/style-pokedex.css">
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Deck Builder</title>
+        <link rel="stylesheet" href="../../css/style-deck-builder.css">
+    </head>
+    <body>
+        
         <!-- Header Section -->
         <div class="header">
             <h1>Deck Builder</h1>
@@ -25,7 +26,7 @@
                 Login
             </button>
         </div>
-    
+        
         <!-- Login Form -->
         <div id="loginForm" class="form-container">
             <div class="form-content">
@@ -40,7 +41,8 @@
                 </form>
             </div>
         </div>
-    
+        
+        
         <!-- Filter Popup -->
         <div id="filter-popup" class="filter-popup">
             <div class="filter-row">
@@ -123,29 +125,39 @@
                 <input type="checkbox" id="owned">
             </div>
         </div>
-        
+       
 
-<!-- to do -->
 
-        <!-- altra search bar a sinistra eventualmente id/classe diversa-->
-        <!-- posizionamento non funziona -->
-    <div class="search-bar">
-        <input type="text" placeholder="Deck Name" />
-        <button>Search</button>
+<!--  -->
+<div class="container">
+    <!-- Left Section (Deck Section) -->
+    <div class="deck-section">
+        <div class="deck-name">
+            <input type="text" placeholder="Deck Name" class="deck-input">
+            <button class="save-btn">Save</button>
+        </div>
+        <div class="card-preview"></div>
+        <div class="related-cards"></div>
     </div>
 
-        <!-- sposta a destra nel css + in basso -->
-        <!-- sposta il popup dei filtri seguendo la barra -->
+    <!-- Right Section (Filter Section) -->
+    <div class="test">
+        <div class="search-bar">
+            <button class="filter-btn">Filters</button>
+            <input type="text" placeholder="Value" class="search-input">
+            <button class="search-btn">Search</button>
+        </div>
 
-    <div class="search-bar" >
-        <button class="filter-btn">Filters</button>
-        <input type="text" placeholder="Value" />
-        <button>Search</button>
+        <!-- Related Cards Section -->
+        <div class="related-cards-section">
+            <div class="related-cards-title">Related Cards</div>
+            <div class="related-cards"></div>
+        </div>
     </div>
+</div>
+
 
 </body>
-
-    <!-- Include JavaScript file for Login and Filter -->
-    <script src="../../script/script-deck-builder.js"></script>
+<script src="../../script/script-deck-builder.js"></script>
 
 </html>
