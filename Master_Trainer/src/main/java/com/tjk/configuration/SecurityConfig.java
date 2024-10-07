@@ -3,7 +3,6 @@ package com.tjk.configuration;
 import com.tjk.services.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration; 
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider; 
 import org.springframework.security.config.annotation.web.builders.HttpSecurity; 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder; 
 import org.springframework.security.crypto.password.PasswordEncoder; 
@@ -29,6 +28,7 @@ public class SecurityConfig {
     @Bean 
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+        	.csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(requests -> requests
                 // Allow access to login page and resources for everyone
                 .requestMatchers("/login", "/resources/**").permitAll()
@@ -56,19 +56,5 @@ public class SecurityConfig {
     @Bean 
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(); // Return a new BCryptPasswordEncoder for encoding passwords
-    }
-
-    /**
-     * Configures the authentication provider to use the custom user details service
-     * and the password encoder.
-     *
-     * @return a DaoAuthenticationProvider instance configured with the custom user details service and password encoder
-     */
-    @Bean 
-    public DaoAuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider(); // Create a new DaoAuthenticationProvider
-        authProvider.setUserDetailsService(userDetailsService);  // Set the custom UserDetailsService for user retrieval
-        authProvider.setPasswordEncoder(passwordEncoder());  // Set the password encoder for validating passwords
-        return authProvider; // Return the configured DaoAuthenticationProvider
     }
 }

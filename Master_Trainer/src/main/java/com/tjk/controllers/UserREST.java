@@ -3,6 +3,8 @@ package com.tjk.controllers;
 import com.tjk.configuration.PasswordChangeRequest;
 import com.tjk.entities.User;
 import com.tjk.services.UserService;
+import com.tjk.services.UserServiceImpl;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication; 
@@ -12,11 +14,11 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController 
-@RequestMapping("master_trainer/users") 
+@RequestMapping("/master_trainer/users") 
 public class UserREST {
 
     @Autowired
-    private UserService userService; // Service layer for user management
+    private UserServiceImpl userService; // Service layer for user management
 
     /**
      * Retrieves all users from the database.
