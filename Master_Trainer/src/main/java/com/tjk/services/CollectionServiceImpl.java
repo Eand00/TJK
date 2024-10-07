@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.tjk.entities.Collection;
 import com.tjk.repos.CollectionDAO;
+
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,8 +35,20 @@ public class CollectionServiceImpl implements CollectionService{
 
 	@Override
 	public List<Collection> getFavouriteCards(Integer userId) {
-		// TODO Auto-generated method stub
-		return null;
+		// gets the collection of the user
+		List<Collection> userCollection = getUserCollection(userId);
+		
+		Iterator<Collection> iterator = userCollection.iterator();
+		// cicles the collection of the user to check if a card is tagged as favourite or not
+		// if it's not favourite, removes it from the list
+		while (iterator.hasNext()) {
+			Collection collection = iterator.next();
+			if (collection.getFavourite() == false) {
+				iterator.remove();
+			}
+		}
+		// returns the result
+		return userCollection;
 	}
 
 	@Override
