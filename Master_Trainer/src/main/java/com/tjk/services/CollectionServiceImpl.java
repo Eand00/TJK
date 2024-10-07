@@ -13,86 +13,34 @@ public class CollectionServiceImpl implements CollectionService{
     @Autowired
     private CollectionDAO collectionRepository;
 
-    // Adds a new card to the user's collection
-    public Collection addCardToCollection(Collection collection, String idCard) throws IllegalArgumentException {
-        // Check if the card already exists in the user's collection
-        Optional<Collection> existingCollection = collectionRepository.findAllByIdUserAndIdCard(collection.getIdUser(), collection.getIdCard());
+	@Override
+	public Collection addOrUpdateCardToCollection(Integer userId, String cardId, Integer quantity) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-        // Validate that the quantity is positive
-        if (collection.getQuantity() == null || collection.getQuantity() <= 0) {
-            throw new IllegalArgumentException("Quantity must be a positive number.");
-        }
-        
-        // If the card already exists, update the quantity instead of adding a new entry
-        if (existingCollection.isPresent()) {
-            Collection existingEntry = existingCollection.get();
-            existingEntry.setQuantity(existingEntry.getQuantity() + collection.getQuantity());
-            return collectionRepository.save(existingEntry);
-        }
-		return collection;
-    }
+	@Override
+	public void markCardAsFavourite(Integer userId, String cardId) {
+		// TODO Auto-generated method stub
+		
+	}
 
-    // Updates an existing card in the user's collection
-    public Collection updateCardInCollection(Collection collection) throws IllegalArgumentException {
-        Optional<Collection> existingCollection = collectionRepository.findAllByIdUserAndIdCard(collection.getIdUser(), collection.getIdCard());
+	@Override
+	public void removeCardFromCollection(Integer userId, String cardId) {
+		// TODO Auto-generated method stub
+		
+	}
 
-        if (!existingCollection.isPresent()) {
-            throw new IllegalArgumentException("Card is not found in the user's collection.");
-        }
+	@Override
+	public List<Collection> getFavouriteCards(Integer userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-        // Validate the quantity (must be greater than 0)
-        if (collection.getQuantity() == null || collection.getQuantity() <= 0) {
-            throw new IllegalArgumentException("Quantity must be a positive number.");
-        }
+	@Override
+	public List<Collection> getUserCollection(Integer userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-        // Update the existing collection entry
-        Collection existingEntry = existingCollection.get();
-        existingEntry.setQuantity(collection.getQuantity());
-        existingEntry.setFavourite(collection.getFavourite());
-
-        return collectionRepository.save(existingEntry);
-    }
-
-    // Deletes a card from the user's collection
-    public void deleteCardFromCollection(String idCard, Integer idUser) throws IllegalArgumentException {
-        Optional<Collection> existingCollection = collectionRepository.findAllByIdUserAndIdCard(idUser, idCard);
-
-        if (!existingCollection.isPresent()) {
-            throw new IllegalArgumentException("Card not found in the user's collection.");
-        }
-
-        // Delete the card from the collection
-        collectionRepository.delete(existingCollection.get());
-    }
-
-    // Marks a card as favourite in the user's collection
-    public void setFavourite(String idCard, Integer idUser, boolean isFavourite) throws IllegalArgumentException {
-        Optional<Collection> existingCollection = collectionRepository.findAllByIdUserAndIdCard(idUser, idCard);
-
-        if (!existingCollection.isPresent()) {
-            throw new IllegalArgumentException("Card not found in the user's collection.");
-        }
-
-        // Set the card as favourite
-        Collection collection = existingCollection.get();
-        collection.setFavourite(isFavourite);
-
-        collectionRepository.save(collection);
-    }
-
-    // Retrieves all cards in a user's collection
-    public List<Collection> getAllCardsInCollection(Integer idUser) {
-        return collectionRepository.findAllCardsByIdUser(idUser);
-    }
-
-    // Retrieves a specific card from a user's collection
-    public Collection getCardFromCollection(String idCard, Integer idUser) throws IllegalArgumentException {
-        Optional<Collection> existingCollection = collectionRepository.findAllByIdUserAndIdCard(idUser, idCard);
-
-        if (!existingCollection.isPresent()) {
-            throw new IllegalArgumentException("Card not found in the user's collection.");
-        }
-
-        return existingCollection.get();
-    }
 }
