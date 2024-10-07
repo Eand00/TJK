@@ -38,8 +38,14 @@ public class CollectionServiceImpl implements CollectionService{
 	}
 
 	@Override
-	public List<Collection> getUserCollection(Integer userId) {
-		// get all the cards of the user and returns them as a list
+	public List<Collection> getUserCollection(Integer userId) throws IllegalArgumentException{
+		// checks if the collection requested is empty or not
+		// if it's empty, throws an exception
+		if (collectionDAO.findByIdUser(userId).isEmpty()) {
+			throw new IllegalArgumentException("The collection is empty");
+		}
+		// calls the method to find all the cards of the collection by the idUser
+		// returns the values received
 		return collectionDAO.findByIdUser(userId);
 	}
 
