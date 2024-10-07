@@ -26,7 +26,7 @@ public class DeckCards {
     @Id
     @ManyToOne
     @JoinColumn(name = "id_card", referencedColumnName = "id_card", nullable = false)
-    private Card idCard;
+    private Card card;
 
     /**
      * The deck to which the card belongs. This establishes a many-to-one relationship 
@@ -36,7 +36,7 @@ public class DeckCards {
     @Id
     @ManyToOne
     @JoinColumn(name = "id_deck", referencedColumnName = "id_deck", nullable = false)  // Foreign key to the Deck entity
-    private Deck idDeck;
+    private Deck deck;
     
     @Column(nullable = false)
     private Integer quantity;
@@ -46,20 +46,20 @@ public class DeckCards {
 		return quantity;
 	}
 
-	public Card getIdCard() {
-		return idCard;
+	public Card getCard() {
+		return card;
 	}
 
-	public void setIdCard(Card idCard) {
-		this.idCard = idCard;
+	public void setCard(Card card) {
+		this.card = card;
 	}
 
-	public Deck getIdDeck() {
-		return idDeck;
+	public Deck getDeck() {
+		return deck;
 	}
 
-	public void setIdDeck(Deck idDeck) {
-		this.idDeck = idDeck;
+	public void setDeck(Deck deck) {
+		this.deck = deck;
 	}
 
 	public void setQuantity(Integer quantity) {
@@ -70,7 +70,7 @@ public class DeckCards {
 	
 	@Override
 	public String toString() {
-		return "DeckCards [idCard=" + idCard + ", idDeck=" + idDeck + ", quantity=" + quantity + "]";
+		return "DeckCards [idCard=" + card + ", idDeck=" + deck + ", quantity=" + quantity + "]";
 	}   
 
 }
