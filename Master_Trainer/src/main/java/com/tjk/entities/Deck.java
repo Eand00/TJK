@@ -110,7 +110,7 @@ public class Deck {
     public void setLegal(boolean legal) {
         this.isLegal = legal;
     }
- boolean isPrivateDeck() {
+    public boolean isPrivateDeck() {
         return isPrivate;
     }
 
