@@ -33,6 +33,8 @@ public class CollectionServiceImpl implements CollectionService{
 		
 	}
 
+	
+	// modifica con il metodo nuovo
 	@Override
 	public List<Collection> getFavouriteCards(Integer userId) {
 		// gets the collection of the user
