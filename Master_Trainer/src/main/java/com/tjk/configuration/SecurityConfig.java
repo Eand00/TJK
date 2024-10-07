@@ -11,11 +11,8 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration 
 public class SecurityConfig {
 
-    private final CustomUserDetailsService userDetailsService; // Custom UserDetailsService for user authentication
-
     // Constructor for dependency injection of the CustomUserDetailsService
     public SecurityConfig(CustomUserDetailsService userDetailsService) {
-        this.userDetailsService = userDetailsService; // Assign the injected UserDetailsService
     }
 
     /**
@@ -38,8 +35,8 @@ public class SecurityConfig {
                 .requestMatchers("/master_trainer/users/create_user").permitAll()
                 // Restrict access to user management endpoints to ADMIN role only
                 .requestMatchers("/master_trainer/users/**").hasRole("ADMIN")
-                // Require authentication for changing passwords
-                .requestMatchers("/master_trainer/users/change-password").authenticated()
+                // Require authentication for changing passwords, delete user and update user
+                .requestMatchers("/master_trainer/users/change-password", "/master_trainer/users/delete-user/**", "/master_trainer/update-user/**" ).authenticated()
                 // All other requests require authentication
                 .anyRequest().authenticated())
             .formLogin(login -> login.permitAll()) // Allow all users to access the login form

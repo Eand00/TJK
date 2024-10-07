@@ -62,7 +62,7 @@ public class UserREST {
      * @param userDetails the new details for the user
      * @return ResponseEntity containing the updated user or a not found response
      */
-    @PutMapping("/{id}") // Endpoint to update an existing user
+    @PutMapping("update-user/{id}") // Endpoint to update an existing user
     public ResponseEntity<User> updateUser(@PathVariable Integer id, @RequestBody User userDetails) {
         Optional<User> updatedUser = userService.updateUser(id, userDetails); // Update user details
         return updatedUser.map(ResponseEntity::ok) // Return updated user if successful
@@ -75,7 +75,7 @@ public class UserREST {
      * @param id the ID of the user to delete
      * @return ResponseEntity with no content or a not found response
      */
-    @DeleteMapping("/{id}") // Endpoint to delete a user by ID
+    @DeleteMapping("delete-user/{id}") // Endpoint to delete a user by ID
     public ResponseEntity<Void> deleteUser(@PathVariable Integer id) {
         if (userService.deleteUser(id)) { // Attempt to delete user
             return ResponseEntity.noContent().build(); // Return no content if successful
