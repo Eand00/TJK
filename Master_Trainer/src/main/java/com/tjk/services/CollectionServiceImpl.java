@@ -11,7 +11,7 @@ import java.util.Optional;
 public class CollectionServiceImpl implements CollectionService{
 
     @Autowired
-    private CollectionDAO collectionRepository;
+    private CollectionDAO collectionDAO;
 
 	@Override
 	public Collection addOrUpdateCardToCollection(Integer userId, String cardId, Integer quantity) {
@@ -39,8 +39,8 @@ public class CollectionServiceImpl implements CollectionService{
 
 	@Override
 	public List<Collection> getUserCollection(Integer userId) {
-		// TODO Auto-generated method stub
-		return null;
+		// get all the cards of the user and returns them as a list
+		return collectionDAO.findByIdUser(userId);
 	}
 
 }
