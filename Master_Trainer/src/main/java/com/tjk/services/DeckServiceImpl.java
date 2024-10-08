@@ -4,107 +4,106 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.tjk.entities.Deck;
 import com.tjk.repos.DeckDAO;
-import java.util.List;
 import java.util.Optional;
+import java.util.List;
 
 @Service
-public class DeckServiceImpl implements DeckCardsService{
+public class DeckServiceImpl implements DeckService {
 
     @Autowired
     private DeckDAO deckRepository;
 
-    // Adds a new deck to the database
-    public Deck addDeck(Deck deck) throws IllegalArgumentException {
-        // Check if the deck with the given ID already exists
-        Optional<Deck> existingDeck = deckRepository.findById(deck.getIdDeck());
-        if (existingDeck.isPresent()) {
-            throw new IllegalArgumentException("A deck with this ID already exists.");
-        }
-
-        // Validate required fields
-        validateDeck(deck);
-
-        // Save the new deck
-        return deckRepository.save(deck);
+    @Override
+    public Optional<Deck> getDeckByName(String deckName) {
+        return deckRepository.findByDeckName(deckName);
     }
 
-    // Updates an existing deck in the database
-    public Deck updateDeck(Deck deck) throws IllegalArgumentException {
-        // Check if the deck exists
-        Optional<Deck> existingDeck = deckRepository.findById(deck.getIdDeck());
-        if (!existingDeck.isPresent()) {
-            throw new IllegalArgumentException("Deck not found.");
+    @Override
+    public Optional<Deck> getDeckByIdUser(Integer idUser) {
+        List<Deck> decks = deckRepository.findByUserIdUser(idUser);
+        if (!decks.isEmpty()) {
+            return Optional.of(decks.get(0));
         }
-
-        // Validate the updated deck
-        validateDeck(deck);
-
-        // Update the deck in the database
-        return deckRepository.save(deck);
+        throw new IllegalArgumentException("User doesn't have any decks");
     }
 
-    // Deletes a deck by its ID
-    public void deleteDeck(String idDeck) throws IllegalArgumentException {
-        Optional<Deck> existingDeck = deckRepository.findById(idDeck);
-        if (!existingDeck.isPresent()) {
-            throw new IllegalArgumentException("Deck not found.");
+    @Override
+    public Optional<Deck> getPublicDecks() {
+        List<Deck> publicDecks = deckRepository.findByIsPrivate(false);
+        if (!publicDecks.isEmpty()) {
+            return Optional.of(publicDecks.get(0));
         }
-
-        // Delete the deck
-        deckRepository.delete(existingDeck.get());
+        throw new IllegalArgumentException("User doesn't have any public decks");
     }
 
-    // Retrieves a deck by its ID
-    public Deck getDeckById(String idDeck) throws IllegalArgumentException {
-        Optional<Deck> deck = deckRepository.findById(idDeck);
-        if (!deck.isPresent()) {
-            throw new IllegalArgumentException("Deck not found.");
+    @Override
+    public Optional<Deck> getLegalDecks() {
+        List<Deck> legalDecks = deckRepository.findByIsLegal(true);
+        if (!legalDecks.isEmpty()) {
+            return Optional.of(legalDecks.get(0));
         }
-        return deck.get();
+        throw new IllegalArgumentException("User doesn't have any legal decks");
     }
 
-    // Retrieves all decks from the database
-    public List<Deck> getAllDecks() {
-        return deckRepository.findAll();
+    @Override
+    public Optional<Deck> getDeckByIdDeck(Integer idDeck) {
+        return deckRepository.findById(idDeck);
     }
 
-    // Validates the essential fields of the deck
-    private void validateDeck(Deck deck) throws IllegalArgumentException {
-        if (deck.getIdDeck() == null || deck.getIdDeck().isEmpty()) {
-            throw new IllegalArgumentException("Deck ID cannot be null or empty.");
-        }
+    @Override
+    public boolean isDeckValid(Integer deckId) {
+        Optional<Deck> deckOptional = deckRepository.findById(deckId);
+        return deckOptional.isPresent() && deckOptional.get().isLegal();
+    }
+    
+    private void validateDeckCommonFields(Deck deck) {
         if (deck.getDeckName() == null || deck.getDeckName().isEmpty()) {
-            throw new IllegalArgumentException("Deck name cannot be null or empty.");
+            throw new IllegalArgumentException("Deck name cannot be null or empty");
+        }
+        if (deck.getFormat() == null || deck.getFormat().isEmpty()) {
+            throw new IllegalArgumentException("Format cannot be null or empty");
         }
         if (deck.getUser() == null) {
-            throw new IllegalArgumentException("Deck must have an associated user.");
+            throw new IllegalArgumentException("User cannot be null");
         }
         if (deck.getDeckCards() == null) {
-            throw new IllegalArgumentException("Deck must have a cover card.");
+            // to finish
+        	// throw new IllegalArgumentException("Cover card cannot be null");
         }
     }
 
-	@Override
-	public void addCardToDeck(Integer deckId, String cardId, Integer quantity) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public Deck createDeck(Deck deck) {
+        validateDeckCommonFields(deck);
+        return deckRepository.save(deck);
+    }
 
-	@Override
-	public void removeCardFromDeck(Integer deckId, String cardId) {
-		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
-	public int getTotalCardsInDeck(Integer deckId) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    @Override
+    public Deck deleteDeck(Integer idDeck) {
+        Optional<Deck> deckOptional = deckRepository.findById(idDeck);
+        if (deckOptional.isPresent()) {
+            deckRepository.deleteById(idDeck);
+            return deckOptional.get();
+        }
+        return null;
+    }
 
-	@Override
-	public boolean isDeckValid(Integer deckId) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    public Deck updateDeck(Integer idDeck, Deck updatedDeck) {
+        Optional<Deck> deckOptional = deckRepository.findById(idDeck);
+
+        if (deckOptional.isPresent()) {
+            Deck existingDeck = deckOptional.get();
+            validateDeckCommonFields(updatedDeck);
+            existingDeck.setDeckName(updatedDeck.getDeckName());
+            existingDeck.setFormat(updatedDeck.getFormat());
+            existingDeck.setLegal(updatedDeck.isLegal());
+            existingDeck.setPrivateDeck(updatedDeck.isPrivateDeck());
+            existingDeck.setUser(updatedDeck.getUser());
+            existingDeck.setDeckCards(updatedDeck.getDeckCards());
+            return deckRepository.save(existingDeck);
+        }
+        throw new IllegalArgumentException("Deck not found");
+    }
 }
