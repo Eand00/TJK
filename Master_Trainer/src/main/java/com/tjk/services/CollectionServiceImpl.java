@@ -21,10 +21,30 @@ public class CollectionServiceImpl implements CollectionService{
 		return null;
 	}
 
+	// marks a card as a favourite (or unmarks if it is already)
 	@Override
 	public void markCardAsFavourite(Integer idUser, String idCard) {
-		// TODO Auto-generated method stub
+		// checks if the collection requested is empty or not
+		// if it's empty, throws an exception
+		if (collectionDAO.findByIdUser(idUser).isEmpty()) {
+			throw new IllegalArgumentException("The collection is empty");
+		}
+				
+		// checks if the card is in the collection
+		// if it's not, throws an exception
+		if (collectionDAO.findByIdUserAndIdCard(idUser, idCard).isEmpty()) {
+			throw new IllegalArgumentException("The card is not in the collection");
+		}
 		
+		// checks if the card is marked as favourite or not
+		Collection collection = collectionDAO.findByIdUserAndIdCard(idUser, idCard).get();
+		boolean isFavourite = false;
+		if (collection.getFavourite()) {
+			isFavourite = true;
+		}
+		
+		// marks the card as favourite (or not favourite)
+		collectionDAO.markAsFavourite(idUser, idCard, isFavourite);
 	}
 
 	// deletes a card of a user from his collection
