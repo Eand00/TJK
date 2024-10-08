@@ -10,9 +10,9 @@ import com.tjk.entities.CollectionId;
 
 public interface CollectionDAO extends JpaRepository<Collection, CollectionId> {
 	
-	Optional<Collection> findAllByIdUserAndIdCard(Integer idUser, String idCard);
+	//Optional<Collection> findAllByIdUserAndIdCard(Integer idUser, String idCard);
 	
     // Finds a list of cards in owned by a user.
-    List<Collection> findByIdUser(Integer idUser);
+    //List<Collection> findByUser(Integer idUser);
 
 }

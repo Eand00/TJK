@@ -6,22 +6,30 @@ import com.tjk.entities.Card;
 import com.tjk.repos.CardDAO;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class CardServiceImpl implements CardService{
 
     @Autowired
-    private CardDAO cardRepository;
+    private CardDAO dao;
 
     // Retrieves all cards from the database
     @Override
     public List<Card> getAllCards() {
-        return cardRepository.findAll();
+        return dao.findAll();
     }
     
     @Override
-    public Optional<Card> getCardsByName(String name) {
-        return cardRepository.findByName(name);
+    public List<Card> getCardsByName(String name) {
+        List<Card> matchingCards = dao.findAll().stream()
+                .filter(card -> card.getNameCard().toLowerCase().contains(name.toLowerCase()))
+                .collect(Collectors.toList());
+
+        if (matchingCards.isEmpty()) {
+            //throw new NoCardsFoundException("No cards found with the name: " + name);
+        }
+        return matchingCards;
     }
 
 	@Override

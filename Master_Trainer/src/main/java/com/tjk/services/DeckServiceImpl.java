@@ -83,4 +83,28 @@ public class DeckServiceImpl implements DeckCardsService{
             throw new IllegalArgumentException("Deck must have a cover card.");
         }
     }
+
+	@Override
+	public void addCardToDeck(Integer deckId, String cardId, Integer quantity) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeCardFromDeck(Integer deckId, String cardId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getTotalCardsInDeck(Integer deckId) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean isDeckValid(Integer deckId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

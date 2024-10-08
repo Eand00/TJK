@@ -62,7 +62,7 @@ public class UserREST {
      * @param userDetails the new details for the user
      * @return ResponseEntity containing the updated user or a not found response
      */
-    @PutMapping("update-user/{id}") // Endpoint to update an existing user
+    @PutMapping("/update-user/{id}") // Endpoint to update an existing user
     public ResponseEntity<User> updateUser(@PathVariable Integer id, @RequestBody User userDetails) {
         Optional<User> updatedUser = userService.updateUser(id, userDetails); // Update user details
         return updatedUser.map(ResponseEntity::ok) // Return updated user if successful
@@ -75,7 +75,7 @@ public class UserREST {
      * @param id the ID of the user to delete
      * @return ResponseEntity with no content or a not found response
      */
-    @DeleteMapping("delete-user/{id}") // Endpoint to delete a user by ID
+    @DeleteMapping("/delete-user/{id}") // Endpoint to delete a user by ID
     public ResponseEntity<Void> deleteUser(@PathVariable Integer id) {
         if (userService.deleteUser(id)) { // Attempt to delete user
             return ResponseEntity.noContent().build(); // Return no content if successful
@@ -90,7 +90,7 @@ public class UserREST {
      * @param passwordChangeRequest the request containing the old and new passwords
      * @return ResponseEntity with the result of the password change operation
      */
-    @PutMapping("/change-password") // Endpoint to change the password of the authenticated user
+    @PutMapping("/change_password") // Endpoint to change the password of the authenticated user
     public ResponseEntity<String> changePassword(@RequestBody PasswordChangeRequest passwordChangeRequest) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); // Get authentication details
         String currentUsername = authentication.getName(); // Get the current user's username
@@ -107,7 +107,7 @@ public class UserREST {
      * @param newPassword the new password to set for the user
      * @return ResponseEntity with the result of the password change operation
      */
-    @PutMapping("/{id}/change-password") // Endpoint to change a user's password by ID (admin only)
+    @PutMapping("/change_user_password/{id}") // Endpoint to change a user's password by ID (admin only)
     public ResponseEntity<String> changeUserPassword(@PathVariable Integer id, @RequestBody String newPassword) {
         Optional<String> result = userService.changeUserPassword(id, newPassword); // Change the user's password
         return result.map(ResponseEntity::ok) // Return success message if password change was successful

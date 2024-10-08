@@ -19,7 +19,7 @@ public interface DeckCardsDAO extends JpaRepository<DeckCards, DeckCardsId> {
     */
     //List<DeckCards> findAllCardsByDeckName(String deckName);
 
-    List<DeckCards> findAllCardsByIdDeck(Integer idDeck);
+    //List<DeckCards> findAllCardsByIdDeck(Integer idDeck);
 
     /**
      * Finds a list of decks that use a card by the ID of the card.

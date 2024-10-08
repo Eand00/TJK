@@ -26,7 +26,7 @@ public class CardREST {
 	}
 	
 	@GetMapping("/name/{name}")
-	public Optional<Card> getCardByName(@PathVariable String name) {
+	public List<Card> getCardByName(@PathVariable String name) {
 		return service.getCardsByName(name);
 	}
 	

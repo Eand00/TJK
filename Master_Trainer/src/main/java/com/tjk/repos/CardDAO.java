@@ -11,21 +11,21 @@ public interface CardDAO extends JpaRepository<Card, String> {
 	Optional<Card> findByIdCard(String id);
 	
 	// Finds a list of cards in a set
-	Optional<Card>  findBySet(String set);
+	List<Card>  findBySetName(String set);
 	
 	// Finds a list of cards with a specific name
-	Optional<Card> findByName(String name);
+	List<Card> findByNameCard(String name);
 	
 	// Finds a list of cards with a specific set of types
-	Optional<Card> findByTypesContaining(String types);
+	List<Card> findByTypesCardContaining(String types);
 	
 	// Finds a list of cards with a specific set of subtypes
-	Optional<Card> findBySubtypesContaining(String subtypes);
+	List<Card> findBySubtypesContaining(String subtypes);
 	
 	// Finds a list of cards with a specific rarity
-	Optional<Card> findByRarity(String rarity);
+	List<Card> findByRarity(String rarity);
 	
-	Optional<Card> findByArtist(String artist);
+	List<Card> findByArtist(String artist);
 	
 	
 	
