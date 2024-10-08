@@ -34,23 +34,17 @@ public class CollectionServiceImpl implements CollectionService{
 	}
 
 	
-	// modifica con il metodo nuovo
+	// gets a list of favourite cards of a certain user
 	@Override
-	public List<Collection> getFavouriteCards(Integer userId) {
-		// gets the collection of the user
-		List<Collection> userCollection = getUserCollection(userId);
-		
-		Iterator<Collection> iterator = userCollection.iterator();
-		// cicles the collection of the user to check if a card is tagged as favourite or not
-		// if it's not favourite, removes it from the list
-		while (iterator.hasNext()) {
-			Collection collection = iterator.next();
-			if (collection.getFavourite() == false) {
-				iterator.remove();
-			}
-		}
-		// returns the result
-		return userCollection;
+	public List<Collection> getFavouriteCards(Integer userId) throws IllegalArgumentException{
+		// checks if the request is empty or not
+		// if it's empty, throws an exception
+		if (collectionDAO.findFavouriteByUserId(userId).isEmpty()) {
+			throw new IllegalArgumentException("Favourites are empty");
+		}		
+		// calls the method to find all the favourite cards of the collection by the idUser
+		// returns the values received
+		return collectionDAO.findFavouriteByUserId(userId);
 	}
 
 	@Override
