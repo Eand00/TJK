@@ -30,7 +30,7 @@ public class SecurityConfig {
                 // Allow access to login page and resources for everyone
                 .requestMatchers("/login", "/resources/**").permitAll()
                 // Allow access to all card-related endpoints for everyone
-                .requestMatchers("/master_trainer/cards/**").permitAll()
+                .requestMatchers("/master_trainer/cards/**", "master_trainer/decks/**").permitAll()
                 // Allow access to the user creation endpoint for everyone
                 .requestMatchers("/master_trainer/users/create_user").permitAll()
                 // Restrict access to user management endpoints to ADMIN role only
@@ -39,7 +39,6 @@ public class SecurityConfig {
                 .requestMatchers("/master_trainer/users/change-password", "/master_trainer/users/delete-user/**", "/master_trainer/update-user/**" ).authenticated()
                 // All other requests require authentication
                 .anyRequest().authenticated())
-            .formLogin(login -> login.permitAll()) // Allow all users to access the login form
             .logout(logout -> logout.permitAll()); // Allow all users to log out
         
         return http.build(); // Build and return the configured SecurityFilterChain

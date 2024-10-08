@@ -26,7 +26,7 @@ public class DeckCards {
     @Id
     @ManyToOne
     @JoinColumn(name = "id_card", referencedColumnName = "id_card", nullable = false)
-    private Card card;
+    private Card idCard;
 
     /**
      * The deck to which the card belongs. This establishes a many-to-one relationship 
@@ -36,7 +36,7 @@ public class DeckCards {
     @Id
     @ManyToOne
     @JoinColumn(name = "id_deck", referencedColumnName = "id_deck", nullable = false)  // Foreign key to the Deck entity
-    private Deck deck;
+    private Deck idDeck;
     
     @Column(nullable = false)
     private Integer quantity;

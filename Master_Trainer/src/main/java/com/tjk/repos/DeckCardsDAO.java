@@ -21,7 +21,7 @@ public interface DeckCardsDAO extends JpaRepository<DeckCards, DeckCardsId> {
     */
     //List<DeckCards> findAllCardsByDeckName(String deckName);
 
-    List<DeckCards> findAllCardsByIdDeck(Integer idDeck);
+    //List<DeckCards> findAllCardsByIdDeck(Integer idDeck);
 
     /**
      * Finds a list of decks that use a card by the ID of the card.
@@ -34,8 +34,8 @@ public interface DeckCardsDAO extends JpaRepository<DeckCards, DeckCardsId> {
     //List<DeckCards> findAllByDeckNameAndCardName(String deckName, String cardName);
     
     // Finds the Card from a specific cardId
-    Card findCardByCardId(String cardId);
+    //Card findCardByCardId(String cardId);
     
     // Finds the Deck from a specific deckId
-    Deck findDeckByDeckId(Integer deckId);
+    //Deck findDeckByDeckId(Integer deckId);
 }
