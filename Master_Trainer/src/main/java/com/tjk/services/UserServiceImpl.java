@@ -2,6 +2,9 @@ package com.tjk.services;
 
 import com.tjk.entities.User;
 import com.tjk.repos.UserDAO;
+
+import jakarta.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -80,6 +83,7 @@ public class UserServiceImpl implements UserService {
         return Optional.empty(); // Return empty if the user is not found
     }
 
+    @Transactional
     @Override
     public User createUser(User user) {
         // Check if username is already taken
@@ -106,6 +110,7 @@ public class UserServiceImpl implements UserService {
         return dao.save(user); // Save the new user to the database
     }
 
+    @Transactional
     @Override
     public Optional<User> updateUser(Integer id, User userDetails) {
         Optional<User> userOptional = dao.findById(id);
