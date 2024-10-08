@@ -5,9 +5,7 @@ import org.springframework.stereotype.Service;
 import com.tjk.entities.Collection;
 import com.tjk.repos.CollectionDAO;
 
-import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CollectionServiceImpl implements CollectionService{
@@ -15,21 +13,25 @@ public class CollectionServiceImpl implements CollectionService{
     @Autowired
     private CollectionDAO collectionDAO;
 
+    // Adds a card to the collection of a user
 	@Override
-	public Collection addOrUpdateCardToCollection(Integer idUser, String idCard, Integer quantity) {
-		// TODO Auto-generated method stub
-		return null;
+	public void addOrUpdateCardToCollection(Integer idUser, String idCard, Integer quantity) {
+		// Searches if a card is present or not in the collection of the user
+		// if the card not in the collection, adds the card to the collection
+		// else it updates the quantity value in the collection
+		if(collectionDAO.findByIdUserAndIdCard(idUser, idCard).isEmpty()) {
+			collectionDAO.addCardByCardIdAndUserId(idCard, idUser, quantity);
+		}
+		else {
+			Collection collection = collectionDAO.findByIdUserAndIdCard(idUser, idCard).get();
+			quantity = collection.getQuantity() + quantity;
+			collectionDAO.editCardByCardIdAndUserId(idUser, idCard, quantity);
+		}
 	}
 
 	// marks a card as a favourite (or unmarks if it is already)
 	@Override
-	public void markCardAsFavourite(Integer idUser, String idCard) {
-		// checks if the collection requested is empty or not
-		// if it's empty, throws an exception
-		if (collectionDAO.findByIdUser(idUser).isEmpty()) {
-			throw new IllegalArgumentException("The collection is empty");
-		}
-				
+	public void markCardAsFavourite(Integer idUser, String idCard) {		
 		// checks if the card is in the collection
 		// if it's not, throws an exception
 		if (collectionDAO.findByIdUserAndIdCard(idUser, idCard).isEmpty()) {
@@ -65,7 +67,6 @@ public class CollectionServiceImpl implements CollectionService{
 		// deletes the card
 		collectionDAO.deleteCard(idUser, idCard);
 	}
-
 	
 	// gets a list of favourite cards of a certain user
 	@Override

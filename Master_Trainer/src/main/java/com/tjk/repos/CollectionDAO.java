@@ -31,4 +31,13 @@ public interface CollectionDAO extends JpaRepository<Collection, CollectionId> {
     // Marks a card as a favourite or not favourite
     @Query(value = "UPDATE collections SET favourite = :isFavourite WHERE (id_user = :idUser AND id_card = :idCard)", nativeQuery = true)
     void markAsFavourite(@Param("idUser") Integer idUser, @Param("idCard") String idCard, @Param("isFavourite")boolean isFavourite);
+
+    // Adds a card in the collection of a user
+    @Query(value = "INSERT INTO collections (id_card, id_user, favourite, quantity) VALUES (:idCard, :idUser, 0, :quantity)", nativeQuery = true)
+    void addCardByCardIdAndUserId(@Param("idCard") String idCard, @Param("idUser") Integer idUser, @Param("quantity") Integer quantity);
+    
+    // Edit the quantity of a card in the collection of a user
+    @Query(value = "UPDATE collections SET quanity = :quantity WHERE (id_user = :idUser AND id_card = :idCard)", nativeQuery = true)
+    void editCardByCardIdAndUserId(@Param("idUser") Integer idUser, @Param("idCard") String idCard, @Param("quantity") Integer quantity);
+    
 }
