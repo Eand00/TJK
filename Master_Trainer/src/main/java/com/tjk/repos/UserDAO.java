@@ -17,12 +17,4 @@ public interface UserDAO extends JpaRepository<User, Integer> {
      * @return an Optional containing the User object if found, or an empty Optional if not found
      */
     Optional<User> findByUsername(String username);
-
-    /**
-     * Finds a user by their ID.
-     * 
-     * @param id the ID of the user to be found
-     * @return an Optional containing the User object if found, or an empty Optional if not found
-     */
-    Optional<User> findById(Integer id);
 }

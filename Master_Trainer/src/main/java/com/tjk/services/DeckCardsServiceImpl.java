@@ -3,9 +3,13 @@ package com.tjk.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tjk.entities.Card;
+import com.tjk.entities.Deck;
 import com.tjk.entities.DeckCards;
 import com.tjk.entities.DeckCardsId;
+import com.tjk.repos.CardDAO;
 import com.tjk.repos.DeckCardsDAO;
+import com.tjk.repos.DeckDAO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,15 +19,17 @@ import java.util.Optional;
 public class DeckCardsServiceImpl implements DeckCardsService{
 
     @Autowired
-    private DeckCardsDAO deckCardsRepository;
-    /*private CardDAO cardRepository;
-    private DeckDAO deckRepository;*/
+    private DeckCardsDAO deckCardDao;
+    @Autowired
+    private CardDAO cardDao;
+    @Autowired
+    private DeckDAO deckDao;
 
     // Adds a card to a deck with a specified quantity
     @Override
     public void addCardToDeck(Integer deckId, String cardId, Integer quantity) throws IllegalArgumentException {
     	// Checks if the deck has slots available 
-    	if (getTotalCardsInDeck(deckId) == 60) {
+    	if (getTotalCardsInDeck(deckId) >= 60) {
     		throw new IllegalArgumentException("The deck is full.");
     	}
     	
@@ -31,22 +37,25 @@ public class DeckCardsServiceImpl implements DeckCardsService{
     	DeckCardsId deckCardsId = new DeckCardsId(cardId,deckId);
     	
     	// Checks if you can add any more cards with the same name in the deck
-        Optional<DeckCards> existingDeckCards = deckCardsRepository.findById(deckCardsId);
-        if (existingDeckCards.isPresent() && countCardsWithName(deckId,existingDeckCards.get().getCard().getName()) == 4 && !existingDeckCards.get().getCard().getSubtypes().contains("Energy")) {
+        Optional<DeckCards> existingDeckCards = deckCardDao.findById(deckCardsId);
+        if (existingDeckCards.isPresent() && countCardsWithName(deckId,existingDeckCards.get().getCard().getNameCard()) >= 4 && !existingDeckCards.get().getCard().getSubtypes().contains("Energy")) {
         	throw new IllegalArgumentException("You can't add any more cards with that name.");
         }
-        
-        // Creates an object DeckCards and sets its attributes
+        // Fetch the Card and Deck using respective DAOs
+        Card card = cardDao.findById(cardId).orElseThrow(() -> new IllegalArgumentException("Card not found"));
+        Deck deck = deckDao.findById(deckId).orElseThrow(() -> new IllegalArgumentException("Deck not found"));
+
+        // Create the DeckCards object and set its attributes
         DeckCards deckCards = new DeckCards();
-        deckCards.setCard(deckCardsRepository.findCardByCardId(cardId));
-        deckCards.setDeck(deckCardsRepository.findDeckByDeckId(deckId));
-        deckCards.setQuantity(quantity);
+        deckCards.setCard(card);  // Set the card
+        deckCards.setDeck(deck);  // Set the deck
+        deckCards.setQuantity(quantity);  // Set the quantity
 
         // Validate the input data
         validateDeckCards(deckCards);
         
         // Saves the new DeckCards entry
-        deckCardsRepository.save(deckCards);
+        deckCardDao.save(deckCards);
     }
     
     // Removes a card from a deck
@@ -56,33 +65,42 @@ public class DeckCardsServiceImpl implements DeckCardsService{
         DeckCardsId deckCardsId = new DeckCardsId(cardId,deckId);
         
         // Check if the card is already in the deck
-        Optional<DeckCards> existingDeckCards = deckCardsRepository.findById(deckCardsId);
+        Optional<DeckCards> existingDeckCards = deckCardDao.findById(deckCardsId);
         if (!existingDeckCards.isPresent()) {
             throw new IllegalArgumentException("The card is not in the deck.");
         }
 
         // Remove the card from the deck
-        deckCardsRepository.delete(existingDeckCards.get());
+        deckCardDao.delete(existingDeckCards.get());
     }
     
     // Updates the quantity of a card in a deck
-    public DeckCards updateCardInDeck(DeckCards deckCards) throws IllegalArgumentException {
-    	// Creates a DeckCardsId
-    	String idCard = deckCards.getCard().getIdCard();
-    	int idDeck = deckCards.getDeck().getIdDeck();
-    	DeckCardsId deckCardsId = new DeckCardsId(idCard,idDeck);
-    	
-        // Check if the card is in the deck
-        Optional<DeckCards> existingDeckCards = deckCardsRepository.findById(deckCardsId);
-        if (!existingDeckCards.isPresent()) {
+    public DeckCards updateCardQuantityInDeck(Integer deckId, String cardId, Integer newQuantity) throws IllegalArgumentException {
+    	// Validate that the new quantity is a positive integer
+        if (newQuantity <= 0) {
+            throw new IllegalArgumentException("Quantity must be a positive integer.");
+        }
+
+        // Create a DeckCardsId using the provided deckId and cardId
+        DeckCardsId deckCardsId = new DeckCardsId(cardId, deckId);
+        
+        // Fetch the existing DeckCards entry
+        Optional<DeckCards> existingDeckCardsOptional = deckCardDao.findById(deckCardsId);
+        if (!existingDeckCardsOptional.isPresent()) {
             throw new IllegalArgumentException("This card is not present in the deck.");
         }
 
-        // Validate the updated data
-        validateDeckCards(deckCards);
+        // Get the existing DeckCards object
+        DeckCards existingDeckCards = existingDeckCardsOptional.get();
 
-        // Update the DeckCards entry in the database
-        return deckCardsRepository.save(deckCards);
+        // Update the quantity
+        existingDeckCards.setQuantity(newQuantity);
+
+        // Validate the updated data (if you have specific validation rules for the quantity)
+        validateDeckCards(existingDeckCards);
+
+        // Save the updated DeckCards entry to the database
+        return deckCardDao.save(existingDeckCards);
     }
 
     @Override
@@ -103,7 +121,7 @@ public class DeckCardsServiceImpl implements DeckCardsService{
 		// Creates a list of DeckCards
 		List<DeckCards> cardList = getCardsInDeck(deckId);
 		
-		// Returns false if the deck doesn't contain 30 cards
+		// Returns false if the deck doesn't contain 60 cards
 		if (getTotalCardsInDeck(deckId) != 60) {
 			return false;
 		}
@@ -111,7 +129,7 @@ public class DeckCardsServiceImpl implements DeckCardsService{
 		// A list of names of every card in the deck
 		List<String> nameList = new ArrayList<String>(); 
 		for (DeckCards deckCards : cardList) {
-			nameList.add(deckCards.getCard().getName());
+			nameList.add(deckCards.getCard().getNameCard());
 		}
 		
 		// Temporary lists
@@ -120,7 +138,7 @@ public class DeckCardsServiceImpl implements DeckCardsService{
 		
 		// Removes cards and names for energy cards because there's no limit for them
 		for (int i = 0; i < cardList.size(); i++) {
-			if (cardList.get(i).getCard().getSupertypes() == "Energy") {
+			if (cardList.get(i).getCard().getSupertype().equals("Energy")) {
 				tempCardList.remove(i);
 				tempNameList.remove(i);
 			}
@@ -180,7 +198,7 @@ public class DeckCardsServiceImpl implements DeckCardsService{
 
 	    int count = 0;
 	    for (DeckCards deckCards : cardList) {
-	        if (deckCards.getCard().getName().equals(name)) {
+	        if (deckCards.getCard().getNameCard().equals(name)) {
 	            count++;
 	        }
 	    }
@@ -190,7 +208,7 @@ public class DeckCardsServiceImpl implements DeckCardsService{
 	
     // Retrieves all cards in a specific deck
     public List<DeckCards> getCardsInDeck(Integer idDeck) {
-        return deckCardsRepository.findAllCardsByIdDeck(idDeck);
+        return deckCardDao.findByDeck_Id(idDeck);
     }
 
     // Validates the fields of a DeckCards entity

@@ -1,77 +1,39 @@
 package com.tjk.entities;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.IdClass;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.MapsId;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-/**
- * The DeckCards entity represents the relationship between a deck and the cards within that deck.
- * This class serves as a join table, allowing the association between {@link Deck} and {@link Card} entities.
- * Each instance of DeckCards represents one card in a specific deck.
- */
 @Entity
-@Table(name = "decks_cards")  // Specifies the table name for this entity in the database
-@IdClass(DeckCardsId.class)
+@Table(name = "decks_cards")
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
 public class DeckCards {
 
-    /**
-     * The card that is part of the deck. This establishes a many-to-one relationship
-     * where a card can appear in multiple decks.
-     * The card is referenced by the foreign key 'card_id' in the database.
-     */
-    @Id
+	@EmbeddedId
+    private DeckCardsId id;
+	
     @ManyToOne
-    @JoinColumn(name = "id_card", referencedColumnName = "id_card", nullable = false)
-    private Card idCard;
+    @MapsId("idCard")
+    @JoinColumn(name = "id_card", nullable = false)
+    private Card card;
 
-    /**
-     * The deck to which the card belongs. This establishes a many-to-one relationship 
-     * where multiple cards can belong to a single deck.
-     * The deck is referenced by the foreign key 'deck_id' in the database.
-     */
-    @Id
     @ManyToOne
-    @JoinColumn(name = "id_deck", referencedColumnName = "id_deck", nullable = false)  // Foreign key to the Deck entity
-    private Deck idDeck;
-    
-    @Column(nullable = false)
+    @MapsId("idDeck")
+    @JoinColumn(name = "id_deck", nullable = false)
+    private Deck deck;
+
+    @Column(name = "quantity", nullable = false)
     private Integer quantity;
-
-    // Getters and Setters
-    public Integer getQuantity() {
-		return quantity;
-	}
-
-	public Card getCard() {
-		return card;
-	}
-
-	public void setCard(Card card) {
-		this.card = card;
-	}
-
-	public Deck getDeck() {
-		return deck;
-	}
-
-	public void setDeck(Deck deck) {
-		this.deck = deck;
-	}
-
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
-	}
-	
-    //To String
-	
-	@Override
-	public String toString() {
-		return "DeckCards [idCard=" + card + ", idDeck=" + deck + ", quantity=" + quantity + "]";
-	}   
-
 }
 

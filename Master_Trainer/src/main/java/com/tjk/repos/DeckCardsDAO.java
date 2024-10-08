@@ -1,9 +1,5 @@
 package com.tjk.repos;
 
-
-
-import com.tjk.entities.Card;
-import com.tjk.entities.Deck;
 import com.tjk.entities.DeckCards;
 import com.tjk.entities.DeckCardsId;
 
@@ -16,26 +12,8 @@ import java.util.List;
 */
 public interface DeckCardsDAO extends JpaRepository<DeckCards, DeckCardsId> {
 
-    /**
-     * Finds a list of cards in the deck by the ID of the deck.
-    */
-    //List<DeckCards> findAllCardsByDeckName(String deckName);
+	List<DeckCards> findByCard_Id(String idUser);
+	
+    List<DeckCards> findByDeck_Id(Integer idDeck);
 
-    //List<DeckCards> findAllCardsByIdDeck(Integer idDeck);
-
-    /**
-     * Finds a list of decks that use a card by the ID of the card.
-    */
-    //List<DeckCards> findAllDeckByCardName(String cardName);
-
-    /**
-     * find how many copies of a card are in a specific deck by the ID of the card and the ID of the deck.
-    */
-    //List<DeckCards> findAllByDeckNameAndCardName(String deckName, String cardName);
-    
-    // Finds the Card from a specific cardId
-    //Card findCardByCardId(String cardId);
-    
-    // Finds the Deck from a specific deckId
-    //Deck findDeckByDeckId(Integer deckId);
 }
