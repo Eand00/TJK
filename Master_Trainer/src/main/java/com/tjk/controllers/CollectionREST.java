@@ -44,8 +44,15 @@ public class CollectionREST {
 	 * updateCardQuantity
 	 * removeCardFromCollection
 	 * markCardAsFavourite
-	 * getFavouriteCards
+	 * 
 	 */
+	
+	// request to get the user's favourite cards
+	// TODO test
+	@GetMapping("/favourite/{idUser}")
+	public List<Collection> getFavouriteCards(@PathVariable Integer idUser){
+		return collectionService.getFavouriteCards(idUser);
+	}
 	
 	// request to get the user's collections
 	@GetMapping("/{idUser}")
