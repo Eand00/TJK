@@ -3,72 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DeckBuilder - Card Section</title>
+    <title>My Decks</title>
+    <!-- Link to the external CSS file -->
     <link rel="stylesheet" href="../../css/style-deck.css">
 </head>
 <body>
-    <div class="right-section">
-        <!-- Selected card section -->
-        <div class="selected-cards">
-            <h2>Selected Cards</h2>
-            <div class="card-grid">
-                <div class="card-item">
-                    <img src="card1.png" alt="Card 1">
-                    <div class="card-controls">
-                        <button>-</button>
-                        <span>2</span>
-                        <button>+</button>
-                    </div>
-                </div>
-                <div class="card-item">
-                    <img src="card2.png" alt="Card 2">
-                    <div class="card-controls">
-                        <button>-</button>
-                        <span>0</span>
-                        <button>+</button>
-                    </div>
-                </div>
-                <div class="card-item">
-                    <img src="card3.png" alt="Card 3">
-                    <div class="card-controls">
-                        <button>-</button>
-                        <span>0</span>
-                        <button>+</button>
-                    </div>
-                </div>
-            </div>
+    <!-- Navigation menu -->
+    <nav class="navbar">
+        <!-- Buttons for different sections -->
+            <button onclick="window.location.href='home.html'">Home</button>
+            <button onclick="window.location.href='personal-area.html'">Personal Area</button>
+            <button onclick="window.location.href='deck-builder.html'">Deck Builder</button>
+            <button onclick="window.location.href='series-sets.html'">Series & Sets</button>
+            <button onclick="window.location.href='top-cards.html'">Top Cards</button>
+        <!-- Login button positioned on the right -->
+        <button class="login-btn">Login</button>
+    </nav>
+
+    <!-- Main section with heading and controls -->
+    <div class="main-content">
+        <!-- Heading for the section -->
+        <h1>My Decks</h1>
+        
+        <!-- Control buttons and search bar -->
+        <div class="controls">
+            <!-- Buttons for creating and editing decks -->
+            <button class="new-btn">New</button>
+            <button class="edit-btn">Edit</button>
+            <!-- Search input field -->
+            <input type="text" placeholder="Value">
+            <!-- Search button -->
+            <button class="search-btn">Search</button>
         </div>
 
-        <!-- Related card section -->
-        <div class="related-cards">
-            <h2>Related Cards</h2>
-            <div class="card-grid">
-                <div class="card-item">
-                    <img src="related1.png" alt="Related Card 1">
-                    <div class="card-controls">
-                        <button>-</button>
-                        <span>2</span>
-                        <button>+</button>
-                    </div>
-                </div>
-                <div class="card-item">
-                    <img src="related2.png" alt="Related Card 2">
-                    <div class="card-controls">
-                        <button>-</button>
-                        <span>0</span>
-                        <button>+</button>
-                    </div>
-                </div>
-                <div class="card-item">
-                    <img src="related3.png" alt="Related Card 3">
-                    <div class="card-controls">
-                        <button>-</button>
-                        <span>0</span>
-                        <button>+</button>
-                    </div>
-                </div>
+        <!-- Section displaying deck boxes -->
+        <div class="decks">
+            <!-- Individual deck item -->
+            <div class="deck-item">
+                <img src="https://imaginaire.com/en/images/POKEMON-VIVID-VOLTAGE-CHARIZARD-THEME-DECK-ENGLISH-60__82757-CHA.JPG" alt="First deck">
+                <p>Fire deck</p>
+            </div>
+            <!-- Individual deck item -->
+            <div class="deck-item">
+                <img src="https://fantasiastore.it/190129-large_default/mazzo-lotte-ex-tapu-koko-ex-ita.jpg" alt="Second Deck">
+                <p>EX deck</p>
+            </div>
+            <!-- Individual deck item -->
+            <div class="deck-item">
+                <img src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6445/6445826cv11d.jpg;maxHeight=2000;maxWidth=2000;format=webp" alt="Third Deck" id="warning-deck">
+                <p>Grass deck</p>
+                <img src="../../images/alert-icon-1575.png" alt="Alert symbol" id="Symbol">
+                <span class="tooltip">Irregular deck: <br> Doesn't have 60 cards <br> Too many energy cards</span>
+            </div>                    
+            <!-- Individual deck item -->
+            <div class="deck-item">
+                <img src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6445/6445826_sd.jpg;maxHeight=2000;maxWidth=2000;format=webp" alt="Fourth Deck">
+                <p>Water deck</p>
             </div>
         </div>
     </div>
+    <!--onclick="showWinMessage()"-->
 </body>
 </html>
