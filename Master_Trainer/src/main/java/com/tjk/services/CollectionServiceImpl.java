@@ -60,24 +60,27 @@ public class CollectionServiceImpl implements CollectionService{
     // changes the quantity of a card in the collection
     // if the card is not present creates the collection with the quantity given
     @Override
-    public void updateCardQuantity(Integer idUser, String idCard, Integer newQuantity) {
+    public Collection updateCardQuantity(Integer idUser, String idCard, Integer newQuantity) {
     	Collection collection = new Collection();
     	// checks if the card is already in the collection
     	// if it is, updates the quantity
     	// else create a new collection
     	if(collectionDAO.findByUser_IdUserAndCard_IdCard(idUser, idCard).isPresent()) {
-    		collection = collectionDAO.findByUser_IdUserAndCard_IdCard(idUser, idCard).get();
+    		collection = collectionDAO.findByUser_IdUserAndCard_IdCard(idUser, idCard)
+    				.orElseThrow(() -> new IllegalArgumentException("Card not found for the user"));
     		collection.setQuantity(newQuantity);
     	}
     	else {
-    		collection.setCard(cardDAO.findByIdCard(idCard).get());
-    		collection.setUser(userDAO.findById(idUser).get());
+    		collection.setCard(cardDAO.findByIdCard(idCard)
+    				.orElseThrow(() -> new IllegalArgumentException("Card not found")));
+    		collection.setUser(userDAO.findById(idUser)
+    				.orElseThrow(() -> new IllegalArgumentException("User not found")));
     		collection.setFavourite(false);
     		collection.setQuantity(newQuantity);
     	}
     	
     	// inserts or updates the record in the db
-    	collectionDAO.save(collection);
+    	return collectionDAO.save(collection);
     }
 
 	// marks a card as a favourite (or unmarks if it is already)

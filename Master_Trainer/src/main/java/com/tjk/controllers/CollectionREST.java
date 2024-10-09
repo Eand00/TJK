@@ -29,7 +29,8 @@ public class CollectionREST {
 		return collectionService.getAll();
 	}
 	
-	// request to take a collection and insert it in the db
+	// request to add a certain number of cards in the collection of a user
+	// deve essere post o put?
 	@PostMapping("/add_card")
 	public ResponseEntity<Collection> addCard(@RequestBody Collection collection){
 		Integer idUser = collection.getUser().getIdUser();
@@ -39,10 +40,19 @@ public class CollectionREST {
 		Collection c = collectionService.addCardToCollection(idUser, idCard, quantity);
 		return ResponseEntity.ok(c);
 	}
-	
-	/*
-	 * updateCardQuantity
-	 */
+
+	// request to update the quantity of a card
+	// deve essere post o put?
+	// TODO test
+	@PostMapping("/edit_card")
+	public ResponseEntity<Collection> editCard(@RequestBody Collection collection){
+		Integer idUser = collection.getUser().getIdUser();
+		String idCard = collection.getCard().getIdCard();
+		Integer quantity = collection.getQuantity();
+		
+		Collection c = collectionService.updateCardQuantity(idUser, idCard, quantity);
+		return ResponseEntity.ok(c);
+	}
 	
 	// request to delete a card for the user
 	// TODO test
