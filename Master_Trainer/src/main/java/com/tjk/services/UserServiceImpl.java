@@ -2,6 +2,9 @@ package com.tjk.services;
 
 import com.tjk.entities.User;
 import com.tjk.repos.UserDAO;
+
+import jakarta.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -14,11 +17,10 @@ import java.util.regex.Pattern;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserDAO userDAO;
-
+    private UserDAO dao;
+    
     @Autowired
     private PasswordEncoder passwordEncoder;
-
     /**
      * Validates the given password based on specified criteria:
      * - Minimum length of 8 characters
@@ -56,21 +58,21 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getAllUsers() {
-        return userDAO.findAll(); // Retrieve all users from the database
+        return dao.findAll(); // Retrieve all users from the database
     }
 
     @Override
     public Optional<User> getUserById(Integer id) {
-        return userDAO.findById(id); // Retrieve a user by their ID
+        return dao.findById(id); // Retrieve a user by their ID
     }
 
     @Override
     public Optional<User> getUserByUsername(String username) {
-        Optional<User> userOptional = userDAO.findByUsername(username);
+        Optional<User> userOptional = dao.findByUsername(username);
         if (userOptional.isPresent()) {
             User user = userOptional.get();
             // Check if the user's profile is private
-            if (user.isPrivate()) {
+            if (user.getPrivateProfile()) {
                 User userPublic = new User();
                 userPublic.setUsername(user.getUsername()); // Return only the username if the profile is private
                 return Optional.of(userPublic);
@@ -81,15 +83,16 @@ public class UserServiceImpl implements UserService {
         return Optional.empty(); // Return empty if the user is not found
     }
 
+    @Transactional
     @Override
     public User createUser(User user) {
         // Check if username is already taken
-        if (userDAO.findByUsername(user.getUsername()).isPresent()) {
+        if (dao.findByUsername(user.getUsername()).isPresent()) {
             throw new IllegalArgumentException("Username is already taken."); // Throw exception if username exists
         }
 
         // Check if name and surname are not null or empty
-        if (user.getName() == null || user.getName().trim().isEmpty()) {
+        if (user.getFirstName() == null || user.getFirstName().trim().isEmpty()) {
             throw new IllegalArgumentException("First name cannot be empty."); // Throw exception if first name is empty
         }
         if (user.getSurname() == null || user.getSurname().trim().isEmpty()) {
@@ -102,26 +105,26 @@ public class UserServiceImpl implements UserService {
         }
 
         // Encrypt the password before saving
-        user.setPassword(passwordEncoder.encode(user.getPassword())); // Encode password
-
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         // Save the user in the database
-        return userDAO.save(user); // Save the new user to the database
+        return dao.save(user); // Save the new user to the database
     }
 
+    @Transactional
     @Override
     public Optional<User> updateUser(Integer id, User userDetails) {
-        Optional<User> userOptional = userDAO.findById(id);
+        Optional<User> userOptional = dao.findById(id);
         if (userOptional.isPresent()) {
             User existingUser = userOptional.get();
 
             // Validate new username if changed
             if (!existingUser.getUsername().equals(userDetails.getUsername()) &&
-                userDAO.findByUsername(userDetails.getUsername()).isPresent()) {
+                dao.findByUsername(userDetails.getUsername()).isPresent()) {
                 throw new IllegalArgumentException("Username is already taken."); // Throw exception if username exists
             }
 
             // Validate name and surname
-            if (userDetails.getName() == null || userDetails.getName().trim().isEmpty()) {
+            if (userDetails.getFirstName() == null || userDetails.getFirstName().trim().isEmpty()) {
                 throw new IllegalArgumentException("First name cannot be empty."); // Throw exception if first name is empty
             }
             if (userDetails.getSurname() == null || userDetails.getSurname().trim().isEmpty()) {
@@ -137,14 +140,14 @@ public class UserServiceImpl implements UserService {
             }
 
             // Update user details
-            existingUser.setName(userDetails.getName());
+            existingUser.setFirstName(userDetails.getFirstName());
             existingUser.setSurname(userDetails.getSurname());
             existingUser.setUsername(userDetails.getUsername());
-            existingUser.setPrivate(userDetails.isPrivate());
+            existingUser.setPrivateProfile(userDetails.getPrivateProfile());
             existingUser.setRole(userDetails.getRole());
 
             // Save updated user to the database
-            return Optional.of(userDAO.save(existingUser)); // Save updated user
+            return Optional.of(dao.save(existingUser)); // Save updated user
         }
         return Optional.empty(); // Return empty if user not found
     }
@@ -152,8 +155,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean deleteUser(Integer id) {
         // Check if user exists before deleting
-        if (userDAO.existsById(id)) {
-            userDAO.deleteById(id); // Delete the user from the database
+        if (dao.existsById(id)) {
+            dao.deleteById(id); // Delete the user from the database
             return true; // Return true if the user was deleted successfully
         }
         return false; // Return false if user does not exist
@@ -161,7 +164,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Optional<String> changePassword(String username, String oldPassword, String newPassword) {
-        Optional<User> userOptional = userDAO.findByUsername(username);
+        Optional<User> userOptional = dao.findByUsername(username);
         if (userOptional.isPresent()) {
             User user = userOptional.get();
             // Check if the old password matches
@@ -171,7 +174,7 @@ public class UserServiceImpl implements UserService {
                     throw new IllegalArgumentException("Password must be at least 8 characters long, contain an uppercase letter, a lowercase letter, a digit, and a symbol."); // Throw exception if password is invalid
                 }
                 user.setPassword(passwordEncoder.encode(newPassword)); // Encode new password
-                userDAO.save(user); // Save updated user to the database
+                dao.save(user); // Save updated user to the database
                 return Optional.of("Password changed successfully."); // Return success message
             } else {
                 return Optional.of("Incorrect old password."); // Return error message if old password is incorrect
@@ -182,7 +185,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Optional<String> changeUserPassword(Integer id, String newPassword) {
-        Optional<User> userOptional = userDAO.findById(id);
+        Optional<User> userOptional = dao.findById(id);
         if (userOptional.isPresent()) {
             // Validate the new password before updating
             if (!isValidPassword(newPassword)) {
@@ -190,7 +193,7 @@ public class UserServiceImpl implements UserService {
             }
             User user = userOptional.get();
             user.setPassword(passwordEncoder.encode(newPassword)); // Encode new password
-            userDAO.save(user); // Save updated user to the database
+            dao.save(user); // Save updated user to the database
             return Optional.of("User password updated successfully."); // Return success message
         }
         return Optional.empty(); // Return empty if user is not found

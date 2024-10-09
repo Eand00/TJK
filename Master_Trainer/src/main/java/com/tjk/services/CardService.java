@@ -9,7 +9,7 @@ public interface CardService {
 
 	public List<Card> getAllCards();
 	
-	public Optional<Card> getCardsByName(String name);
+	public List<Card> getCardsByName(String name);
 	public Optional<Card> getCardsByCardId(String id);
 	public Optional<Card> getCardsBySet(String set);
 	public Optional<Card> getCardsBySeries(String series);
