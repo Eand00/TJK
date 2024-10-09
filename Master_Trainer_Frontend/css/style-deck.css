@@ -1,3 +1,4 @@
+/* Universal reset for margin, padding, and box sizing */
 * {
     margin: 0;
     padding: 0;
@@ -5,63 +6,140 @@
     font-family: Arial, sans-serif;
 }
 
+/* Basic styles for the body */
 body {
-    background-color: #333;
-    padding: 20px;
+    background-color: #3f3f3f; /* Dark gray background */
+    color: white; /* White text */
+    padding: 20px; /* Padding around the content */
 }
 
-.right-section {
-    background-color: #aaa;
-    padding: 20px;
-    border-radius: 8px;
-    width: 300px;
+/* Styles for the navigation bar */
+.navbar {
+    display: flex; /* Flexbox to align items horizontally */
+    justify-content: center; /* Center the buttons */
+    gap: 20px; /* Space between buttons */
+    margin-bottom: 20px; /* Spacing below the navbar */
 }
 
-h2 {
-    font-size: 20px;
-    color: white;
-    margin-bottom: 10px;
+/* Style for buttons in the navbar */
+.navbar button {
+    background-color: #5a5a5a; /* Dark gray background for buttons */
+    color: white; /* White text */
+    border: none; /* No border */
+    padding: 10px 20px; /* Padding for button size */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    font-size: 16px; /* Font size */
 }
 
-.card-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+/* Hover effect for navbar buttons */
+.navbar button:hover {
+    background-color: #7a7a7a; /* Lighter gray background on hover */
 }
 
-.card-item {
-    background-color: #ccc;
-    padding: 10px;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+/* Login button is aligned to the right */
+.login-btn {
+    margin-left: auto; /* Pushes the login button to the right */
 }
 
-.card-item img {
-    width: 100px;
-    height: 140px;
-    object-fit: cover;
-    margin-bottom: 5px;
+/* Main content section */
+.main-content {
+    text-align: center; /* Center-aligns the content */
 }
 
-.card-controls {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+/* Style for the main heading */
+h1 {
+    font-size: 36px; /* Large font size */
+    margin-bottom: 20px; /* Spacing below the heading */
 }
 
-.card-controls button {
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
+/* Container for the control buttons and search bar */
+.controls {
+    display: flex; /* Flexbox for horizontal alignment */
+    justify-content: center; /* Center the control buttons */
+    gap: 10px; /* Space between elements */
+    margin-bottom: 40px; /* Space below the controls */
 }
 
-.card-controls span {
-    color: white;
-    font-size: 16px;
+/* Style for the control buttons */
+.controls button {
+    background-color: #5a5a5a; /* Dark gray background */
+    color: white; /* White text */
+    border: none; /* No border */
+    padding: 10px 20px; /* Padding for button size */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer on hover */
+    font-size: 16px; /* Font size */
+}
+
+/* Hover effect for control buttons */
+.controls button:hover {
+    background-color: #7a7a7a; /* Lighter gray background on hover */
+}
+
+/* Style for the search input field */
+.controls input {
+    padding: 10px; /* Padding for input field */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    width: 200px; /* Width of the input field */
+    font-size: 16px; /* Font size for the text */
+}
+
+/* Container for the decks section */
+.decks {
+    display: flex; /* Flexbox for horizontal layout */
+    justify-content: center; /* Center-align the deck items */
+    gap: 40px; /* Space between the deck items */
+}
+
+/* Individual deck item */
+.deck-item {
+    display: flex; /* Flexbox for vertical alignment */
+    flex-direction: column; /* Arrange image and text in a column */
+    align-items: center; /* Center-align items */
+    margin-top: 75px;
+}
+
+/* Style for the deck images */
+.deck-item img:not(#Symbol) {
+    width: 150px; /* Fixed width */
+    height: 200px; /* Fixed height */
+    margin-bottom: 10px; /* Space below the image */
+    border-radius: 10px; /* Rounded corners for the image */
+    object-fit: cover; /* Ensure the image fits the container */
+    background-color: #202020; /* Dark background behind the image */
+}
+
+#Symbol {
+    width: 30px; /* Fixed width */
+    height: 30px; /* Fixed height */
+    margin-left: 5px; /* Space to the left of the symbol */
+    margin-top: 15px;
+    vertical-align: middle; /* Vertically center align */
+}
+
+.tooltip {
+    width: 200px;
+    display: none; /* Hide by default */
+    position: absolute; /* Position relative to the container */
+    background-color: #333; /* Background color */
+    color: #fff; /* Text color */
+    padding: 5px; /* Internal padding */
+    border-radius: 5px; /* Rounded corners */
+    z-index: 10; /* Above other elements */
+    margin-top: 300px; /* Optional, may not be needed */
+}
+
+/* Show the tooltip on hover */
+#Symbol:hover + .tooltip {
+    display: block; /* Show text on hover */
+    position: absolute; /* Position relative to the element with ID 'Symbol' */
+    top: -25px; /* Position above the element */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center exactly */
+}
+
+.deck-item {
+    position: relative; /* Necessary for the absolute positioning of the tooltip */
 }
