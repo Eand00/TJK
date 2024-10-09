@@ -41,17 +41,17 @@ public class DeckREST {
         return service.getDeckByIdDeck(idDeck);
     }
    
-    @PostMapping
+    @PostMapping("create_deck")
     public Deck createDeck(@RequestBody Deck deck) {
         return service.createDeck(deck);
     }
     
-    @DeleteMapping("/{idDeck}")
+    @DeleteMapping("delete_deck/{idDeck}")
     public boolean deleteDeck(@PathVariable Integer idDeck) {
         return service.deleteDeck(idDeck);
     }
     
-    @PutMapping("/{idDeck}")
+    @PutMapping("update_deck/{idDeck}")
     public Deck updateDeck(@PathVariable Integer idDeck, @RequestBody Deck updatedDeck) {
         return service.updateDeck(idDeck, updatedDeck);
     }

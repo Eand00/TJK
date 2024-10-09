@@ -208,7 +208,7 @@ public class DeckCardsServiceImpl implements DeckCardsService{
 	
     // Retrieves all cards in a specific deck
     public List<DeckCards> getCardsInDeck(Integer idDeck) {
-        return deckCardDao.findByDeck_Id(idDeck);
+        return deckCardDao.findByDeck_IdDeck(idDeck);
     }
 
     // Validates the fields of a DeckCards entity

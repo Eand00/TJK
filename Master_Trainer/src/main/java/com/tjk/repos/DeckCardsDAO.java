@@ -12,8 +12,8 @@ import java.util.List;
 */
 public interface DeckCardsDAO extends JpaRepository<DeckCards, DeckCardsId> {
 
-	List<DeckCards> findByCard_Id(String idUser);
+	List<DeckCards> findByCard_IdCard(String idUser);
 	
-    List<DeckCards> findByDeck_Id(Integer idDeck);
+    List<DeckCards> findByDeck_IdDeck(Integer idDeck);
 
 }
