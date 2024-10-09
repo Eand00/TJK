@@ -2,7 +2,10 @@ package com.tjk.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.tjk.entities.Card;
 import com.tjk.entities.Collection;
+import com.tjk.entities.User;
 import com.tjk.repos.CardDAO;
 import com.tjk.repos.CollectionDAO;
 import com.tjk.repos.UserDAO;
@@ -38,8 +41,11 @@ public class CollectionServiceImpl implements CollectionService{
     		collection.setQuantity(collection.getQuantity() + quantity);
     	}
     	else {
-    		collection.setCard(cardDAO.findByIdCard(idCard).get());
-    		collection.setUser(userDAO.findById(idUser).get());
+    		Card card = cardDAO.findById(idCard).orElseThrow(() -> new IllegalArgumentException("Card not found"));
+    		User user = userDAO.findById(idUser).orElseThrow(() -> new IllegalArgumentException("Card not found"));
+    		
+    		collection.setCard(card);
+    		collection.setUser(user);
     		collection.setFavourite(false);;
     		collection.setQuantity(quantity);
     	}
