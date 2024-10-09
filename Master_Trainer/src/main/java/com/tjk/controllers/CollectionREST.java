@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tjk.entities.Collection;
+import com.tjk.entities.User;
 import com.tjk.services.CollectionServiceImpl;
 
 @RestController 
@@ -27,9 +29,13 @@ public class CollectionREST {
 	}
 	
 	@PostMapping("/add_card")
-	public ResponseEntity<Collection> addCard(@RequestParam Integer idUser, @RequestParam String idCard, @RequestParam Integer quantity){
-		Collection collection = collectionService.addCardToCollection(idUser, idCard, quantity);
-		return ResponseEntity.ok(collection);
+	public ResponseEntity<Collection> addCard(@RequestBody Collection collection){
+		Integer idUser = collection.getUser().getIdUser();
+		String idCard = collection.getCard().getIdCard();
+		Integer quantity = collection.getQuantity();
+		
+		Collection c = collectionService.addCardToCollection(idUser, idCard, quantity);
+		return ResponseEntity.ok(c);
 	}
 	
 }

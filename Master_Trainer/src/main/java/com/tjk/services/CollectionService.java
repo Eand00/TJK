@@ -13,3 +13,4 @@ public interface CollectionService {
 	public List<Collection> getFavouriteCards(Integer idUser); // get all the favourite cards in the collection
 	public List<Collection> getUserCollection(Integer idUser); // get all the cards in the collection
 }
+
