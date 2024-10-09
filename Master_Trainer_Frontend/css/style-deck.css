@@ -143,3 +143,92 @@ h1 {
 .deck-item {
     position: relative; /* Necessary for the absolute positioning of the tooltip */
 }
+
+/* Login Button */
+.login-btn {
+    position: absolute;
+    right: 20px; /* Position the login button to the right */
+    top: 10px;
+    background-color: #444;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .login-btn img {
+    width: 30px; /* Increase the width of the image */
+    height: 30px; /* Increase the height of the image */
+    margin-right: 5px;
+  }
+
+  /* Styles for the login form */
+.form-container {
+    display: none; /* Hide form by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5); /* Transparent background */
+  }
+  
+  .form-content {
+    color: #000000;
+    background-color: #fff;
+    margin: 15% auto; /* Center the form content */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%; /* Form width */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+  
+  .close {
+    color: #000000;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* Add padding for form fields */
+  form {
+    display: flex;
+    flex-direction: column; /* Arrange elements in a column */
+  }
+  
+  label {
+    color: #000000;
+    margin-bottom: 5px; /* Space between the label and the input field */
+  }
+  
+  input {
+    padding: 10px; /* Padding for input fields */
+    margin-bottom: 10px; /* Margin between fields */
+    border: 1px solid #ccc; /* Border of the input fields */
+    border-radius: 4px; /* Rounded corners */
+  }
+  
+  button[type="submit"] {
+    background-color: #363836; /* Background color of the button */
+    color: white; /* Text color */
+    border: none;
+    padding: 10px;
+    border-radius: 50px; /* Rounded corners */
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #45a049; /* Background color on hover */
+  }
