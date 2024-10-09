@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,12 +23,13 @@ public class CollectionREST {
 	@Autowired
 	CollectionServiceImpl collectionService;
 	
-	// returns all collections
+	// request to get all collections
 	@GetMapping("/get_all")
 	public List<Collection> getAllCollections(){
 		return collectionService.getAll();
 	}
 	
+	// request to take a collection and insert it in the db
 	@PostMapping("/add_card")
 	public ResponseEntity<Collection> addCard(@RequestBody Collection collection){
 		Integer idUser = collection.getUser().getIdUser();
@@ -36,6 +38,19 @@ public class CollectionREST {
 		
 		Collection c = collectionService.addCardToCollection(idUser, idCard, quantity);
 		return ResponseEntity.ok(c);
+	}
+	
+	/*
+	 * updateCardQuantity
+	 * removeCardFromCollection
+	 * markCardAsFavourite
+	 * getFavouriteCards
+	 */
+	
+	// request to get the user's collections
+	@GetMapping("/{idUser}")
+	public List<Collection> getUserCollection(@PathVariable Integer idUser) {
+		return collectionService.getUserCollection(idUser);
 	}
 	
 }
