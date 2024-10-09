@@ -82,7 +82,7 @@ public class CollectionServiceImpl implements CollectionService{
 
 	// marks a card as a favourite (or unmarks if it is already)
 	@Override
-	public void markCardAsFavourite(Integer idUser, String idCard) {		
+	public Collection markCardAsFavourite(Integer idUser, String idCard) {		
 		// checks if the card is in the collection
 		// if it's not, throws an exception
 		if (collectionDAO.findByUser_IdUserAndCard_IdCard(idUser, idCard).isEmpty()) {
@@ -90,11 +90,12 @@ public class CollectionServiceImpl implements CollectionService{
 		}
 		
 		// takes the collection and set the favourite flag to the opposite value
-		Collection collection = collectionDAO.findByUser_IdUserAndCard_IdCard(idUser, idCard).get();
+		Collection collection = collectionDAO.findByUser_IdUserAndCard_IdCard(idUser, idCard)
+				.orElseThrow(() -> new IllegalArgumentException("Card not found for the user"));
 		collection.setFavourite(!collection.getFavourite());
 		
 		// updates the collection in the db
-		collectionDAO.save(collection);
+		return collectionDAO.save(collection);
 	}
 
 	// deletes a card of a user from his collection

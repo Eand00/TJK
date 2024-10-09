@@ -1,12 +1,14 @@
 package com.tjk.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -43,9 +45,17 @@ public class CollectionREST {
 	/*
 	 * updateCardQuantity
 	 * removeCardFromCollection
-	 * markCardAsFavourite
-	 * 
 	 */
+	
+	// request to mark a card in the collection as favourite
+	// TODO test
+	// TODO check if return va bene
+	// TODO eventualmente solo @RequestBody passando una collection
+	@PutMapping("/mark_favourite/{idUser}")
+	public ResponseEntity<Collection> markCardAsFavourite(@PathVariable Integer idUser, @RequestBody String idCard){
+		Collection updatedCollection = collectionService.markCardAsFavourite(idUser, idCard);
+		return ResponseEntity.ok(updatedCollection);
+	}
 	
 	// request to get the user's favourite cards
 	// TODO test
