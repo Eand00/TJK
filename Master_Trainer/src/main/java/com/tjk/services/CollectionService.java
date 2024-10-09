@@ -6,7 +6,7 @@ import com.tjk.entities.Collection;
 
 public interface CollectionService {
 
-	public void addCardToCollection(Integer idUser, String idCard, Integer quantity); // checks if card already in collection if it is adds quantity else add to collection
+	public Collection addCardToCollection(Integer idUser, String idCard, Integer quantity); // checks if card already in collection if it is adds quantity else add to collection
 	public void updateCardQuantity(Integer idUser, String idCard, Integer newQuantity); // checks if card already in collection if is updates quantity else add to collection
 	public void removeCardFromCollection(Integer idUser, String idCard); // checks if card already in collection, if it is removes it
 	public void markCardAsFavourite(Integer idUser, String idCard);// checks if card already in collection, if it is marks it as a favourite

@@ -20,11 +20,15 @@ public class CollectionServiceImpl implements CollectionService{
     
     @Autowired
     private UserDAO userDAO;
+    
+    public List<Collection> getAll(){
+    	return collectionDAO.findAll();
+    }
 
     // adds quantity of a card in the collection
     // if the card is not present creates the collection with the quantity given
     @Override
-	public void addCardToCollection(Integer idUser, String idCard, Integer quantity) {
+	public Collection addCardToCollection(Integer idUser, String idCard, Integer quantity) {
     	Collection collection = new Collection();
     	// checks if the card is already in the collection
     	// if it is, updates the quantity with the sum of the record's quantity + given quantity
@@ -41,7 +45,7 @@ public class CollectionServiceImpl implements CollectionService{
     	}
     	
     	// inserts or updates the record in the db
-    	collectionDAO.save(collection);
+    	return collectionDAO.save(collection);
     }
     
     // changes the quantity of a card in the collection

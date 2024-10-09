@@ -22,6 +22,7 @@ public class CardServiceImpl implements CardService{
     
     @Override
     public List<Card> getCardsByName(String name) {
+    	/*
         List<Card> matchingCards = dao.findAll().stream()
                 .filter(card -> card.getNameCard().toLowerCase().contains(name.toLowerCase()))
                 .collect(Collectors.toList());
@@ -30,6 +31,8 @@ public class CardServiceImpl implements CardService{
             //throw new NoCardsFoundException("No cards found with the name: " + name);
         }
         return matchingCards;
+        */
+    	return null;
     }
 
 	@Override
