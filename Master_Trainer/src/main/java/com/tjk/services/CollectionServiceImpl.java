@@ -100,15 +100,16 @@ public class CollectionServiceImpl implements CollectionService{
 
 	// deletes a card of a user from his collection
 	@Override
-	public void removeCardFromCollection(Integer idUser, String idCard) {
+	public boolean removeCardFromCollection(Integer idUser, String idCard) {
 		// checks if the card is in the collection
-		// if it's not, throws an exception
+		// if it's not, returns false
+		// else, deletes the card and returns true
 		if (collectionDAO.findByUser_IdUserAndCard_IdCard(idUser, idCard).isEmpty()) {
-			throw new IllegalArgumentException("The card is not in the collection");
+			return false;
 		}
-		
 		// deletes the card
 		collectionDAO.deleteByUser_IdUserAndCard_IdCard(idUser, idCard);
+		return true;
 	}
 	
 	// gets a list of favourite cards of a certain user

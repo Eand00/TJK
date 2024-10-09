@@ -1,21 +1,19 @@
 package com.tjk.controllers;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tjk.entities.Collection;
-import com.tjk.entities.User;
 import com.tjk.services.CollectionServiceImpl;
 
 @RestController 
@@ -44,8 +42,20 @@ public class CollectionREST {
 	
 	/*
 	 * updateCardQuantity
-	 * removeCardFromCollection
 	 */
+	
+	// request to delete a card for the user
+	// TODO test
+	@DeleteMapping("/delete_card/{idUser}")
+	public ResponseEntity<Void> removeCardFromCollection(@PathVariable Integer idUser, @RequestBody String idCard){
+		// tries to remove the collection from the records
+		// if successful returns no content
+		if(collectionService.removeCardFromCollection(idUser, idCard)) {
+			ResponseEntity.noContent().build();
+		}
+		// if the collection does not exist returns not found
+		return ResponseEntity.notFound().build();
+	}
 	
 	// request to mark a card in the collection as favourite
 	// TODO test
