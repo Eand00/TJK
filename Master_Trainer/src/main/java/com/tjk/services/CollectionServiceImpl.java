@@ -71,6 +71,8 @@ public class CollectionServiceImpl implements CollectionService{
     		collection.setQuantity(newQuantity);
     	}
     	else {
+    		CollectionId collectionId = new CollectionId(idCard, idUser);
+    		collection.setId(collectionId);
     		collection.setCard(cardDAO.findByIdCard(idCard)
     				.orElseThrow(() -> new IllegalArgumentException("Card not found")));
     		collection.setUser(userDAO.findById(idUser)

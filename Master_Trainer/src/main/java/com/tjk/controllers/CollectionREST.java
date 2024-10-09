@@ -56,6 +56,7 @@ public class CollectionREST {
 	
 	// request to delete a card for the user
 	// TODO test
+	// cambiare argomenti per avere una collection (collection id?)
 	@DeleteMapping("/delete_card/{idUser}")
 	public ResponseEntity<Void> removeCardFromCollection(@PathVariable Integer idUser, @RequestBody String idCard){
 		// tries to remove the collection from the records
