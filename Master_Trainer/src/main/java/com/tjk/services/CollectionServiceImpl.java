@@ -3,7 +3,9 @@ package com.tjk.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.tjk.entities.Collection;
+import com.tjk.repos.CardDAO;
 import com.tjk.repos.CollectionDAO;
+import com.tjk.repos.UserDAO;
 
 import java.util.List;
 
@@ -12,60 +14,87 @@ public class CollectionServiceImpl implements CollectionService{
 
     @Autowired
     private CollectionDAO collectionDAO;
+    
+    @Autowired
+    private CardDAO cardDAO;
+    
+    @Autowired
+    private UserDAO userDAO;
 
-    // Adds a card to the collection of a user
-	@Override
-	public void addOrUpdateCardToCollection(Integer idUser, String idCard, Integer quantity) {
-		// Searches if a card is present or not in the collection of the user
-		// if the card not in the collection, adds the card to the collection
-		// else it updates the quantity value in the collection
-		if(collectionDAO.findByIdUserAndIdCard(idUser, idCard).isEmpty()) {
-			collectionDAO.addCardByCardIdAndUserId(idCard, idUser, quantity);
-		}
-		else {
-			Collection collection = collectionDAO.findByIdUserAndIdCard(idUser, idCard).get();
-			quantity = collection.getQuantity() + quantity;
-			collectionDAO.editCardByCardIdAndUserId(idUser, idCard, quantity);
-		}
-	}
+    // adds quantity of a card in the collection
+    // if the card is not present creates the collection with the quantity given
+    @Override
+	public void addCardToCollection(Integer idUser, String idCard, Integer quantity) {
+    	Collection collection = new Collection();
+    	// checks if the card is already in the collection
+    	// if it is, updates the quantity with the sum of the record's quantity + given quantity
+    	// else creates a new collection
+    	if(collectionDAO.findByUser_IdUserAndCard_IdCard(idUser, idCard).isPresent()) {
+    		collection = collectionDAO.findByUser_IdUserAndCard_IdCard(idUser, idCard).get();
+    		collection.setQuantity(collection.getQuantity() + quantity);
+    	}
+    	else {
+    		collection.setCard(cardDAO.findByIdCard(idCard).get());
+    		collection.setUser(userDAO.findById(idUser).get());
+    		collection.setFavourite(false);;
+    		collection.setQuantity(quantity);
+    	}
+    	
+    	// inserts or updates the record in the db
+    	collectionDAO.save(collection);
+    }
+    
+    // changes the quantity of a card in the collection
+    // if the card is not present creates the collection with the quantity given
+    @Override
+    public void updateCardQuantity(Integer idUser, String idCard, Integer newQuantity) {
+    	Collection collection = new Collection();
+    	// checks if the card is already in the collection
+    	// if it is, updates the quantity
+    	// else create a new collection
+    	if(collectionDAO.findByUser_IdUserAndCard_IdCard(idUser, idCard).isPresent()) {
+    		collection = collectionDAO.findByUser_IdUserAndCard_IdCard(idUser, idCard).get();
+    		collection.setQuantity(newQuantity);
+    	}
+    	else {
+    		collection.setCard(cardDAO.findByIdCard(idCard).get());
+    		collection.setUser(userDAO.findById(idUser).get());
+    		collection.setFavourite(false);
+    		collection.setQuantity(newQuantity);
+    	}
+    	
+    	// inserts or updates the record in the db
+    	collectionDAO.save(collection);
+    }
 
 	// marks a card as a favourite (or unmarks if it is already)
 	@Override
 	public void markCardAsFavourite(Integer idUser, String idCard) {		
 		// checks if the card is in the collection
 		// if it's not, throws an exception
-		if (collectionDAO.findByIdUserAndIdCard(idUser, idCard).isEmpty()) {
+		if (collectionDAO.findByUser_IdUserAndCard_IdCard(idUser, idCard).isEmpty()) {
 			throw new IllegalArgumentException("The card is not in the collection");
 		}
 		
-		// checks if the card is marked as favourite or not
-		Collection collection = collectionDAO.findByIdUserAndIdCard(idUser, idCard).get();
-		boolean isFavourite = false;
-		if (collection.getFavourite()) {
-			isFavourite = true;
-		}
+		// takes the collection and set the favourite flag to the opposite value
+		Collection collection = collectionDAO.findByUser_IdUserAndCard_IdCard(idUser, idCard).get();
+		collection.setFavourite(!collection.getFavourite());
 		
-		// marks the card as favourite (or not favourite)
-		collectionDAO.markAsFavourite(idUser, idCard, isFavourite);
+		// updates the collection in the db
+		collectionDAO.save(collection);
 	}
 
 	// deletes a card of a user from his collection
 	@Override
 	public void removeCardFromCollection(Integer idUser, String idCard) {
-		// checks if the collection requested is empty or not
-		// if it's empty, throws an exception
-		if (collectionDAO.findByIdUser(idUser).isEmpty()) {
-			throw new IllegalArgumentException("The collection is empty");
-		}
-		
 		// checks if the card is in the collection
 		// if it's not, throws an exception
-		if (collectionDAO.findByIdUserAndIdCard(idUser, idCard).isEmpty()) {
+		if (collectionDAO.findByUser_IdUserAndCard_IdCard(idUser, idCard).isEmpty()) {
 			throw new IllegalArgumentException("The card is not in the collection");
 		}
 		
 		// deletes the card
-		collectionDAO.deleteCard(idUser, idCard);
+		collectionDAO.deleteByUser_IdUserAndCard_IdCard(idUser, idCard);
 	}
 	
 	// gets a list of favourite cards of a certain user
@@ -73,12 +102,12 @@ public class CollectionServiceImpl implements CollectionService{
 	public List<Collection> getFavouriteCards(Integer idUser) throws IllegalArgumentException{
 		// checks if the request is empty or not
 		// if it's empty, throws an exception
-		if (collectionDAO.findFavouritesByUserId(idUser).isEmpty()) {
+		if (collectionDAO.findByUser_IdUserAndFavourite(idUser, true).isEmpty()) {
 			throw new IllegalArgumentException("Favourites are empty");
 		}		
 		// calls the method to find all the favourite cards of the collection by the idUser
 		// returns the values received
-		return collectionDAO.findFavouritesByUserId(idUser);
+		return collectionDAO.findByUser_IdUserAndFavourite(idUser, true);
 	}
 
 	// gets a list of all the cards of a certain user
@@ -86,12 +115,12 @@ public class CollectionServiceImpl implements CollectionService{
 	public List<Collection> getUserCollection(Integer idUser) throws IllegalArgumentException{
 		// checks if the collection requested is empty or not
 		// if it's empty, throws an exception
-		if (collectionDAO.findByIdUser(idUser).isEmpty()) {
+		if (collectionDAO.findByUser_IdUser(idUser).isEmpty()) {
 			throw new IllegalArgumentException("The collection is empty");
 		}
 		// calls the method to find all the cards of the collection by the idUser
 		// returns the values received
-		return collectionDAO.findByIdUser(idUser);
+		return collectionDAO.findByUser_IdUser(idUser);
 	}
 
 }

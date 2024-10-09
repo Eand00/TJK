@@ -6,9 +6,10 @@ import com.tjk.entities.Collection;
 
 public interface CollectionService {
 
-	public void addOrUpdateCardToCollection(Integer userId, String cardId, Integer quantity);//check if card already in collection if is update quntity else add to collection
-	public void markCardAsFavourite(Integer userId, String cardId);// if card not in collection throw new RuntimeException("Card not found in collection")
-	public void removeCardFromCollection(Integer userId, String cardId);
-	public List<Collection> getFavouriteCards(Integer userId);
-	public List<Collection> getUserCollection(Integer userId);
+	public void addCardToCollection(Integer idUser, String idCard, Integer quantity); // checks if card already in collection if it is adds quantity else add to collection
+	public void updateCardQuantity(Integer idUser, String idCard, Integer newQuantity); // checks if card already in collection if is updates quantity else add to collection
+	public void removeCardFromCollection(Integer idUser, String idCard); // checks if card already in collection, if it is removes it
+	public void markCardAsFavourite(Integer idUser, String idCard);// checks if card already in collection, if it is marks it as a favourite
+	public List<Collection> getFavouriteCards(Integer idUser); // get all the favourite cards in the collection
+	public List<Collection> getUserCollection(Integer idUser); // get all the cards in the collection
 }
