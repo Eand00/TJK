@@ -5,6 +5,8 @@ import com.tjk.services.DeckServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -12,45 +14,45 @@ import java.util.Optional;
 public class DeckREST {
 
     @Autowired
-    private DeckServiceImpl deckService;
+    private DeckServiceImpl service;
     
     @GetMapping("/name/{deckName}")
-    public Optional<Deck> getDeckByName(@PathVariable String deckName) {
-        return deckService.getDeckByName(deckName);
+    public List<Deck> getDeckByName(@PathVariable String deckName) {
+        return service.getDeckByName(deckName);
     }
     
     @GetMapping("/user/{idUser}")
-    public Optional<Deck> getDeckByIdUser(@PathVariable Integer idUser) {
-        return deckService.getDeckByIdUser(idUser);
+    public List<Deck> getDeckByIdUser(@PathVariable Integer idUser) {
+        return service.getDecksByIdUser(idUser);
     }
     
     @GetMapping("/public")
-    public Optional<Deck> getPublicDecks() {
-        return deckService.getPublicDecks();
+    public List<Deck> getPublicDecks() {
+        return service.getPublicDecks();
     }
     
     @GetMapping("/legal")
-    public Optional<Deck> getLegalDecks() {
-        return deckService.getLegalDecks();
+    public List<Deck> getLegalDecks() {
+        return service.getLegalDecks();
     }
     
     @GetMapping("/{idDeck}")
     public Optional<Deck> getDeckByIdDeck(@PathVariable Integer idDeck) {
-        return deckService.getDeckByIdDeck(idDeck);
+        return service.getDeckByIdDeck(idDeck);
     }
    
     @PostMapping
     public Deck createDeck(@RequestBody Deck deck) {
-        return deckService.createDeck(deck);
+        return service.createDeck(deck);
     }
     
     @DeleteMapping("/{idDeck}")
-    public Deck deleteDeck(@PathVariable Integer idDeck) {
-        return deckService.deleteDeck(idDeck);
+    public boolean deleteDeck(@PathVariable Integer idDeck) {
+        return service.deleteDeck(idDeck);
     }
     
     @PutMapping("/{idDeck}")
     public Deck updateDeck(@PathVariable Integer idDeck, @RequestBody Deck updatedDeck) {
-        return deckService.updateDeck(idDeck, updatedDeck);
+        return service.updateDeck(idDeck, updatedDeck);
     }
 }
