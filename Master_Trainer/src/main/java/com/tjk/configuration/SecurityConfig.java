@@ -28,7 +28,8 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable()) // Disable CSRF for stateless services
             .authorizeHttpRequests(authorize -> authorize
                 .requestMatchers("/login", "/resources/**").permitAll()
-                .requestMatchers("/master_trainer/cards/**", "/master_trainer/users/create_user").permitAll()
+                .requestMatchers("/master_trainer/cards/**",
+                				"/master_trainer/users/create_user").permitAll()
                 .requestMatchers("/master_trainer/users/change_user_password").hasRole("ADMIN")
                 .anyRequest().authenticated()
             )

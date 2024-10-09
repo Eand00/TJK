@@ -38,7 +38,14 @@ public class UserREST {
      */
     @GetMapping("/{id}") // Endpoint to get a user by ID
     public ResponseEntity<User> getUserById(@PathVariable Integer id) {
-        Optional<User> userOptional = userService.getUserById(id); // Fetch user by ID
+    	Optional<User> userOptional = userService.getUserById(id); // Fetch user by ID
+    	return userOptional.map(ResponseEntity::ok) // Return user if found
+    			.orElseGet(() -> ResponseEntity.notFound().build()); // Return not found if user does not exist
+    }
+    
+    @GetMapping("username/{username}") // Endpoint to get a user by ID
+    public ResponseEntity<User> getUserByUsername(@PathVariable String username) {
+        Optional<User> userOptional = userService.getUserByUsername(username); // Fetch user by ID
         return userOptional.map(ResponseEntity::ok) // Return user if found
                            .orElseGet(() -> ResponseEntity.notFound().build()); // Return not found if user does not exist
     }
