@@ -15,7 +15,7 @@ import lombok.ToString;
 
 /**
  * Entity class representing a Deck in the database.
- * This class maps to the "Deck" table and holds information about a deck of cards.
+ * This class maps to the "decks" table and holds information about a deck of cards.
  */
 @Entity
 @Table(name = "decks")
@@ -25,29 +25,35 @@ import lombok.ToString;
 @ToString
 public class Deck {
 	
+    // Primary key: Deck ID
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_deck", nullable = false)
     private Integer idDeck;
 
+    // Deck name (cannot be null)
     @Column(name = "deck_name", nullable = false)
     private String deckName;
 
+    // Format of the deck (cannot be null)
     @Column(name = "format", nullable = false)
     private String format;
     
+    // Legal status of the deck (cannot be null)
     @Column(name = "legal", nullable = false)
     private Boolean legal;
 
+    // Privacy status (cannot be null)
     @Column(name = "is_private", nullable = false)
     private Boolean isPrivate;
     
+    // Many decks can belong to one user (foreign key: id_user)
     @ManyToOne
     @JoinColumn(name = "id_user", referencedColumnName = "id_user", nullable = false)
     private User user;
 
+    // Many decks can have one cover card (foreign key: cover_card)
     @ManyToOne
     @JoinColumn(name = "cover_card", referencedColumnName = "id_card", nullable = false)
     private Card coverCard; 
-    
 }
