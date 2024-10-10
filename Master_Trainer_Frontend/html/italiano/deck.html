@@ -1,29 +1,35 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Decks</title>
+    <title>I miei Mazzi</title>
     <!-- Link to the external CSS file -->
     <link rel="stylesheet" href="../../css/style-deck.css">
 </head>
 <body>
-    <!-- Navigation menu -->
-    <nav class="navbar">
-        <!-- Buttons for different sections -->
+    <div class="header">
+        <h1>I miei Mazzi</h1>
+        <!-- Navigation Menu within the Header -->
+        <nav class="nav">
             <button onclick="window.location.href='home.html'">Home</button>
-            <button onclick="window.location.href='personal-area.html'">Area personale</button>
-            <button onclick="window.location.href='deck-builder.html'">Deck Builder</button>
+            <button onclick="window.location.href='personal-area.html'">Area Personale</button>
+            <button onclick="window.location.href='deck-builder.html'">Costruttore di Mazzi</button>
+            <button onclick="window.location.href='pokedex.html'">Pokedex</button>
             <button onclick="window.location.href='series-sets.html'">Serie & Set</button>
-            <button onclick="window.location.href='top-cards.html'">Carte più utilizzate</button>
-        <!-- Login button positioned on the right -->
-        <button class="login-btn">Login</button>
-    </nav>
+            <button onclick="window.location.href='top-cards.html'">Carte Migliori</button>
+        </nav>
+        <!-- Login Button -->
+        <button class="login-btn" id="loginBtn">
+            <img src="../../images/immagine-profilo.png" alt="Icona di Login" />
+            Accedi
+        </button>
+    </div>
 
     <!-- Main section with heading and controls -->
     <div class="main-content">
         <!-- Heading for the section -->
-        <h1>I miei deck</h1>
+        <h1>Lista dei Mazzi</h1>
         
         <!-- Control buttons and search bar -->
         <div class="controls">
@@ -31,7 +37,7 @@
             <button class="new-btn">Nuovo</button>
             <button class="edit-btn">Modifica</button>
             <!-- Search input field -->
-            <input type="text" placeholder="Value">
+            <input type="text" placeholder="Valore">
             <!-- Search button -->
             <button class="search-btn">Cerca</button>
         </div>
@@ -40,28 +46,28 @@
         <div class="decks">
             <!-- Individual deck item -->
             <div class="deck-item">
-                <img src="https://imaginaire.com/en/images/POKEMON-VIVID-VOLTAGE-CHARIZARD-THEME-DECK-ENGLISH-60__82757-CHA.JPG" alt="First deck">
-                <p>Fire deck</p>
+                <img src="https://imaginaire.com/en/images/POKEMON-VIVID-VOLTAGE-CHARIZARD-THEME-DECK-ENGLISH-60__82757-CHA.JPG" alt="Primo mazzo">
+                <p>Mazzo di Fuoco</p>
             </div>
             <!-- Individual deck item -->
             <div class="deck-item">
-                <img src="https://fantasiastore.it/190129-large_default/mazzo-lotte-ex-tapu-koko-ex-ita.jpg" alt="Second Deck">
-                <p>EX deck</p>
+                <img src="https://fantasiastore.it/190129-large_default/mazzo-lotte-ex-tapu-koko-ex-ita.jpg" alt="Secondo mazzo">
+                <p>Mazzo EX</p>
             </div>
             <!-- Individual deck item -->
             <div class="deck-item">
-                <img src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6445/6445826cv11d.jpg;maxHeight=2000;maxWidth=2000;format=webp" alt="Third Deck" id="warning-deck">
-                <p>Grass deck</p>
-                <img src="../../images/alert-icon-1575.png" alt="Alert symbol" id="Symbol">
-                <span class="tooltip">Deck irregolare: <br> Non contiene 60 carte <br> Troppe carte Energia</span>
+                <img src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6445/6445826cv11d.jpg;maxHeight=2000;maxWidth=2000;format=webp" alt="Terzo mazzo" id="warning-deck">
+                <p>Mazzo Erba</p>
+                <img src="../../images/alert-icon-1575.png" alt="Simbolo di Avviso" id="Symbol">
+                <span class="tooltip">Mazzo Irregolare: <br> Non ha 60 carte <br> Troppe carte Energia</span>
             </div>                    
             <!-- Individual deck item -->
             <div class="deck-item">
-                <img src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6445/6445826_sd.jpg;maxHeight=2000;maxWidth=2000;format=webp" alt="Fourth Deck">
-                <p>Water deck</p>
+                <img src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6445/6445826_sd.jpg;maxHeight=2000;maxWidth=2000;format=webp" alt="Quarto mazzo">
+                <p>Mazzo Acqua</p>
             </div>
         </div>
     </div>
-    <!--onclick="showWinMessage()"-->
+    <script src="../../script/script-home.js"></script>
 </body>
 </html>
