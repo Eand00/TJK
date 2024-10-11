@@ -30,7 +30,6 @@ public class CollectionREST {
 	}
 	
 	// request to add a certain number of cards in the collection of a user
-	// deve essere post o put?
 	@PostMapping("/add_card")
 	public ResponseEntity<Collection> addCard(@RequestBody Collection collection){
 		Integer idUser = collection.getUser().getIdUser();
@@ -42,9 +41,8 @@ public class CollectionREST {
 	}
 
 	// request to update the quantity of a card
-	// deve essere post o put?
 	// TODO test
-	@PostMapping("/edit_card")
+	@PutMapping("/edit_card")
 	public ResponseEntity<Collection> editCard(@RequestBody Collection collection){
 		Integer idUser = collection.getUser().getIdUser();
 		String idCard = collection.getCard().getIdCard();
@@ -57,8 +55,8 @@ public class CollectionREST {
 	// request to delete a card for the user
 	// TODO test
 	// cambiare argomenti per avere una collection (collection id?)
-	@DeleteMapping("/delete_card/{idUser}")
-	public ResponseEntity<Void> removeCardFromCollection(@PathVariable Integer idUser, @RequestBody String idCard){
+	@DeleteMapping("/delete_card/{idUser}/{idCard}")
+	public ResponseEntity<Void> removeCardFromCollection(@PathVariable Integer idUser, @PathVariable String idCard){
 		// tries to remove the collection from the records
 		// if successful returns no content
 		if(collectionService.removeCardFromCollection(idUser, idCard)) {
@@ -71,9 +69,8 @@ public class CollectionREST {
 	// request to mark a card in the collection as favourite
 	// TODO test
 	// TODO check if return va bene
-	// TODO eventualmente solo @RequestBody passando una collection
-	@PutMapping("/mark_favourite/{idUser}")
-	public ResponseEntity<Collection> markCardAsFavourite(@PathVariable Integer idUser, @RequestBody String idCard){
+	@PutMapping("/mark_favourite/{idUser}/{idCard}")
+	public ResponseEntity<Collection> markCardAsFavourite(@PathVariable Integer idUser, @PathVariable String idCard){
 		Collection updatedCollection = collectionService.markCardAsFavourite(idUser, idCard);
 		return ResponseEntity.ok(updatedCollection);
 	}
