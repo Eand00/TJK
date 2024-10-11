@@ -7,24 +7,33 @@
     <link rel="stylesheet" href="../../css/style-pokedex.css">
 </head>
 <body>
-    <!-- Sezione Header -->
+    <!-- Header Section -->
     <div class="header">
+        <!-- Navigation Menu within the Header -->
         <h1>Top Cards</h1>
-        <!-- Menu di navigazione nell'header -->
         <nav class="nav">
             <button onclick="window.location.href='home.html'">Home</button>
             <button onclick="window.location.href='personal-area.html'">Area Personale</button>
-            <button onclick="window.location.href='deck-builder.html'">Costruttore Mazzi</button>
+            <button onclick="window.location.href='pokedex.html'">Pokédex</button>
+            <button onclick="window.location.href='deck-builder.html'">Costruttore Mazzo</button>
             <button onclick="window.location.href='deck.html'">Mazzo</button>
             <button onclick="window.location.href='series-sets.html'">Serie & Set</button>
-            <button onclick="window.location.href='top-cards.html'">Top Carte</button>
+            <button onclick="window.location.href='top-cards.html'">Carte Migliori</button>
             <button onclick="window.location.href='regulation-page.html', '_blank'">Regolamento</button>
         </nav>
-        <!-- Pulsante di accesso -->
-        <button class="login-btn" id="loginBtn">
-            <img src="../../images/immagine-profilo.png" alt="Icona Login" />
-            Login
-        </button>
+        
+        <!-- Login and Language Switch -->
+        <div class="header-buttons">
+            <!-- Language Switch Button -->
+            <button class="lang-switch-btn">
+                <a href="../english/top-cards.html" style="text-decoration: none; color: white;">ENG</a>
+            </button>
+            <button class="login-btn" id="loginBtn">
+                <img src="../../images/immagine-profilo.png" alt="Login Icon" />
+                Login
+            </button>
+            
+        </div>
     </div>
 
     <!-- Modulo di Login -->
