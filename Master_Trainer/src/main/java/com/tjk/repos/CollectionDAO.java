@@ -21,5 +21,5 @@ public interface CollectionDAO extends JpaRepository<Collection, CollectionId> {
 
     // Deletes a certain card from the collection of a user
     void deleteByUser_IdUserAndCard_IdCard(Integer idUser, String idCard);
-    
+
 }

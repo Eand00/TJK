@@ -11,6 +11,8 @@ import com.tjk.repos.CardDAO;
 import com.tjk.repos.CollectionDAO;
 import com.tjk.repos.UserDAO;
 
+import jakarta.transaction.Transactional;
+
 import java.util.List;
 
 @Service
@@ -28,7 +30,15 @@ public class CollectionServiceImpl implements CollectionService{
     public List<Collection> getAll(){
     	return collectionDAO.findAll();
     }
-
+    
+    // searches for a card and idUser correlation
+    // if it's not present, throws an exception
+    @Override
+    public Collection findByUserAndByCard(Integer idUser, String idCard) {
+    	Collection collection = collectionDAO.findByUser_IdUserAndCard_IdCard(idUser, idCard).orElseThrow(()-> new IllegalArgumentException("Card not found for the user"));
+    	return collection;
+    }
+    
     // adds quantity of a card in the collection
     // if the card is not present creates the collection with the quantity given
     @Override
@@ -38,7 +48,7 @@ public class CollectionServiceImpl implements CollectionService{
     	// if it is, updates the quantity with the sum of the record's quantity + given quantity
     	// else creates a new collection
     	if(collectionDAO.findByUser_IdUserAndCard_IdCard(idUser, idCard).isPresent()) {
-    		collection = collectionDAO.findByUser_IdUserAndCard_IdCard(idUser, idCard).orElseThrow(()-> new IllegalArgumentException("Collection not found"));
+    		collection = this.findByUserAndByCard(idUser, idCard);
     		collection.setQuantity(collection.getQuantity() + quantity);
     	}
     	else {
@@ -66,8 +76,7 @@ public class CollectionServiceImpl implements CollectionService{
     	// if it is, updates the quantity
     	// else create a new collection
     	if(collectionDAO.findByUser_IdUserAndCard_IdCard(idUser, idCard).isPresent()) {
-    		collection = collectionDAO.findByUser_IdUserAndCard_IdCard(idUser, idCard)
-    				.orElseThrow(() -> new IllegalArgumentException("Card not found for the user"));
+    		collection = this.findByUserAndByCard(idUser, idCard);
     		collection.setQuantity(newQuantity);
     	}
     	else {
@@ -95,8 +104,7 @@ public class CollectionServiceImpl implements CollectionService{
 		}
 		
 		// takes the collection and set the favourite flag to the opposite value
-		Collection collection = collectionDAO.findByUser_IdUserAndCard_IdCard(idUser, idCard)
-				.orElseThrow(() -> new IllegalArgumentException("Card not found for the user"));
+		Collection collection = this.findByUserAndByCard(idUser, idCard);
 		collection.setFavourite(!collection.getFavourite());
 		
 		// updates the collection in the db
@@ -105,6 +113,7 @@ public class CollectionServiceImpl implements CollectionService{
 
 	// deletes a card of a user from his collection
 	@Override
+	@Transactional
 	public boolean removeCardFromCollection(Integer idUser, String idCard) {
 		// checks if the card is in the collection
 		// if it's not, returns false
