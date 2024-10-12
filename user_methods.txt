@@ -22,7 +22,7 @@ Thunder Client / Postman requests for your UserREST controller
     {
         "privateProfile": false,
         "firstName": "Mario",
-        "username": "user3",
+        "username": "user1",
         "surname": "Rossi",
         "password": "Password1!",
         "role": "user"
@@ -53,8 +53,16 @@ Thunder Client / Postman requests for your UserREST controller
     Endpoint: PUT http://localhost:1699/master_trainer/users/change_password
 
     {
-        "oldPassword": "OldPassword123",
-        "newPassword": "NewPassword456!"
+        "oldPassword": "...",
+        "newPassword": "..."
+    }
+
+8 - As ADMIN change password for any user
+
+    Endpoint: PUT http://localhost:1699/master_trainer/users/change_user_password/{id}
+
+    {
+       "newPassword": "..."
     }
 
 
