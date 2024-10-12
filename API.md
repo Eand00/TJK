@@ -48,14 +48,23 @@ This request gets all the collections in the DB.
 ### <span id="collection-get-usercollection">getUserCollection:</span>
 **Endpoint**: `http://localhost:1699/master_trainer/collections/{userId}`      
 This request gets all the cards for the user.     
+> *Example usage*:        
+> `http://localhost:1699/master_trainer/collections/1`      
+> Gets all the cards for the user with the id `1`.
 
 ### <span id="collection-get-favouritecards">getFavouriteCards:</span>
 **Endpoint**: `http://localhost:1699/master_trainer/collections/favourite/{userId}`      
 This request gets all the cards marked as favourite for the user.     
+> *Example usage*:        
+> `http://localhost:1699/master_trainer/collections/favourite/1`      
+> Gets all the favourite cards for the user with the id `1`.
 
 ### <span id="collection-get-byuserandbycard">getByUserAndByCard:</span>
 **Endpoint**: `http://localhost:1699/master_trainer/collections/get_card/{userId}/{cardId}`      
 This request gets the card for the user.       
+> *Example usage*:        
+> `http://localhost:1699/master_trainer/collections/get_card/1/base1-1`      
+> Gets the card with the id `base1-1` in the collection of the user `1`.
 
 
 ## <span id="collection-post" style="color:yellow">POST</span>
@@ -108,6 +117,9 @@ In the **body** of the request you should add a json like this:
 ### <span id="collection-put-markcardasfavourite">markCardAsFavourite:</span>
 **Endpoint**: `http://localhost:1699/master_trainer/collections/mark_favourite/{userId}/{cardId}`       
 This request marks as a favourite a card for the user. If the collection is not in the DB it adds the collection to it.
+> *Example usage*:        
+> `http://localhost:1699/master_trainer/collections/mark_favourite/1/base1-1`      
+> Marks the card with the id `base1-1` as a favourite in the collection of the user `1`.
 
 
 ## <span id="collection-post" style="color:red">DELETE</span>
@@ -115,6 +127,9 @@ This request marks as a favourite a card for the user. If the collection is not 
 ### <span id="collection-delete">deleteCard:</span>
 **Endpoint**: `http://localhost:1699/master_trainer/collections/delete_card/{userId}/{cardId}`      
 This request removes a card from the collection of the user.
+> *Example usage*:        
+> `http://localhost:1699/master_trainer/collections/delete_card/1/base1-1`      
+> Removes the card with the id `base1-1` from the collection of the user `1`.
 
 
 # DeckCards
