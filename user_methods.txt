@@ -1,0 +1,60 @@
+Thunder Client / Postman requests for your UserREST controller
+
+1 - Get All Users
+
+    Endpoint: GET http://localhost:1699/master_trainer/users
+
+
+2 - Get a Specific User by ID
+
+    Endpoint: GET http://localhost:1699/master_trainer/users/{id}
+
+
+3 - Get a Specific User by Username
+
+    Endpoint: GET http://localhost:1699/master_trainer/users/{username}
+
+
+4 - Create a New User
+    
+    Endpoint: POST http://localhost:1699/master_trainer/users/create_user
+
+    {
+        "privateProfile": false,
+        "firstName": "Mario",
+        "username": "user3",
+        "surname": "Rossi",
+        "password": "Password1!",
+        "role": "user"
+    }
+
+
+5 - Update a Specific User’s Data
+
+    Endpoint: PUT http://localhost:1699/master_trainer/users/update-user/{id}
+
+    {
+        "username": "user1updated",
+        "password": "Password123!",
+        "firstName": "MarioUpdated",
+        "surname": "RossiUpdated",
+        "privateProfile": false,
+        "role": "USER"
+    }
+
+
+6 - Delete a User
+
+    Endpoint: DELETE http://localhost:1699/master_trainer/users/delete-user/{id}
+
+
+7 - Change Password for Authenticated User
+
+    Endpoint: PUT http://localhost:1699/master_trainer/users/change_password
+
+    {
+        "oldPassword": "OldPassword123",
+        "newPassword": "NewPassword456!"
+    }
+
+
