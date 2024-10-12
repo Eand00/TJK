@@ -17,7 +17,9 @@ Username: TestAPI
 Password: Password123*
 ```
 
+
 # Card
+
 
 # User
 Go to:
@@ -33,6 +35,7 @@ Go to:
     - [changeUserPassword](#user-put-changeuserpassword)
 - [DELETE](#user-delete)
     - [deleteUser](#user-delete-deleteuser)
+- [Top of the document](#)
 
 
 ## <span id="user-get" style="color:lightblue;">GET</span>
@@ -58,11 +61,14 @@ This request gets a user by their username.
 > Gets the user with the username `TestAPI`.
 
 ---
+[Go back to the selection](#user)     
+
+---
 
 ## <span id="user-post" style="color:yellow;">POST</span>
 
 ### <span id="user-post-createuser">createUser:</span>
-**Endpoint**: `http://localhost:1699/master_trainer/users/create_user`
+**Endpoint**: `http://localhost:1699/master_trainer/users/create_user`      
 This request adds a user in the db.     
 In the **body** of the request you should add a json like this:
 ```json
@@ -77,16 +83,78 @@ In the **body** of the request you should add a json like this:
 ```
 
 ---
+[Go back to the selection](#user)     
 
+---
 
+## <span id="user-put" style="color:orange;">PUT</span>
 
+### <span id="user-put-updateuser">updateUser:</span>
+**Endpoint**: `http://localhost:1699/master_trainer/users/update-user/{id}`       
+This request edits the user with the id given.              
+In the **body** of the request you should add a json like this:
+```json
+{
+    "username": "user1updated",
+    "password": "Password123!",
+    "firstName": "MarioUpdated",
+    "surname": "RossiUpdated",
+    "privateProfile": false,
+    "role": "USER"
+}
+```
+> *Example usage*:        
+> `http://localhost:1699/master_trainer/users/update-user/2`      
+> Edits the user with the id `2`.
 
+---
+### <span id="user-put-changepassword">changePassword:</span>
+**Endpoint**: `http://localhost:1699/master_trainer/users/change_password`       
+This request changes the password for the user.              
+In the **body** of the request you should add a json like this:
+```json
+{
+    "oldPassword": "Password123!",
+    "newPassword": "NewPassword123?"
+}
+```
 
+---
+### <span id="user-put-changeuserpassword">changeUserPassword:</span>
+**Endpoint**: `http://localhost:1699/master_trainer/users/change_user_password/{id}`        
+This request, if you are logged as an `ADMIN` user, changes the password for any user given their id.       
+In the **body** of the request you should add a json like this:
+```json
+{
+   "newPassword": "NewPassword123?"
+}
+```
+> *Example usage*:        
+> `http://localhost:1699/master_trainer/users/change_user_password/2`      
+> Edits the password for the user with the id `2`.
 
+---
+[Go back to the selection](#user)     
 
+---
+
+## <span id="user-delete" style="color:red;">DELETE</span>
+
+### <span id="user-delete-deleteuser">deleteUser:</span>
+**Endpoint**: `http://localhost:1699/master_trainer/users/delete-user/{id}`  
+This request deletes the user with the id given.
+> *Example usage*:        
+> `http://localhost:1699/master_trainer/users/delete-user/2`      
+> Deletes the user with the id `2`.
+
+---
+[Go back to the selection](#user)     
+
+---
 
 
 # Deck
+
 
 # Collection
 Go to:
@@ -102,6 +170,7 @@ Go to:
     - [markCardAsFavourite](#collection-put-markcardasfavourite)
 - [DELETE](#collection-delete)
     - [deleteCard](#collection-delete-deletecard)
+- [Top of the document](#)
 
 
 ## <span id="collection-get" style="color:lightblue;">GET</span>
@@ -135,6 +204,9 @@ This request gets the card for the user.
 > Gets the card with the id `base1-1` in the collection of the user `1`.
 
 ---
+[Go back to the selection](#collection)     
+
+---
 
 ## <span id="collection-post" style="color:yellow;">POST</span>
 
@@ -158,6 +230,9 @@ In the **body** of the request you should add a json like this:
     "quantity": 1
 }
 ```
+
+---
+[Go back to the selection](#collection)     
 
 ---
 
@@ -193,15 +268,21 @@ This request marks as a favourite a card for the user. If the collection is not 
 > Marks the card with the id `base1-1` as a favourite in the collection of the user `1`.
 
 ---
+[Go back to the selection](#collection)     
 
-## <span id="collection-post" style="color:red;">DELETE</span>
+---
 
-### <span id="collection-delete">deleteCard:</span>
+## <span id="collection-delete" style="color:red;">DELETE</span>
+
+### <span id="collection-delete-deletecard">deleteCard:</span>
 **Endpoint**: `http://localhost:1699/master_trainer/collections/delete_card/{userId}/{cardId}`      
 This request removes a card from the collection of the user.
 > *Example usage*:        
 > `http://localhost:1699/master_trainer/collections/delete_card/1/base1-1`      
 > Removes the card with the id `base1-1` from the collection of the user `1`.
+
+---
+[Go back to the selection](#collection)     
 
 ---
 
