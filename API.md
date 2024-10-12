@@ -35,6 +35,41 @@ Go to:
     - [deleteUser](#user-delete-deleteuser)
 
 
+## <span id="user-get" style="color:lightblue;">GET</span>
+
+### <span id="user-get-getallusers">getAllUsers:</span>
+**Endpoint**: `http://localhost:1699/master_trainer/users`      
+This request gets all the users in the DB.  
+
+---
+## <span id="user-get-getuserbyid">getUserById:</span>
+**Endpoint**: `http://localhost:1699/master_trainer/users/{id}`      
+This request gets a specific user by their id.
+> *Example usage*:        
+> `http://localhost:1699/master_trainer/users/1`      
+> Gets the user with the id `1`.
+
+---
+## <span id="user-get-getuserbyusername">getUserByUsername:</span>
+**Endpoint**: `http://localhost:1699/master_trainer/users/{username}`      
+This request gets a user by their username.
+> *Example usage*:        
+> `http://localhost:1699/master_trainer/users/TestAPI`      
+> Gets the user with the username `TestAPI`.
+
+---
+
+POST
+
+
+
+
+
+
+
+
+
+
 # Deck
 
 # Collection
@@ -59,6 +94,7 @@ Go to:
 **Endpoint**: `http://localhost:1699/master_trainer/collections/get_all`      
 This request gets all the collections in the DB.     
 
+---
 ### <span id="collection-get-getusercollection">getUserCollection:</span>
 **Endpoint**: `http://localhost:1699/master_trainer/collections/{userId}`      
 This request gets all the cards for the user.     
@@ -66,6 +102,7 @@ This request gets all the cards for the user.
 > `http://localhost:1699/master_trainer/collections/1`      
 > Gets all the cards for the user with the id `1`.
 
+---
 ### <span id="collection-get-getfavouritecards">getFavouriteCards:</span>
 **Endpoint**: `http://localhost:1699/master_trainer/collections/favourite/{userId}`      
 This request gets all the cards marked as favourite for the user.     
@@ -73,6 +110,7 @@ This request gets all the cards marked as favourite for the user.
 > `http://localhost:1699/master_trainer/collections/favourite/1`      
 > Gets all the favourite cards for the user with the id `1`.
 
+---
 ### <span id="collection-get-getbyuserandbycard">getByUserAndByCard:</span>
 **Endpoint**: `http://localhost:1699/master_trainer/collections/get_card/{userId}/{cardId}`      
 This request gets the card for the user.       
@@ -80,6 +118,7 @@ This request gets the card for the user.
 > `http://localhost:1699/master_trainer/collections/get_card/1/base1-1`      
 > Gets the card with the id `base1-1` in the collection of the user `1`.
 
+---
 
 ## <span id="collection-post" style="color:yellow;">POST</span>
 
@@ -104,6 +143,7 @@ In the **body** of the request you should add a json like this:
 }
 ```
 
+---
 
 ## <span id="collection-put" style="color:orange;">PUT</span>
 
@@ -128,6 +168,7 @@ In the **body** of the request you should add a json like this:
 }
 ```
 
+---
 ### <span id="collection-put-markcardasfavourite">markCardAsFavourite:</span>
 **Endpoint**: `http://localhost:1699/master_trainer/collections/mark_favourite/{userId}/{cardId}`       
 This request marks as a favourite a card for the user. If the collection is not in the DB it adds the collection to it.
@@ -135,6 +176,7 @@ This request marks as a favourite a card for the user. If the collection is not 
 > `http://localhost:1699/master_trainer/collections/mark_favourite/1/base1-1`      
 > Marks the card with the id `base1-1` as a favourite in the collection of the user `1`.
 
+---
 
 ## <span id="collection-post" style="color:red;">DELETE</span>
 
@@ -144,6 +186,8 @@ This request removes a card from the collection of the user.
 > *Example usage*:        
 > `http://localhost:1699/master_trainer/collections/delete_card/1/base1-1`      
 > Removes the card with the id `base1-1` from the collection of the user `1`.
+
+---
 
 
 # DeckCards
