@@ -20,16 +20,30 @@ Password: Password123*
 # Card
 
 # User
+Go to:
+- [GET](#user-get)
+    - [getAllUsers](#user-get-getallusers)
+    - [getUserById](#user-get-getuserbyid)
+    - [getUserByUsername](#user-get-getuserbyusername)
+- [POST](#user-post)
+    - [createUser](#user-post-createuser)
+- [PUT](#user-put)
+    - [updateUser](#user-put-updateuser)
+    - [changePassword](#user-put-changepassword)
+    - [changeUserPassword](#user-put-changeuserpassword)
+- [DELETE](#user-delete)
+    - [deleteUser](#user-delete-deleteuser)
+
 
 # Deck
 
 # Collection
 Go to:
-- [GET](#collection-get):
-    - [getAll](#collection-get-all)
-    - [getUserCollection](#collection-get-usercollection)
-    - [getFavouriteCards](#collection-get-favouritecards)
-    - [getByUserAndByCard](#collection-get-byuserandbycard)
+- [GET](#collection-get)
+    - [getAll](#collection-get-getall)
+    - [getUserCollection](#collection-get-getusercollection)
+    - [getFavouriteCards](#collection-get-getfavouritecards)
+    - [getByUserAndByCard](#collection-get-getbyuserandbycard)
 - [POST](#collection-post)
     - [addCard](#collection-post-addcard)
 - [PUT](#collection-put)
@@ -39,27 +53,27 @@ Go to:
     - [deleteCard](#collection-delete-deletecard)
 
 
-## <span id="collection-get" style="color:lightblue">GET</span>
+## <span id="collection-get" style="color:lightblue;">GET</span>
 
-### <span id="collection-get-all">getAll:</span>
+### <span id="collection-get-getall">getAll:</span>
 **Endpoint**: `http://localhost:1699/master_trainer/collections/get_all`      
 This request gets all the collections in the DB.     
 
-### <span id="collection-get-usercollection">getUserCollection:</span>
+### <span id="collection-get-getusercollection">getUserCollection:</span>
 **Endpoint**: `http://localhost:1699/master_trainer/collections/{userId}`      
 This request gets all the cards for the user.     
 > *Example usage*:        
 > `http://localhost:1699/master_trainer/collections/1`      
 > Gets all the cards for the user with the id `1`.
 
-### <span id="collection-get-favouritecards">getFavouriteCards:</span>
+### <span id="collection-get-getfavouritecards">getFavouriteCards:</span>
 **Endpoint**: `http://localhost:1699/master_trainer/collections/favourite/{userId}`      
 This request gets all the cards marked as favourite for the user.     
 > *Example usage*:        
 > `http://localhost:1699/master_trainer/collections/favourite/1`      
 > Gets all the favourite cards for the user with the id `1`.
 
-### <span id="collection-get-byuserandbycard">getByUserAndByCard:</span>
+### <span id="collection-get-getbyuserandbycard">getByUserAndByCard:</span>
 **Endpoint**: `http://localhost:1699/master_trainer/collections/get_card/{userId}/{cardId}`      
 This request gets the card for the user.       
 > *Example usage*:        
@@ -67,7 +81,7 @@ This request gets the card for the user.
 > Gets the card with the id `base1-1` in the collection of the user `1`.
 
 
-## <span id="collection-post" style="color:yellow">POST</span>
+## <span id="collection-post" style="color:yellow;">POST</span>
 
 ### <span id="collection-post-addcard">addCard:</span>
 **Endpoint**: `http://localhost:1699/master_trainer/collections/add_card`      
@@ -91,7 +105,7 @@ In the **body** of the request you should add a json like this:
 ```
 
 
-## <span id="collection-put" style="color:orange">PUT</span>
+## <span id="collection-put" style="color:orange;">PUT</span>
 
 ### <span id="collection-put-editcard">editCard:</span>
 **Endpoint**: `http://localhost:1699/master_trainer/collections/edit_card`       
@@ -122,7 +136,7 @@ This request marks as a favourite a card for the user. If the collection is not 
 > Marks the card with the id `base1-1` as a favourite in the collection of the user `1`.
 
 
-## <span id="collection-post" style="color:red">DELETE</span>
+## <span id="collection-post" style="color:red;">DELETE</span>
 
 ### <span id="collection-delete">deleteCard:</span>
 **Endpoint**: `http://localhost:1699/master_trainer/collections/delete_card/{userId}/{cardId}`      
