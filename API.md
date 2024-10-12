@@ -59,8 +59,24 @@ This request gets a user by their username.
 
 ---
 
-POST
+## <span id="user-post" style="color:yellow;">POST</span>
 
+### <span id="user-post-createuser">createUser:</span>
+**Endpoint**: `http://localhost:1699/master_trainer/users/create_user`
+This request adds a user in the db.     
+In the **body** of the request you should add a json like this:
+```json
+{
+    "privateProfile": false,
+    "firstName": "Mario",
+    "username": "user1",
+    "surname": "Rossi",
+    "password": "Password1!",
+    "role": "user"
+}
+```
+
+---
 
 
 
@@ -124,7 +140,7 @@ This request gets the card for the user.
 
 ### <span id="collection-post-addcard">addCard:</span>
 **Endpoint**: `http://localhost:1699/master_trainer/collections/add_card`      
-This request adds a card for the user. If the collection is already in the DB it adds the quantity given to the current quantity.
+This request adds a card for the user. If the collection is already in the DB it adds the quantity given to the current quantity.       
 In the **body** of the request you should add a json like this:
 ```json
 {
@@ -149,7 +165,7 @@ In the **body** of the request you should add a json like this:
 
 ### <span id="collection-put-editcard">editCard:</span>
 **Endpoint**: `http://localhost:1699/master_trainer/collections/edit_card`       
-This request edits a card for the user. If the collection is not in the DB it adds the collection to it.
+This request edits a card for the user. If the collection is not in the DB it adds the collection to it.        
 In the **body** of the request you should add a json like this:
 ```json
 {
