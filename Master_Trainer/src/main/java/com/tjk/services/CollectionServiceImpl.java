@@ -46,10 +46,12 @@ public class CollectionServiceImpl implements CollectionService{
     	Collection collection = new Collection();
     	// checks if the card is already in the collection
     	// if it is, updates the quantity with the sum of the record's quantity + given quantity
+    	// it also checks if the quantity given would go below the value 1 for the quantity
+    	// if it would, it sets to 1 instead
     	// else creates a new collection
     	if(collectionDAO.findByUser_IdUserAndCard_IdCard(idUser, idCard).isPresent()) {
     		collection = this.findByUserAndByCard(idUser, idCard);
-    		collection.setQuantity(collection.getQuantity() + quantity);
+    		collection.setQuantity(collection.getQuantity() + quantity > 0 ? collection.getQuantity() + quantity : 1);
     	}
     	else {
     		Card card = cardDAO.findById(idCard).orElseThrow(() -> new IllegalArgumentException("Card not found"));
@@ -60,7 +62,7 @@ public class CollectionServiceImpl implements CollectionService{
     		collection.setCard(card);
     		collection.setUser(user);
     		collection.setFavourite(false);;
-    		collection.setQuantity(quantity);
+    		collection.setQuantity(quantity > 0 ? quantity : 1);
     	}
     	
     	// inserts or updates the record in the db
@@ -75,9 +77,11 @@ public class CollectionServiceImpl implements CollectionService{
     	// checks if the card is already in the collection
     	// if it is, updates the quantity
     	// else create a new collection
+    	// it also checks if the new quantity would go below the value 1
+    	// if it would, it sets to 1 instead
     	if(collectionDAO.findByUser_IdUserAndCard_IdCard(idUser, idCard).isPresent()) {
     		collection = this.findByUserAndByCard(idUser, idCard);
-    		collection.setQuantity(newQuantity);
+    		collection.setQuantity(newQuantity > 0 ? newQuantity : 1);
     	}
     	else {
     		CollectionId collectionId = new CollectionId(idCard, idUser);
@@ -87,7 +91,7 @@ public class CollectionServiceImpl implements CollectionService{
     		collection.setUser(userDAO.findById(idUser)
     				.orElseThrow(() -> new IllegalArgumentException("User not found")));
     		collection.setFavourite(false);
-    		collection.setQuantity(newQuantity);
+    		collection.setQuantity(newQuantity > 0 ? newQuantity : 1);
     	}
     	
     	// inserts or updates the record in the db
