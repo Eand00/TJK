@@ -1,119 +1,100 @@
 package com.tjk.services;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.tjk.entities.Card;
 import com.tjk.repos.CardDAO;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class CardServiceImpl implements CardService{
 
-    @Autowired
-    private CardDAO dao;
+	@Autowired
+	private CardDAO dao;
+	
+	@Override
+	public List<Card> getAllCards() {
+		return dao.findAll();
+	}
 
-    // Retrieves all cards from the database
-    @Override
-    public List<Card> getAllCards() {
-        return dao.findAll();
-    }
-    
-    @Override
-    public List<Card> getCardsByName(String name) {
-        List<Card> matchingCards = dao.findAll().stream()
-                .filter(card -> card.getNameCard().toLowerCase().contains(name.toLowerCase()))
-                .collect(Collectors.toList());
-
-        if (matchingCards.isEmpty()) {
-            //throw new NoCardsFoundException("No cards found with the name: " + name);
-        }
-        return matchingCards;
-    }
+	@Override
+	public List<Card> getCardsByNameCard(String name) {
+		return dao.findAllByNameCardContaining(name);
+	}
 
 	@Override
 	public Optional<Card> getCardsByCardId(String id) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+		return dao.findById(id);
 	}
 
 	@Override
-	public Optional<Card> getCardsBySet(String set) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+	public List<Card> getCardsBySetName(String set) {
+		return dao.findBySetName(set);
 	}
 
 	@Override
-	public Optional<Card> getCardsBySeries(String series) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+	public List<Card> getCardsBySeries(String series) {
+		return dao.findBySeries(series);
 	}
 
 	@Override
-	public Optional<Card> getCardsByPublisher(String publisher) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+	public List<Card> getCardsByPublisher(String publisher) {
+		return dao.findByPublisher(publisher);
 	}
 
 	@Override
-	public Optional<Card> getCardsByGeneration(String generation) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+	public List<Card> getCardsByGeneration(String generation) {
+		return dao.findByGeneration(generation);
 	}
 
 	@Override
-	public Optional<Card> getCardsByArtist(String artist) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+	public List<Card> getCardsByArtist(String artist) {
+		return dao.findByArtist(artist);
 	}
 
 	@Override
-	public Optional<Card> getCardsByType(String type) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+	public List<Card> getCardsByTypesCard(String type) {
+		return dao.findByTypesCardContaining(type);
 	}
 
 	@Override
-	public Optional<Card> getCardsBySupertype(String supertype) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+	public List<Card> getCardsBySupertype(String supertype) {
+		return dao.findBySupertype(supertype);
 	}
 
 	@Override
-	public Optional<Card> getCardsBySubtype(String subtype) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+	public List<Card> getCardsBySubtypes(String subtype) {
+		return dao.findBySubtypesContaining(subtype);
 	}
 
 	@Override
-	public Optional<Card> getCardsByEvolvesFrom(String evolvesFrom) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+	public List<Card> getCardsByEvolvesFrom(String evolvesFrom) {
+		return dao.findByEvolvesFromContaining(evolvesFrom);
 	}
 
 	@Override
-	public Optional<Card> getCardsByEvolvesTo(String evolvesTo) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+	public List<Card> getCardsByEvolvesTo(String evolvesTo) {
+		return dao.findByEvolvesToContaining(evolvesTo);
 	}
 
 	@Override
-	public Optional<Card> getCardsByRarity(String rarity) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+	public List<Card> getCardsByRarity(String rarity) {
+		return dao.findByRarity(rarity);
 	}
 
 	@Override
-	public Optional<Card> getCardsByLegalities(String legalities) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+	public List<Card> getCardsByLegalities(String legalities) {
+		return dao.findByLegalitiesContaining(legalities);
 	}
 
 	@Override
-	public Optional<Card> getCardsByRegulation(String regulation) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+	public List<Card> getCardsByRegulationMark(String regulation) {
+		return dao.findByRegulationMarkContaining(regulation);
 	}
-
+	@Override
+    public List<Card> filterCards(String nameCard, String setName, String series, String publisher, String generation, String artist, String typesCard, String supertype, String subtype,  String evolvesFrom, String evolvesTo, String rarity, String legalities, String regulationMark) {
+        return dao.findCardsWithFilters(nameCard, setName, series, publisher, generation, artist, typesCard, supertype, subtype,  evolvesFrom, evolvesTo, rarity, legalities, regulationMark);
+    }
 }
