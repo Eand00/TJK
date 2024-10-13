@@ -265,7 +265,19 @@ In the **body** of the request you should add a json like this:
 
 ---
 
+## <span id="deck-delete" style="color:red;">DELETE</span>
 
+### <span id="deck-delete-deletedeck">deleteDeck:</span>
+**Endpoint**: `http://localhost:1699/master_trainer/decks/delete_deck/{idDeck}`  
+This request deletes the deck with the id given.
+> *Example usage*:        
+> `http://localhost:1699/master_trainer/decks/delete_deck/3`      
+> Deletes the deck with the id `2`.
+
+---
+[Go back to the selection](#deck)     
+
+---
 
 
 # Collection
