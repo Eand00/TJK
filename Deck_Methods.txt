@@ -1,0 +1,53 @@
+
+@Post
+http://localhost:1699/master_trainer/decks/create_deck
+
+{
+    "deckName": "Charizard",
+    "format": "Legal",
+    "legal": true,
+    "isPrivate": false,
+    "user": {
+        "idUser": 2
+    },
+    "coverCard": {
+        "idCard": "base1-100"
+    }
+}
+
+@Get
+http://localhost:1699/master_trainer/decks/name/Charizard
+
+@Get
+http://localhost:1699/master_trainer/decks/user/2
+
+@Get
+http://localhost:1699/master_trainer/decks/public
+
+@Get
+http://localhost:1699/master_trainer/decks/legal
+
+@Get
+http://localhost:1699/master_trainer/decks/4
+
+@Delete
+http://localhost:1699/master_trainer/decks/delete_deck/3
+
+@Put
+http://localhost:1699/master_trainer/decks/update_deck/4
+
+{
+    "deckName": "Arcanine",
+    "format": "Legal",
+    "legal": true,
+    "isPrivate": true,
+    "user": {
+        "idUser": 3
+    },
+    "coverCard": {
+        "idCard": "base1-100"
+    }
+}
+
+
+
