@@ -47,19 +47,19 @@ public class DeckREST {
     }
     
     // Create a new deck
-    @PostMapping("create_deck")
+    @PostMapping("/create_deck")
     public Deck createDeck(@RequestBody Deck deck) {
         return service.createDeck(deck);
     }
     
     // Delete deck by ID
-    @DeleteMapping("delete_deck/{idDeck}")
+    @DeleteMapping("/delete_deck/{idDeck}")
     public boolean deleteDeck(@PathVariable Integer idDeck) {
         return service.deleteDeck(idDeck);
     }
     
     // Update deck by ID
-    @PutMapping("update_deck/{idDeck}")
+    @PutMapping("/update_deck/{idDeck}")
     public Deck updateDeck(@PathVariable Integer idDeck, @RequestBody Deck updatedDeck) {
         return service.updateDeck(idDeck, updatedDeck);
     }
