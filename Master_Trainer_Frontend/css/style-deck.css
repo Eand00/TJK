@@ -6,35 +6,65 @@
     font-family: Arial, sans-serif;
 }
 
+/* Login Button */
+.login-btn {
+    position: absolute;
+    right: 20px; /* Position the login button to the right */
+    top: 10px;
+    background-color: #444;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+.login-btn img {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+}
+
+/* Header Title */
+.header h1 {
+    color: #ccc;
+}
+
 /* Basic styles for the body */
 body {
-    background-color: #3f3f3f; /* Dark gray background */
-    color: white; /* White text */
-    padding: 20px; /* Padding around the content */
+    background-color: #121212;
+    color: white;
 }
 
-/* Styles for the navigation bar */
-.navbar {
-    display: flex; /* Flexbox to align items horizontally */
-    justify-content: center; /* Center the buttons */
-    gap: 20px; /* Space between buttons */
-    margin-bottom: 20px; /* Spacing below the navbar */
+.nav {
+    display: flex;
+    justify-content: center; /* Centers the buttons */
+    gap: 10px; /* Space between buttons */
+    flex-grow: 1; /* Expands the nav to fill available space */
 }
 
-/* Style for buttons in the navbar */
-.navbar button {
-    background-color: #5a5a5a; /* Dark gray background for buttons */
-    color: white; /* White text */
-    border: none; /* No border */
-    padding: 10px 20px; /* Padding for button size */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Change cursor to pointer on hover */
-    font-size: 16px; /* Font size */
+.nav button {
+    padding: 10px 15px;
+    background-color: #555;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 /* Hover effect for navbar buttons */
 .navbar button:hover {
-    background-color: #7a7a7a; /* Lighter gray background on hover */
+    background-color: #7a7a7a;
 }
 
 /* Login button is aligned to the right */
@@ -44,100 +74,100 @@ body {
 
 /* Main content section */
 .main-content {
-    text-align: center; /* Center-aligns the content */
+    text-align: center;
 }
 
 /* Style for the main heading */
-h1 {
-    font-size: 36px; /* Large font size */
-    margin-bottom: 20px; /* Spacing below the heading */
+.main-content h1 {
+    font-size: 36px;
+    padding: 20px;
 }
 
 /* Container for the control buttons and search bar */
 .controls {
     display: flex; /* Flexbox for horizontal alignment */
     justify-content: center; /* Center the control buttons */
-    gap: 10px; /* Space between elements */
-    margin-bottom: 40px; /* Space below the controls */
+    gap: 10px;
+    margin-bottom: 40px;
 }
 
 /* Style for the control buttons */
 .controls button {
-    background-color: #5a5a5a; /* Dark gray background */
-    color: white; /* White text */
-    border: none; /* No border */
-    padding: 10px 20px; /* Padding for button size */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Pointer on hover */
-    font-size: 16px; /* Font size */
+    background-color: #5a5a5a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
 }
 
 /* Hover effect for control buttons */
 .controls button:hover {
-    background-color: #7a7a7a; /* Lighter gray background on hover */
+    background-color: #7a7a7a;
 }
 
 /* Style for the search input field */
 .controls input {
-    padding: 10px; /* Padding for input field */
-    border: none; /* No border */
-    border-radius: 5px; /* Rounded corners */
-    width: 200px; /* Width of the input field */
-    font-size: 16px; /* Font size for the text */
+    padding: 0px;
+    border: none;
+    border-radius: 5px;
+    width: 200px;
+    font-size: 16px;
 }
 
 /* Container for the decks section */
 .decks {
-    display: flex; /* Flexbox for horizontal layout */
-    justify-content: center; /* Center-align the deck items */
-    gap: 40px; /* Space between the deck items */
+    display: flex;
+    justify-content: center;
+    gap: 40px;
 }
 
 /* Individual deck item */
 .deck-item {
-    display: flex; /* Flexbox for vertical alignment */
-    flex-direction: column; /* Arrange image and text in a column */
-    align-items: center; /* Center-align items */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-top: 75px;
 }
 
 /* Style for the deck images */
 .deck-item img:not(#Symbol) {
-    width: 150px; /* Fixed width */
-    height: 200px; /* Fixed height */
-    margin-bottom: 10px; /* Space below the image */
-    border-radius: 10px; /* Rounded corners for the image */
-    object-fit: cover; /* Ensure the image fits the container */
-    background-color: #202020; /* Dark background behind the image */
+    width: 150px;
+    height: 200px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    object-fit: cover;
+    background-color: #202020;
 }
 
 #Symbol {
-    width: 30px; /* Fixed width */
-    height: 30px; /* Fixed height */
-    margin-left: 5px; /* Space to the left of the symbol */
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
     margin-top: 15px;
-    vertical-align: middle; /* Vertically center align */
+    vertical-align: middle;
 }
 
 .tooltip {
     width: 200px;
-    display: none; /* Hide by default */
-    position: absolute; /* Position relative to the container */
-    background-color: #333; /* Background color */
-    color: #fff; /* Text color */
-    padding: 5px; /* Internal padding */
-    border-radius: 5px; /* Rounded corners */
-    z-index: 10; /* Above other elements */
+    display: none;
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    z-index: 10;
     margin-top: 300px; /* Optional, may not be needed */
 }
 
 /* Show the tooltip on hover */
 #Symbol:hover + .tooltip {
-    display: block; /* Show text on hover */
-    position: absolute; /* Position relative to the element with ID 'Symbol' */
+    display: block;
+    position: absolute;
     top: -25px; /* Position above the element */
     left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Center exactly */
+    transform: translateX(-50%);
 }
 
 .deck-item {
