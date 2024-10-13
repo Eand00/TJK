@@ -236,7 +236,34 @@ In the **body** of the request you should add a json like this:
 
 ---
 
+## <span id="deck-put" style="color:orange;">PUT</span>
 
+### <span id="deck-put-updatedeck">updateDeck:</span>
+**Endpoint**: `http://localhost:1699/master_trainer/decks/update_deck/{idDeck}`       
+This request edits the deck with the id given.              
+In the **body** of the request you should add a json like this:
+```json
+{
+    "deckName": "Arcanine",
+    "format": "Legal",
+    "legal": true,
+    "isPrivate": true,
+    "user": {
+        "idUser": 3
+    },
+    "coverCard": {
+        "idCard": "base1-100"
+    }
+}
+```
+> *Example usage*:        
+> `http://localhost:1699/master_trainer/decks/update_deck/4`      
+> Edits the deck with the id `4`.
+
+---
+[Go back to the selection](#deck)     
+
+---
 
 
 
