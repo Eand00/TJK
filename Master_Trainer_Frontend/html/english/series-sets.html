@@ -9,23 +9,33 @@
 <body>
 
     <!-- Header Section -->
+    <!-- Header Section -->
     <div class="header">
-        <h1>Pokémon TCG Series</h1>
         <!-- Navigation Menu within the Header -->
+        <h1>Pokemon TCG Series</h1>
         <nav class="nav">
             <button onclick="window.location.href='home.html'">Home</button>
             <button onclick="window.location.href='personal-area.html'">Personal Area</button>
             <button onclick="window.location.href='pokedex.html'">Pokedex</button>
             <button onclick="window.location.href='deck-builder.html'">Deck Builder</button>
             <button onclick="window.location.href='deck.html'">Deck</button>
+            <button onclick="window.location.href='series-sets.html'">Series & Sets</button>
             <button onclick="window.location.href='top-cards.html'">Top Cards</button>
+            <button onclick="window.location.href='regulation-page.html', '_blank'">Regulation</button>
         </nav>
         
-        <!-- Login Button -->
-        <button class="login-btn" id="loginBtn">
-            <img src="../../images/immagine-profilo.png" alt="Login Icon" />
-            Login
-        </button>
+        <!-- Login and Language Switch -->
+        <div class="header-buttons">
+            <!-- Language Switch Button -->
+            <button class="lang-switch-btn">
+                <a href="../italiano/series-sets.html" style="text-decoration: none; color: white;">ITA</a>
+            </button>
+            <button class="login-btn" id="loginBtn">
+                <img src="../../images/immagine-profilo.png" alt="Login Icon" />
+                Login
+            </button>
+            
+        </div>
     </div>
 
     <!-- Login Form -->

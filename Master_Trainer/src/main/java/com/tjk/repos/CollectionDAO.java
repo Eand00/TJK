@@ -10,16 +10,16 @@ import com.tjk.entities.CollectionId;
 
 public interface CollectionDAO extends JpaRepository<Collection, CollectionId> {
 	
-	// Finds if present a Collection using the ids of the user and the card 
-	Optional<Collection> findAllByIdUserAndIdCard(String idUser, String idCard);
+	// Searches a certain card in the collection of a user
+	Optional<Collection> findByUser_IdUserAndCard_IdCard(Integer idUser, String idCard);
 	
     // Finds a list of cards in owned by a user.
-    List<Collection> findAllCardsByIdUser(String idUser);
+    List<Collection> findByUser_IdUser(Integer idUser);
+    
+    // List of Collection of Favourite cards that belong to a certain user, given his idUser
+    List<Collection> findByUser_IdUserAndFavourite(Integer idUser, boolean favourite);
 
-    // Finds a list of users that own a card by the ID of the card.
-    List<Collection> findAllUserByCardName(String cardName);
-
-    // Finds a list of cards with a specific cardName owned by a user.
-    List<Collection> findAllByIdUserAndCardName(String idUser, String cardName);
+    // Deletes a certain card from the collection of a user
+    void deleteByUser_IdUserAndCard_IdCard(Integer idUser, String idCard);
 
 }

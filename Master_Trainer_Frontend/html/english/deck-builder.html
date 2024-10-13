@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Deck Builder</title>
+        <link rel="stylesheet" href="../../css/style-deck-builder.css">
+    </head>
+    <body>
+    <!-- Header Section -->
+    <div class="header">
+        <!-- Navigation Menu within the Header -->
+        <h1>Detailed View</h1>
+        <nav class="nav">
+            <button onclick="window.location.href='home.html'">Home</button>
+            <button onclick="window.location.href='personal-area.html'">Personal Area</button>
+            <button onclick="window.location.href='pokedex.html'">Pokedex</button>
+            <button onclick="window.location.href='deck-builder.html'">Deck Builder</button>
+            <button onclick="window.location.href='deck.html'">Deck</button>
+            <button onclick="window.location.href='series-sets.html'">Series & Sets</button>
+            <button onclick="window.location.href='top-cards.html'">Top Cards</button>
+            <button onclick="window.location.href='regulation-page.html', '_blank'">Regulation</button>
+        </nav>
+        
+        <!-- Login and Language Switch -->
+        <div class="header-buttons">
+            <!-- Language Switch Button -->
+            <button class="lang-switch-btn">
+                <a href="../italiano/deck-builder.html" style="text-decoration: none; color: white;">ITA</a>
+            </button>
+            <button class="login-btn" id="loginBtn">
+                <img src="../../images/immagine-profilo.png" alt="Login Icon" />
+                Login
+            </button>
+            
+        </div>
+    </div>
+        <!-- Login Form -->
+        <div id="loginForm" class="form-container">
+            <div class="form-content">
+                <span class="close">&times;</span>
+                <h2>Login</h2>
+                <form>
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+        <!-- Filter Popup -->
+        <div id="filter-popup" class="filter-popup">
+            <div class="filter-row">
+                <label for="type">Type:</label>
+                <select id="type">
+                    <option value="">Any</option>
+                    <option value="grass">Grass</option>
+                    <option value="fire">Fire</option>
+                    <option value="ice">Ice</option>
+                    <option value="water">Water</option>
+                    <option value="fighting">Fighting</option>
+                    <option value="psychic">Psychic</option>
+                    <option value="electric">Electic</option>
+                    <option value="rock">Rock</option>
+                    <option value="dark">Dark</option>
+                </select>
+    
+                <label for="element">Element:</label>
+                <select id="element">
+                    <option value="">Any</option>
+                    <option value="grass">Grass</option>
+                    <option value="fire">Fire</option>
+                    <option value="ice">Ice</option>
+                    <option value="water">Water</option>
+                    <option value="fighting">Fighting</option>
+                    <option value="psychic">Psychic</option>
+                    <option value="electric">Electic</option>
+                    <option value="rock">Rock</option>
+                    <option value="dark">Dark</option>
+                </select>    
+            </div>
+    
+            <div class="filter-row">
+                <label for="subtype">Sub-Type:</label>
+                <select id="subtype">
+                    <option value="">Any</option>
+                    <option value="basic">Basic</option>
+                    <option value="stage1">Stage 1</option>
+                    <option value="stage2">Stage 2</option>
+                    <!-- More options -->
+                </select>
+    
+                <label for="pack">Pack:</label>
+                <select id="pack">
+                    <option value="">Any</option>
+                    <option value="pack1">Stellar Crown</option>
+                    <option value="pack2">Trick or Trade 2024</option>
+                    <option value="pack3">Shrouded Fable</option>
+                    <option value="pack4">Twilight Masquerade</option>
+                    <option value="pack5">Temporal Forces</option>
+                    <option value="pack6">Paldean Fates</option>
+                    <option value="pack7">Paradox Rift</option>
+                    <option value="pack8">Scarlet & Violet - 151</option>  
+                </select>
+            </div>
+            <div class="filter-row">
+                <label for="format">Format:</label>
+                <select id="format">
+                    <option value="">Any</option>
+                    <option value="standard">Standard</option>
+                    <option value="expanded">Expanded</option>
+                </select>
+    
+                <label for="rarity">Rarity:</label>
+                <select id="rarity">
+                    <option value="">Any</option>
+                    <option value="common">Common</option>
+                    <option value="uncommon">Uncommon</option>
+                    <option value="rare">Rare</option>
+                    <option value="rare-holo">Rare Holo</option>
+                    <option value="promo">Promo</option>
+                </select>
+            </div>
+    
+            <!-- checkbox -->
+            <div class="filter-checkbox">
+                <label for="favourite">Favourite:</label>
+                <input type="checkbox" id="favourite">
+                
+                <label for="owned">Owned:</label>
+                <input type="checkbox" id="owned">
+            </div>
+        </div>
+       
+<!-- Cards sections -->
+<div class="deck-builder">
+    <!-- Left Section (Deck creation Section) -->
+    <div class="deck-section">
+        <div class="deck-name">
+            <input type="text" placeholder="Deck Name" class="deck-input">
+            <button class="save-btn">Save</button>
+        </div>
+        <div class="card-preview">
+            <!-- Examples of Pokémon Cards -->
+            <div class="card-grid">
+
+                <div class="card">
+                    <img src="../../images/pokedex-cards/basep-47.png" alt="Mew">
+                </div>
+                
+                <div class="card">
+                    <img src="../../images/pokedex-cards/base1-10.png" alt="Mewtwo">
+                </div>
+    
+                <div class="card">
+                    <img src="../../images/pokedex-cards/base1-12.png" alt="Ninetales">
+                </div>
+
+                <div class="card">
+                    <img src="../../images/pokedex-cards/basep-47.png" alt="Mew">
+                </div>
+                
+                <div class="card">
+                    <img src="../../images/pokedex-cards/base1-10.png" alt="Mewtwo">
+                </div>
+    
+                <div class="card">
+                    <img src="../../images/pokedex-cards/base1-12.png" alt="Ninetales">
+                </div>
+
+                <div class="card">
+                    <img src="../../images/pokedex-cards/basep-47.png" alt="Mew">
+                </div>
+                
+                <div class="card">
+                    <img src="../../images/pokedex-cards/base1-10.png" alt="Mewtwo">
+                </div>
+    
+                <div class="card">
+                    <img src="../../images/pokedex-cards/base1-12.png" alt="Ninetales">
+                </div>
+
+                <div class="card">
+                    <img src="../../images/pokedex-cards/base1-12.png" alt="Ninetales">
+                </div>
+
+                <div class="card">
+                    <img src="../../images/pokedex-cards/basep-47.png" alt="Mew">
+                </div>
+                
+                <div class="card">
+                    <img src="../../images/pokedex-cards/base1-10.png" alt="Mewtwo">
+                </div>
+    
+                <div class="card">
+                    <img src="../../images/pokedex-cards/base1-12.png" alt="Ninetales">
+                </div>
+                <div class="card">
+                    <img src="../../images/pokedex-cards/basep-47.png" alt="Mew">
+                </div>
+                
+                <div class="card">
+                    <img src="../../images/pokedex-cards/base1-10.png" alt="Mewtwo">
+                </div>
+    
+                <div class="card">
+                    <img src="../../images/pokedex-cards/base1-12.png" alt="Ninetales">
+                </div>
+
+                <div class="card">
+                    <img src="../../images/pokedex-cards/basep-47.png" alt="Mew">
+                </div>
+                
+                <div class="card">
+                    <img src="../../images/pokedex-cards/base1-10.png" alt="Mewtwo">
+                </div>
+    
+                <div class="card">
+                    <img src="../../images/pokedex-cards/base1-12.png" alt="Ninetales">
+                </div>
+
+                <div class="card">
+                    <img src="../../images/pokedex-cards/base1-12.png" alt="Ninetales">
+                </div>
+            </div>
+
+        </div>
+        <!-- trainer cards section -->
+        <div class="trainer-cards">
+            <div class="card-grid">
+                <!-- examples of cards -->
+                <div class="card">
+                    <img src="../../images/pokedex-cards/base1-70.png" alt="Clefairy Doll">
+                </div>
+
+                <div class="card">
+                    <img src="../../images/pokedex-cards/base1-89.png" alt="Revive">
+                </div>
+
+                <div class="card">
+                    <img src="../../images/pokedex-cards/base1-90.png" alt="Superpotion">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Section (Filtered Cards and Related Cards sections) -->
+    <div class="right-section">
+        <div class="search-bar">
+            <button class="filter-btn">Filters</button>
+            <input type="text" placeholder="Value" class="search-input">
+            <button class="search-btn">Search</button>
+        </div>
+
+        <!-- Filtered Cards Section -->
+        <div class="filtered-cards">
+            <!-- Examples of cards -->
+            <div class="card-grid">
+
+                <div class="card">
+                    <img src="../../images/pokedex-cards/base1-4.png" alt="Charizard">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Related Cards Section -->
+        <div class="related-cards-section">
+            <div id="related-cards-title">Related Cards</div>
+            <div class="related-cards">
+                <!-- Examples of cards -->
+                <div class="card-grid">
+
+                    <div class="card">
+                        <img src="../../images/pokedex-cards/base1-46.png" alt="Charmander">
+                    </div>
+    
+                    <div class="card">
+                        <img src="../../images/pokedex-cards/base1-24.png" alt="Charmeleon">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+<!-- javascript import for the login and filter buttons -->
+<script src="../../script/script-deck-builder.js"></script>
+
+</html>

@@ -9,21 +9,31 @@
 <body>
     <!-- Header Section -->
     <div class="header">
-        <h1>Pokedex</h1>
         <!-- Navigation Menu within the Header -->
+        <h1>Pokedex</h1>
         <nav class="nav">
             <button onclick="window.location.href='home.html'">Home</button>
             <button onclick="window.location.href='personal-area.html'">Personal Area</button>
+            <button onclick="window.location.href='pokedex.html'">Pokedex</button>
             <button onclick="window.location.href='deck-builder.html'">Deck Builder</button>
             <button onclick="window.location.href='deck.html'">Deck</button>
             <button onclick="window.location.href='series-sets.html'">Series & Sets</button>
             <button onclick="window.location.href='top-cards.html'">Top Cards</button>
+            <button onclick="window.location.href='regulation-page.html', '_blank'">Regulation</button>
         </nav>
-        <!-- Login Button -->
-        <button class="login-btn" id="loginBtn">
-            <img src="../../images/immagine-profilo.png" alt="Login Icon" />
-            Login
-        </button>
+        
+        <!-- Login and Language Switch -->
+        <div class="header-buttons">
+            <!-- Language Switch Button -->
+            <button class="lang-switch-btn">
+                <a href="../italiano/pokedex.html" style="text-decoration: none; color: white;">ITA</a>
+            </button>
+            <button class="login-btn" id="loginBtn">
+                <img src="../../images/immagine-profilo.png" alt="Login Icon" />
+                Login
+            </button>
+            
+        </div>
     </div>
 
     <!-- Login Form -->
@@ -79,6 +89,7 @@
                 <option value="">Any</option>
                 <option value="basic">Basic</option>
                 <option value="stage1">Stage 1</option>
+                <option value="stage2">Stage 2</option>
                 <!-- More options -->
             </select>
 
@@ -109,6 +120,7 @@
                 <option value="common">Common</option>
                 <option value="uncommon">Uncommon</option>
                 <option value="rare">Rare</option>
+                <option value="rare-holo">Rare Holo</option>
                 <option value="promo">Promo</option>
             </select>
         </div>
@@ -135,7 +147,7 @@
         <div class="card-grid">
             <!-- Examples of Pokémon Cards -->
             <div class="card">
-                <img src="../../images/pokedex-cards/basep-47.png" alt="Mew">
+                <a href="./detailed-card.html"><img src="../../images/pokedex-cards/basep-47.png" alt="Mew"></a>
                 <p>Mew</p>
                 <span class="heart-icon"></span>
             </div>

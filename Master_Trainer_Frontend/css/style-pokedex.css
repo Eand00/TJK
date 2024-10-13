@@ -283,3 +283,21 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #45a049;
 }
+.header-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.lang-switch-btn {
+    margin-right: 10px;
+    padding: 10px 15px;
+    background-color: #444;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.lang-switch-btn:hover {
+    background-color: #555;
+}

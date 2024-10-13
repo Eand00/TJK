@@ -7,23 +7,33 @@
     <link rel="stylesheet" href="../../css/style-pokedex.css">
 </head>
 <body>
-    <!-- Sezione Header -->
+    <!-- Header Section -->
     <div class="header">
+        <!-- Navigation Menu within the Header -->
         <h1>Pokedex</h1>
-        <!-- Menu di navigazione nell'header -->
         <nav class="nav">
             <button onclick="window.location.href='home.html'">Home</button>
             <button onclick="window.location.href='personal-area.html'">Area Personale</button>
-            <button onclick="window.location.href='deck-builder.html'">Costruttore Mazzi</button>
+            <button onclick="window.location.href='pokedex.html'">Pokédex</button>
+            <button onclick="window.location.href='deck-builder.html'">Costruttore Mazzo</button>
             <button onclick="window.location.href='deck.html'">Mazzo</button>
             <button onclick="window.location.href='series-sets.html'">Serie & Set</button>
-            <button onclick="window.location.href='top-cards.html'">Top Carte</button>
+            <button onclick="window.location.href='top-cards.html'">Carte Migliori</button>
+            <button onclick="window.location.href='regulation-page.html', '_blank'">Regolamento</button>
         </nav>
-        <!-- Pulsante di accesso -->
-        <button class="login-btn" id="loginBtn">
-            <img src="../../images/immagine-profilo.png" alt="Icona Login" />
-            Login
-        </button>
+        
+        <!-- Login and Language Switch -->
+        <div class="header-buttons">
+            <!-- Language Switch Button -->
+            <button class="lang-switch-btn">
+                <a href="../english/pokedex.html" style="text-decoration: none; color: white;">ENG</a>
+            </button>
+            <button class="login-btn" id="loginBtn">
+                <img src="../../images/immagine-profilo.png" alt="Login Icon" />
+                Login
+            </button>
+            
+        </div>
     </div>
 
     <!-- Modulo di Login -->
@@ -51,11 +61,11 @@
                 <option value="fire">Fuoco</option>
                 <option value="ice">Ghiaccio</option>
                 <option value="water">Acqua</option>
-                <option value="fighting">Combattimento</option>
+                <option value="fighting">Lotta</option>
                 <option value="psychic">Psico</option>
-                <option value="electric">Elettrico</option>
+                <option value="electric">Elettro</option>
                 <option value="rock">Roccia</option>
-                <option value="dark">Oscuro</option>
+                <option value="dark">Buio</option>
             </select>
 
             <label for="element">Elemento:</label>
@@ -65,11 +75,11 @@
                 <option value="fire">Fuoco</option>
                 <option value="ice">Ghiaccio</option>
                 <option value="water">Acqua</option>
-                <option value="fighting">Combattimento</option>
+                <option value="fighting">Lotta</option>
                 <option value="psychic">Psico</option>
-                <option value="electric">Elettrico</option>
+                <option value="electric">Elettro</option>
                 <option value="rock">Roccia</option>
-                <option value="dark">Oscuro</option>
+                <option value="dark">Buio</option>
             </select>    
         </div>
 
@@ -79,20 +89,21 @@
                 <option value="">Qualsiasi</option>
                 <option value="basic">Base</option>
                 <option value="stage1">Stadio 1</option>
+                <option value="stage2">Stadio 2</option>
                 <!-- Altre opzioni -->
             </select>
 
             <label for="pack">Confezione:</label>
             <select id="pack">
                 <option value="">Qualsiasi</option>
-                <option value="pack1">Stellar Crown</option>
+                <option value="pack1">Corona Astrale</option>
                 <option value="pack2">Trick or Trade 2024</option>
-                <option value="pack3">Shrouded Fable</option>
-                <option value="pack4">Twilight Masquerade</option>
-                <option value="pack5">Temporal Forces</option>
-                <option value="pack6">Paldean Fates</option>
-                <option value="pack7">Paradox Rift</option>
-                <option value="pack8">Scarlet & Violet - 151</option>  
+                <option value="pack3">Segreto Fiabesco</option>
+                <option value="pack4">Crepuscolo Mascherato</option>
+                <option value="pack5">Forze Temporali</option>
+                <option value="pack6">Destini a Paldea</option>
+                <option value="pack7">Paradosso Temporale</option>
+                <option value="pack8">Scarlatto & Violetto - 151</option>  
             </select>
         </div>
         <div class="filter-row">
@@ -109,6 +120,7 @@
                 <option value="common">Comune</option>
                 <option value="uncommon">Non Comune</option>
                 <option value="rare">Rara</option>
+                <option value="rare-holo">Rara Olografica</option>
                 <option value="promo">Promo</option>
             </select>
         </div>
@@ -135,7 +147,7 @@
         <div class="card-grid">
             <!-- Esempi di Carte Pokémon -->
             <div class="card">
-                <img src="../../images/pokedex-cards/basep-47.png" alt="Mew">
+                <a href="./detailed-card.html"><img src="../../images/pokedex-cards/basep-47.png" alt="Mew"></a>
                 <p>Mew</p>
                 <span class="heart-icon"></span>
             </div>

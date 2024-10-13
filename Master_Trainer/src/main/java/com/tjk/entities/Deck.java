@@ -2,128 +2,58 @@ package com.tjk.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 /**
  * Entity class representing a Deck in the database.
- * This class maps to the "Deck" table and holds information about a deck of cards.
+ * This class maps to the "decks" table and holds information about a deck of cards.
  */
 @Entity
-@Table(name = "Deck")
+@Table(name = "decks")
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
 public class Deck {
 	
-    /**
-     * The unique identifier for the deck.
-     */
+    // Primary key: Deck ID
     @Id
-    private String idDeck;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_deck", nullable = false)
+    private Integer idDeck;
 
-    /**
-     * The name of the deck.
-     */
+    // Deck name (cannot be null)
+    @Column(name = "deck_name", nullable = false)
     private String deckName;
 
-    /**
-     * The format of the deck (nullable).
-     */
-    @Column(nullable = true)
+    // Format of the deck (cannot be null)
+    @Column(name = "format", nullable = false)
     private String format;
+    
+    // Legal status of the deck (cannot be null)
+    @Column(name = "legal", nullable = false)
+    private Boolean legal;
 
-    /**
-     * Indicates if the deck is legal for tournament play.
-     */
-    private boolean legal;
-
-    /**
-     * Indicates if the deck is private.
-     */
-    private boolean isPrivate;
-
-    /**
-     * The user who owns the deck. This is a many-to-one relationship.
-     * Mapped by the "user_id" column.
-     */
+    // Privacy status (cannot be null)
+    @Column(name = "is_private", nullable = false)
+    private Boolean isPrivate;
+    
+    // Many decks can belong to one user (foreign key: id_user)
     @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id_user", nullable = false)
+    @JoinColumn(name = "id_user", referencedColumnName = "id_user", nullable = false)
     private User user;
 
-    /**
-     * TBI
-     */
+    // Many decks can have one cover card (foreign key: cover_card)
     @ManyToOne
     @JoinColumn(name = "cover_card", referencedColumnName = "id_card", nullable = false)
     private Card coverCard; 
-    
-    // Constructors
-    public Deck() {}
-
-    public Deck(String idDeck, String deckName, String format, boolean legal, boolean privateDeck, User user, Card coverCard) {
-        this.idDeck = idDeck;
-        this.deckName = deckName;
-        this.format = format;
-        this.legal = legal;
-        this.isPrivate = privateDeck;
-        this.user = user;
-        this.coverCard = coverCard;
-    }
-
-    // Getters and Setters
-
-    public String getIdDeck() {
-        return idDeck;
-    }
-
-    public void setIdDeck(String idDeck) {
-        this.idDeck = idDeck;
-    }
-
-    public String getDeckName() {
-        return deckName;
-    }
-
-    public void setDeckName(String deckName) {
-        this.deckName = deckName;
-    }
-
-    public String getFormat() {
-        return format;
-    }
-
-    public void setFormat(String format) {
-        this.format = format;
-    }
-
-    public boolean isLegal() {
-        return legal;
-    }
-
-    public void setLegal(boolean legal) {
-        this.legal = legal;
-    }
- boolean isPrivateDeck() {
-        return isPrivate;
-    }
-
-    public void setPrivateDeck(boolean privateDeck) {
-        this.isPrivate = privateDeck;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Card getDeckCards() {
-        return coverCard;
-    }
-
-    public void setDeckCards(Card coverCard) {
-        this.coverCard = coverCard;
-    }
 }

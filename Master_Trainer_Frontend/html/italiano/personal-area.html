@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="it">  
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area Personale</title>
+    <link href="../../css/style-personal-profile.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- Header Section -->
+    <div class="header">
+        <!-- Navigation Menu within the Header -->
+        <h1>Area Personale</h1>
+        <nav class="nav">
+            <button onclick="window.location.href='home.html'">Home</button>
+            <button onclick="window.location.href='personal-area.html'">Area Personale</button>
+            <button onclick="window.location.href='pokedex.html'">Pokédex</button>
+            <button onclick="window.location.href='deck-builder.html'">Costruttore Mazzo</button>
+            <button onclick="window.location.href='deck.html'">Mazzo</button>
+            <button onclick="window.location.href='series-sets.html'">Serie & Set</button>
+            <button onclick="window.location.href='top-cards.html'">Carte Migliori</button>
+            <button onclick="window.location.href='regulation-page.html', '_blank'">Regolamento</button>
+        </nav>
+        
+        <!-- Login and Language Switch -->
+        <div class="header-buttons">
+            <!-- Language Switch Button -->
+            <button class="lang-switch-btn">
+                <a href="../english/personal-area.html" style="text-decoration: none; color: white;">ENG</a>
+            </button>
+            <button class="login-btn" id="loginBtn">
+                <img src="../../images/immagine-profilo.png" alt="Login Icon" />
+                Login
+            </button>
+            
+        </div>
+    </div>
+
+    <!-- Modulo di Login -->
+    <div id="loginForm" class="form-container">
+        <div class="form-content">
+            <span class="close">&times;</span>
+            <h2>Login</h2>
+            <form>
+                <label for="username">Nome utente</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Form profilo -->
+    <div>
+        <form id="user-input">
+            <img src="../../images/immagine-profilo.png" alt="Foto profilo" id="propic" />
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name">
+            <label for="surname">Cognome:</label>
+            <input type="text" id="surname" name="surname">
+            <label for="dob">Data di nascita:</label>
+            <input type="date" id="dob" name="dob">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <label>Privato:</label>
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+            </label>
+            <label for="username">Nome Utente:</label>
+            <input type="text" id="username" name="username" required>
+            <button type="submit">Cambia</button>
+            <button type="submit">Salva</button>
+        </form>
+    </div>
+
+</body>
+
+</html>

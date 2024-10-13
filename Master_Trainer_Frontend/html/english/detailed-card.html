@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Card - Mew</title>
+    <link rel="stylesheet" href="../../css/style-detailed-card.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="header">
+        <!-- Navigation Menu within the Header -->
+        <h1>Detailed View</h1>
+        <nav class="nav">
+            <button onclick="window.location.href='home.html'">Home</button>
+            <button onclick="window.location.href='personal-area.html'">Personal Area</button>
+            <button onclick="window.location.href='pokedex.html'">Pokedex</button>
+            <button onclick="window.location.href='deck-builder.html'">Deck Builder</button>
+            <button onclick="window.location.href='deck.html'">Deck</button>
+            <button onclick="window.location.href='series-sets.html'">Series & Sets</button>
+            <button onclick="window.location.href='top-cards.html'">Top Cards</button>
+            <button onclick="window.location.href='regulation-page.html', '_blank'">Regulation</button>
+        </nav>
+        
+        <!-- Login and Language Switch -->
+        <div class="header-buttons">
+            <!-- Language Switch Button -->
+            <button class="lang-switch-btn">
+                <a href="../italiano/detailed-card.html" style="text-decoration: none; color: white;">ITA</a>
+            </button>
+            <button class="login-btn" id="loginBtn">
+                <img src="../../images/immagine-profilo.png" alt="Login Icon" />
+                Login
+            </button>
+            
+        </div>
+    </div>
+
+    <!-- Login Form -->
+    <div id="loginForm" class="form-container">
+        <div class="form-content">
+            <span class="close">&times;</span>
+            <h2>Login</h2>
+            <form>
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content-container">
+        <!-- Card Image Section -->
+        <div class="card-image-section">
+            <img src="../../images/pokedex-cards/basep-47.png" alt="Mew Pokémon Card" class="card-image">
+        </div>
+
+        <!-- Card Info Section -->
+        <div class="card-info-section">
+            <h1>Mew</h1>
+            <p><strong>Set:</strong> Wizards Black Star Promos | <strong>Card Number:</strong> 47</p>
+            <p><strong>Pokédex Number:</strong> 151</p>
+
+            <!-- Card Attributes -->
+            <div class="card-attributes">
+                <div><strong>Type:</strong> Pokémon</div>
+                <div><strong>Form:</strong> Basic</div>
+                <div><strong>Typings:</strong> Psychic</div>
+                <div><strong>HP:</strong> 40</div>
+                <div><strong>Weakness:</strong> x2</div>
+                <div><strong>Retreat:</strong> x1</div>
+                <div><strong>Artist:</strong> Ken Sugimori</div>
+                <div><strong>Release Date:</strong> 1999-07-01</div>
+            </div>
+
+            <!-- Card Abilities -->
+            <div class="card-abilities">
+                <h2>Neutral Shield (Pokémon Power)</h2>
+                <p>Prevent all effects of attacks, including damage, done to Mew by Evolved Pokémon.</p>
+
+                <h2>Psychock: 10</h2>
+                <p>Flip a coin. If heads, the Defending Pokémon is now Confused.</p>
+            </div>
+        </div>
+    </div>
+    <script src="../../script/script-home.js"></script>
+</body>
+</html>

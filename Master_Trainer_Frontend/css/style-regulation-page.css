@@ -1,0 +1,195 @@
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #121212;
+  color: #ffffff;
+}
+
+/* Header Section */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #333;
+}
+
+/* Header Title */
+.header h1 {
+  color: #ccc;
+}
+
+/* Navigation Menu within Header */
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.nav button {
+  padding: 10px 15px;
+  background-color: #555;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.nav button:hover {
+  background-color: #777;
+}
+
+/* Login Button in Header */
+.login-btn {
+  background-color: #444;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.login-btn img {
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+}
+
+/* Style for the close button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #ff0000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Form styles */
+.form-container {
+  display: none; /* Hide form by default */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5); /* Transparent background */
+}
+
+.form-content {
+  color: #000000;
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+  color: #000000;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  color: #000000;
+  margin-bottom: 5px;
+}
+
+input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button[type="submit"] {
+  background-color: #363836;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+ul {
+  margin-bottom:20px;
+  margin-left:20px;
+}
+
+p {
+  margin-bottom:20px;
+}
+
+#title {
+  margin-top:20px;
+  margin-left:10%;
+  margin-right:10%;
+  margin-bottom:10px;
+  text-align:center;
+}
+
+a {
+  color:#45a049;
+}
+
+.container {
+  font-size:20px;
+  background-color: #444;
+  margin-left:20%;
+  margin-right:20%;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.header-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.lang-switch-btn {
+  margin-right: 10px;
+  padding: 10px 15px;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.lang-switch-btn:hover {
+  background-color: #555;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carte Pokémon - Mew</title>
+    <link rel="stylesheet" href="../../css/style-detailed-card.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="header">
+        <!-- Navigation Menu within the Header -->
+        <h1>Vista Dettagliata</h1>
+        <nav class="nav">
+            <button onclick="window.location.href='home.html'">Home</button>
+            <button onclick="window.location.href='personal-area.html'">Area Personale</button>
+            <button onclick="window.location.href='pokedex.html'">Pokédex</button>
+            <button onclick="window.location.href='deck-builder.html'">Costruttore Mazzo</button>
+            <button onclick="window.location.href='deck.html'">Mazzo</button>
+            <button onclick="window.location.href='series-sets.html'">Serie & Set</button>
+            <button onclick="window.location.href='top-cards.html'">Carte Migliori</button>
+            <button onclick="window.location.href='regulation-page.html', '_blank'">Regolamento</button>
+        </nav>
+        
+        <!-- Login and Language Switch -->
+        <div class="header-buttons">
+            <!-- Language Switch Button -->
+            <button class="lang-switch-btn">
+                <a href="../english/detailed-card.html" style="text-decoration: none; color: white;">ENG</a>
+            </button>
+            <button class="login-btn" id="loginBtn">
+                <img src="../../images/immagine-profilo.png" alt="Login Icon" />
+                Login
+            </button>
+            
+        </div>
+    </div>
+
+    <!-- Contenuto Principale -->
+    <div class="content-container">
+        <!-- Sezione Immagine della Carta -->
+        <div class="card-image-section">
+            <img src="../../images/pokedex-cards/basep-47.png" alt="Carta Pokémon Mew" class="card-image">
+        </div>
+
+        <!-- Sezione Informazioni della Carta -->
+        <div class="card-info-section">
+            <h1>Mew</h1>
+            <p><strong>Set:</strong> Wizards Black Star Promos | <strong>Numero Carta:</strong> 47</p>
+            <p><strong>Numero Pokédex:</strong> 151</p>
+
+            <!-- Attributi della Carta -->
+            <div class="card-attributes">
+                <div><strong>Tipo:</strong> Pokémon</div>
+                <div><strong>Forma:</strong> Base</div>
+                <div><strong>Tipologie:</strong> Psico</div>
+                <div><strong>PS:</strong> 40</div>
+                <div><strong>Debolezza:</strong> x2</div>
+                <div><strong>Ritirata:</strong> x1</div>
+                <div><strong>Artista:</strong> Ken Sugimori</div>
+                <div><strong>Data di Rilascio:</strong> 01-07-1999</div>
+            </div>
+
+            <!-- Abilità della Carta -->
+            <div class="card-abilities">
+                <h2>Scudo Neutro (Potere Pokémon)</h2>
+                <p>Previeni tutti gli effetti degli attacchi, inclusi i danni, fatti a Mew dai Pokémon Evoluti.</p>
+
+                <h2>Psicoscossa: 10</h2>
+                <p>Lancia una moneta. Se esce testa, il Pokémon Difensore è ora Confuso.</p>
+            </div>
+        </div>
+    </div>
+    <script src="../../script/script-home.js"></script>
+</body>
+</html>
