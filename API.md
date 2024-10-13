@@ -154,6 +154,64 @@ This request deletes the user with the id given.
 
 
 # Deck
+Go to:
+- [GET](#deck-get)
+    - [getDeckByName](#deck-get-getdeckbyname)
+    - [getDeckByIdUser](#deck-get-getdeckbyiduser)
+    - [getPublicDecks](#deck-get-getpublicdecks)
+    - [getLegalDecks](#deck-get-getlegaldecks)
+    - [getDeckByIdDeck](#deck-get-getdeckbyiddeck)
+- [POST](#deck-post)
+    - [createDeck](#deck-post-createdeck)
+- [PUT](#deck-put)
+    - [updateDeck](#deck-put-updatedeck)
+- [DELETE](#deck-delete)
+    - [deleteDeck](#deck-delete-deletedeck)
+- [Top of the document](#)
+
+<!--  -->
+## <span id="deck-get" style="color:lightblue;">GET</span>
+
+### <span id="deck-get-getdeckbyname">getDeckByName:</span>
+**Endpoint**: `http://localhost:1699/master_trainer/decks/name/{deckName}`           
+This request gets the deck by its name.  
+> *Example usage*:        
+> `http://localhost:1699/master_trainer/decks/name/Charizard`      
+> Gets the deck with the name `Charizard`.
+
+---
+### <span id="deck-get-getdeckbyiduser">getDeckByIdUser:</span>
+**Endpoint**: `http://localhost:1699/master_trainer/decks/user/{idUser}`           
+This request gets all the decks for the user given.  
+> *Example usage*:        
+> `http://localhost:1699/master_trainer/decks/user/2`      
+> Gets the decks for the user with the id `2`.
+
+---
+### <span id="deck-get-getpublicdecks">getPublicDecks:</span>
+**Endpoint**: `http://localhost:1699/master_trainer/decks/public`           
+This request gets all the decks marked as public.  
+
+---
+### <span id="deck-get-getlegaldecks">getLegalDecks:</span>
+**Endpoint**: `http://localhost:1699/master_trainer/decks/legal`           
+This request gets all the decks marked as legal.  
+
+---
+### <span id="deck-get-getdeckbyiddeck">getDeckByIdDeck:</span>
+**Endpoint**: `http://localhost:1699/master_trainer/decks/{idDeck}`           
+This request gets the deck with the id given.  
+> *Example usage*:        
+> `http://localhost:1699/master_trainer/decks/4`      
+> Gets the deck with the id `4`.
+
+---
+
+
+
+
+
+
 
 
 # Collection
