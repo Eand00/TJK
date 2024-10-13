@@ -9,21 +9,21 @@ public interface CardService {
 
 	public List<Card> getAllCards();
 	
-	public List<Card> getCardsByName(String name);
-	public Optional<Card> getCardsByCardId(String id);
-	public Optional<Card> getCardsBySet(String set);
-	public Optional<Card> getCardsBySeries(String series);
-	public Optional<Card> getCardsByPublisher(String publisher);
-	public Optional<Card> getCardsByGeneration(String generation);
-	public Optional<Card> getCardsByArtist(String artist);
-	public Optional<Card> getCardsByType(String type);
-	public Optional<Card> getCardsBySupertype(String supertype);
-	public Optional<Card> getCardsBySubtype(String subtype);
-	public Optional<Card> getCardsByEvolvesFrom(String evolvesFrom);
-	public Optional<Card> getCardsByEvolvesTo(String evolvesTo);
-	public Optional<Card> getCardsByRarity(String rarity);
-	public Optional<Card> getCardsByLegalities(String legalities);
-	public Optional<Card> getCardsByRegulation(String regulation);
+    public List<Card> getCardsByNameCard(String name);
+    public Optional<Card> getCardsByCardId(String id);
+    public List<Card> getCardsBySetName(String set);
+    public List<Card> getCardsBySeries(String series);
+    public List<Card> getCardsByPublisher(String publisher);
+    public List<Card> getCardsByGeneration(String generation);
+    public List<Card> getCardsByArtist(String artist);
+    public List<Card> getCardsByTypesCard(String type);
+    public List<Card> getCardsBySupertype(String supertype);
+    public List<Card> getCardsBySubtypes(String subtype);
+    public List<Card> getCardsByEvolvesFrom(String evolvesFrom);
+    public List<Card> getCardsByEvolvesTo(String evolvesTo);
+    public List<Card> getCardsByRarity(String rarity);
+    public List<Card> getCardsByLegalities(String legalities);
+    public List<Card> getCardsByRegulationMark(String regulation);
 	
 	//Need to be turned into a dynamic querry or use functional programming.
 
