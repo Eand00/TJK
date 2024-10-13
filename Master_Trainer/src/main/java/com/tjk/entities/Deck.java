@@ -24,7 +24,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class Deck {
-	
+
     // Primary key: Deck ID
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,7 +38,7 @@ public class Deck {
     // Format of the deck (cannot be null)
     @Column(name = "format", nullable = false)
     private String format;
-    
+
     // Legal status of the deck (cannot be null)
     @Column(name = "legal", nullable = false)
     private Boolean legal;
@@ -46,7 +46,7 @@ public class Deck {
     // Privacy status (cannot be null)
     @Column(name = "is_private", nullable = false)
     private Boolean isPrivate;
-    
+
     // Many decks can belong to one user (foreign key: id_user)
     @ManyToOne
     @JoinColumn(name = "id_user", referencedColumnName = "id_user", nullable = false)
@@ -55,5 +55,5 @@ public class Deck {
     // Many decks can have one cover card (foreign key: cover_card)
     @ManyToOne
     @JoinColumn(name = "cover_card", referencedColumnName = "id_card", nullable = false)
-    private Card coverCard; 
+    private Card coverCard;
 }

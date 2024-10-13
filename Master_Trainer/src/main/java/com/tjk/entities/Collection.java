@@ -19,10 +19,10 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class Collection {
-	
+
     @EmbeddedId
     private CollectionId id;
-	
+
 	@ManyToOne
 	@MapsId("idCard")
     @JoinColumn(name = "id_card", nullable = false)
@@ -38,5 +38,5 @@ public class Collection {
 
     @Column(name = "quantity")
     private Integer quantity;
- 
+
 }

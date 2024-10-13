@@ -1,20 +1,27 @@
 package com.tjk.controllers;
 
-import com.tjk.configuration.PasswordChangeRequest;
-import com.tjk.entities.User;
-import com.tjk.services.UserService;
-import com.tjk.services.UserServiceImpl;
+import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication; 
-import org.springframework.security.core.context.SecurityContextHolder; 
-import org.springframework.web.bind.annotation.*; 
-import java.util.List; 
-import java.util.Optional;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@RestController 
-@RequestMapping("/master_trainer/users") 
+import com.tjk.configuration.PasswordChangeRequest;
+import com.tjk.entities.User;
+import com.tjk.services.UserServiceImpl;
+
+@RestController
+@RequestMapping("/master_trainer/users")
 public class UserREST {
 
     @Autowired
@@ -42,7 +49,7 @@ public class UserREST {
     	return userOptional.map(ResponseEntity::ok) // Return user if found
     			.orElseGet(() -> ResponseEntity.notFound().build()); // Return not found if user does not exist
     }
-    
+
     @GetMapping("username/{username}") // Endpoint to get a user by ID
     public ResponseEntity<User> getUserByUsername(@PathVariable String username) {
         Optional<User> userOptional = userService.getUserByUsername(username); // Fetch user by ID
@@ -101,7 +108,7 @@ public class UserREST {
     public ResponseEntity<String> changePassword(@RequestBody PasswordChangeRequest passwordChangeRequest) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); // Get authentication details
         String currentUsername = authentication.getName(); // Get the current user's username
-        
+
         Optional<String> result = userService.changePassword(currentUsername, passwordChangeRequest.getOldPassword(), passwordChangeRequest.getNewPassword()); // Change the password
         return result.map(ResponseEntity::ok) // Return success message if password change was successful
                      .orElseGet(() -> ResponseEntity.badRequest().body("Error changing password")); // Return error message if unsuccessful

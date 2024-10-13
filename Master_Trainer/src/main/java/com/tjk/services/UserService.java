@@ -1,26 +1,27 @@
 package com.tjk.services;
 
-import com.tjk.entities.User;
 import java.util.List;
 import java.util.Optional;
 
+import com.tjk.entities.User;
+
 /**
  * The UserService interface defines the contract for user-related operations.
- * It provides methods for managing users in the application, including 
+ * It provides methods for managing users in the application, including
  * retrieval, creation, updating, and deletion of user entities.
  */
 public interface UserService {
 
     /**
      * Retrieves a list of all users in the system.
-     * 
+     *
      * @return a List of User objects
      */
     List<User> getAllUsers();
 
     /**
      * Retrieves a user by their unique ID.
-     * 
+     *
      * @param id the ID of the user to be retrieved
      * @return an Optional containing the User object if found, or an empty Optional if not found
      */
@@ -28,7 +29,7 @@ public interface UserService {
 
     /**
      * Retrieves a user by their username.
-     * 
+     *
      * @param username the username of the user to be retrieved
      * @return an Optional containing the User object if found, or an empty Optional if not found
      */
@@ -36,7 +37,7 @@ public interface UserService {
 
     /**
      * Creates a new user in the system.
-     * 
+     *
      * @param user the User object containing the details of the new user
      * @return the created User object
      */
@@ -44,7 +45,7 @@ public interface UserService {
 
     /**
      * Updates the details of an existing user.
-     * 
+     *
      * @param id the ID of the user to be updated
      * @param userDetails the User object containing the updated details
      * @return an Optional containing the updated User object if successful, or an empty Optional if the user was not found
@@ -53,7 +54,7 @@ public interface UserService {
 
     /**
      * Deletes a user by their unique ID.
-     * 
+     *
      * @param id the ID of the user to be deleted
      * @return true if the user was successfully deleted, false otherwise
      */
@@ -61,7 +62,7 @@ public interface UserService {
 
     /**
      * Changes the password for a user identified by their username.
-     * 
+     *
      * @param username the username of the user whose password is to be changed
      * @param oldPassword the current password of the user
      * @param newPassword the new password to be set
@@ -71,7 +72,7 @@ public interface UserService {
 
     /**
      * Changes the password for a user identified by their ID, typically for administrative purposes.
-     * 
+     *
      * @param id the ID of the user whose password is to be changed
      * @param newPassword the new password to be set
      * @return an Optional containing a success message if the password was changed, or an empty Optional if the user was not found

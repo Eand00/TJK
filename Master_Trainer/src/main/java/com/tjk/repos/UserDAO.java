@@ -1,8 +1,10 @@
 package com.tjk.repos;
 
-import com.tjk.entities.User;
-import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.tjk.entities.User;
 
 /**
  * The UserDAO interface provides methods for accessing and manipulating user entities in the database.
@@ -12,7 +14,7 @@ public interface UserDAO extends JpaRepository<User, Integer> {
 
     /**
      * Finds a user by their username.
-     * 
+     *
      * @param username the username of the user to be found
      * @return an Optional containing the User object if found, or an empty Optional if not found
      */

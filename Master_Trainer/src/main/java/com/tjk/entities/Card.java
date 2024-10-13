@@ -10,7 +10,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * Entity class representing a Card in the database. 
+ * Entity class representing a Card in the database.
  * This class maps to the "Card" table in the database.
  */
 @Entity
