@@ -206,8 +206,35 @@ This request gets the deck with the id given.
 > Gets the deck with the id `4`.
 
 ---
+[Go back to the selection](#deck)     
 
+---
 
+## <span id="deck-post" style="color:yellow;">POST</span>
+
+### <span id="deck-post-createdeck">createDeck:</span>
+**Endpoint**: `http://localhost:1699/master_trainer/decks/create_deck`      
+This request adds a deck for a user.              
+In the **body** of the request you should add a json like this:
+```json
+{
+    "deckName": "Charizard",
+    "format": "Legal",
+    "legal": true,
+    "isPrivate": false,
+    "user": {
+        "idUser": 2
+    },
+    "coverCard": {
+        "idCard": "base1-100"
+    }
+}
+```
+
+---
+[Go back to the selection](#deck)     
+
+---
 
 
 
