@@ -69,13 +69,5 @@ public interface CardDAO extends JpaRepository<Card, String>{
              @Param("rarity") String rarity,
              @Param("legalities") String legalities,
              @Param("regulationMark") String regulationMark);
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

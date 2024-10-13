@@ -1,46 +1,9 @@
-/*package com.tjk.controllers;
-
-import java.util.List;
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.tjk.entities.Card;
-import com.tjk.services.CardServiceImpl;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-
-
-@RestController
-@RequestMapping("master_trainer/cards")
-public class CardREST {
-	
-	@Autowired
-	private CardServiceImpl service;
-	
-	@GetMapping
-	public List<Card> getAllCards(){
-		return service.getAllCards();
-	}
-	
-	@GetMapping("/name/{name}")
-	public List<Card> getCardByName(@PathVariable String name) {
-		return service.getCardsByName(name);
-	}
-	
-
-}*/
-
 package com.tjk.controllers;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -137,7 +100,7 @@ public class CardREST {
     }
     
     @GetMapping("/filter")
-    public ResponseEntity<List<Card>> filterCards(
+    public List<Card> filterCards(
             @RequestParam(required = false) String nameCard,
             @RequestParam(required = false) String setName,
             @RequestParam(required = false) String series,
@@ -152,33 +115,6 @@ public class CardREST {
             @RequestParam(required = false) String rarity,
             @RequestParam(required = false) String legalities,
             @RequestParam(required = false) String regulationMark) {
-
-        List<Card> cards = service.filterCards(nameCard, setName, series, publisher, generation, artist, typesCard, supertype, subtypes, evolvesFrom, evolvesTo, rarity, legalities, regulationMark);
-        return new ResponseEntity<>(cards, HttpStatus.OK);
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+        return service.filterCards(nameCard, setName, series, publisher, generation, artist, typesCard, supertype, subtypes, evolvesFrom, evolvesTo, rarity, legalities, regulationMark);
+    }   
 }

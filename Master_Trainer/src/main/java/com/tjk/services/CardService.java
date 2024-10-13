@@ -25,6 +25,5 @@ public interface CardService {
     public List<Card> getCardsByLegalities(String legalities);
     public List<Card> getCardsByRegulationMark(String regulation);
 	
-	//Need to be turned into a dynamic querry or use functional programming.
-
+    public List<Card> filterCards(String nameCard, String setName, String series, String publisher, String generation, String artist, String typesCard, String supertype, String subtype,  String evolvesFrom, String evolvesTo, String rarity, String legalities, String regulationMark);
 }
