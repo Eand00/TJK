@@ -22,7 +22,7 @@ public class DeckCards {
 
 	@EmbeddedId
     private DeckCardsId id;
-	
+
     @ManyToOne
     @MapsId("idCard")
     @JoinColumn(name = "id_card", nullable = false)

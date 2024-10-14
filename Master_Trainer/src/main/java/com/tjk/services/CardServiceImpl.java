@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.tjk.entities.Card;
 import com.tjk.repos.CardDAO;
 
@@ -13,7 +14,7 @@ public class CardServiceImpl implements CardService{
 
 	@Autowired
 	private CardDAO dao;
-	
+
 	@Override
 	public List<Card> getAllCards() {
 		return dao.findAll();

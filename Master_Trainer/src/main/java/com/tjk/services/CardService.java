@@ -8,7 +8,7 @@ import com.tjk.entities.Card;
 public interface CardService {
 
 	public List<Card> getAllCards();
-	
+
     public List<Card> getCardsByNameCard(String name);
     public Optional<Card> getCardsByCardId(String id);
     public List<Card> getCardsBySetName(String set);
@@ -24,6 +24,6 @@ public interface CardService {
     public List<Card> getCardsByRarity(String rarity);
     public List<Card> getCardsByLegalities(String legalities);
     public List<Card> getCardsByRegulationMark(String regulation);
-	
+
     public List<Card> filterCards(String nameCard, String setName, String series, String publisher, String generation, String artist, String typesCard, String supertype, String subtype,  String evolvesFrom, String evolvesTo, String rarity, String legalities, String regulationMark);
 }

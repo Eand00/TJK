@@ -1,24 +1,24 @@
 package com.tjk.services;
 
-import com.tjk.entities.User;
-import com.tjk.repos.UserDAO;
-
-import jakarta.transaction.Transactional;
+import java.util.List;
+import java.util.Optional;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.regex.Pattern;
+import com.tjk.entities.User;
+import com.tjk.repos.UserDAO;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserDAO dao;
-    
+
     @Autowired
     private PasswordEncoder passwordEncoder;
     /**
@@ -34,19 +34,12 @@ public class UserServiceImpl implements UserService {
      */
     private boolean isValidPassword(String password) {
         // Check that the length is at least 8
-        if (password.length() < 8) {
-            return false;
-        }
+        
         // Check for at least one uppercase letter
-        if (!Pattern.compile("[A-Z]").matcher(password).find()) {
-            return false;
-        }
+        
         // Check for at least one lowercase letter
-        if (!Pattern.compile("[a-z]").matcher(password).find()) {
-            return false;
-        }
         // Check for at least one digit
-        if (!Pattern.compile("[0-9]").matcher(password).find()) {
+        if ((password.length() < 8) || !Pattern.compile("[A-Z]").matcher(password).find() || !Pattern.compile("[a-z]").matcher(password).find() || !Pattern.compile("[0-9]").matcher(password).find()) {
             return false;
         }
         // Check for at least one symbol
