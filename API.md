@@ -10,7 +10,8 @@ These are the different requests that can be made in the platform to use the API
 - [DeckCards](#deckcards)
 
 # Authentication
-To use the APIs let's setup the **Authentication** section with the *Username* and *Password*.
+To use the APIs let's setup the **Authentication**(Basic Authentication
+) section with the *Username* and *Password*.
 
 ```
 Username: TestAPI
@@ -19,7 +20,80 @@ Password: Password123*
 
 
 # Card
+Go to:
+- [GET](#card-get)
+    - [getAllCards](#card-getallcards)
+    - [getCardByCardId](#car-getcardbyid)
+    - [getCardByName](#card-getcardbysinglefilter)
+    - [getCardBySetName](#card-getcardbysinglefilter)
+    - [getCardBySeries](#card-getcardbysinglefilter)
+    - [getCardByPublisher](#card-getcardbysinglefilter)
+    - [getCardByGeneration](#card-getcardbysinglefilter)
+    - [getCardByArtist](#card-getcardbysinglefilter)
+    - [getCardByTypesCard](#card-getcardbysinglefilter)
+    - [getCardBySupertype](#card-getcardbysinglefilter)
+    - [getCardBySubtypes](#card-getcardbysinglefilter)
+    - [getCardByEvolvesFrom](#card-getcardbysinglefilter)
+    - [getCardByEvolvesTo](#card-getcardbysinglefilter)
+    - [getCardByRarity](#card-getcardbysinglefilter)
+    - [getCardByLegalities](#card-getcardbysinglefilter)
+    - [getCardByRegulationMark](#card-getcardbysinglefilter)
+    - [filterCards](#card-getcardbymultiplefilter)
+- [Top of the document](#)
 
+## <span id="card-get" style="color:lightblue;">GET</span>
+
+### <span id="card-getallcards">getAllCards:</span>
+**Endpoint**: `http://localhost:1699/master_trainer/cards`      
+This request gets all the cards in the DB. 
+
+---
+## <span id="car-getcardbyid">getCardByCardId:</span>
+**Endpoint**: `http://localhost:1699/master_trainer/cards/cardId/{cardId}`      
+This request gets a specific card by its id.
+> *Example usage*:        
+> `http://localhost:1699/master_trainer/cards/cardId/base1-1`      
+> Gets the card with the id `base1-1`.
+
+---
+## <span id="card-getcardbysinglefilter">getCardBy{Parameter}</span>
+**Endpoint**: `http://localhost:1699/master_trainer/cards/[parameter]/{parameter value}`
+> *Example usage*:        
+> `http://localhost:1699/master_trainer/cards/generation/third`      
+> Gets the cards of the `third` generation.  
+
+[Parameter list](#card-filterparamlist)
+
+---
+## <span id="card-getcardbymultiplefilter">filterCards</span>  
+**Endpoint**: `http://localhost:1699/master_trainer/cards/filter?[parammeter]={parameter value}&[other parammeter]={other parameter value}`
+> *Example usage*:  
+> `http://localhost:1699/master_trainer/cards/filter?nameCard=Chespin&subtypes=Basic&legalities=unlimited`  
+> Gets the cards tha contain `Chespin` in their name, of `Basic` subtype and `unlimited` legality.  
+
+[Parameter list](#card-filterparamlist)
+
+
+### <span id="card-filterparamlist">Filter Query Parameters</span>
+
+| Parameter       |Example                   | Required | Description                        |
+|-----------------|--------------------------|----------|------------------------------------|
+| `nameCard`      | Pikachu                  | No       | Filters by the card's name.        |
+| `setName`       | Wizards Black Star Promos| No       | Filters by the set.                |
+| `series`        | Base                     | No       | Filters by the serie.              |
+| `publisher`     | WOTC                     | No       | Filters by the publisher.          |
+| `generation`    | First                    | No       | Filters by the generation.         |
+| `artist`        | Kagemaru Himeno          | No       | Filters by the artist.             |
+| `typesCard`     | Lightning                | No       | Filters by the card's types.       |
+| `supertype`     | Pokémon                  | No       | Filters by the card's supertype.   |
+| `subtypes`      | Basic                    | No       | Filters by the card's subtypes.    |
+| `evolvesFrom`   | Zubat                    | No       | Filters by the card's evolution.   |
+| `evolvesTo`     | Raichu                   | No       | Filters by the card's prevolution. |
+| `rarity`        | Promo                    | No       | Filters by the rarity.             |
+| `legalities`    | unlimited                | No       | Filters by the card's legalities.  |
+| `regulationMark`| G                        | No       | Filters by the regulation mark.    |
+
+---
 
 # User
 Go to:
@@ -412,3 +486,59 @@ This request removes a card from the collection of the user.
 
 
 # DeckCards
+Go to:
+- [GET](#deckcards-get)
+    - [getCardsInDeck](#deckcard-get-getcardsindeck)
+    - [getTotalCardsInDeck](#deckcard-get-gettotalcardindeck)
+    - [isDeckValid](#deckcard-get-isdeckvalid)
+- [POST](#deckcards-post)
+    - [addCardToDeck](#deckcards-post-addcard)
+- [PUT](#deckcards-put)
+    - [updateCardQuantityInDeck](#deckcards-put-updatecardquantityindeck)
+- [DELETE](#deckcards-delete)
+    - [removeCardFromDeck](#deckcards-delete-deletecardfromdeck)
+- [Top of the document](#)
+
+## <span id="deckcards-get" style="color:lightblue;">GET</span>
+
+### <span id="deckcard-get-getcardsindeck">getCardsInDeck:</span>
+**Endpoint**: `http://localhost:1699/master_trainer/deck-builder/cards-in-deck/{deckId}`      
+Gets all the cards of the given deck by `deckid`.     
+> *Example usage*:        
+> `http://localhost:1699/master_trainer/deck-builder/cards-in-deck/1`      
+> Gets all the cards of deck with `deckId=1`.
+
+### <span id="deckcard-get-gettotalcardindeck">getTotalCardsInDeck</span>
+**Endpoint**: `http://localhost:1699/master_trainer/deck-builder/total-cards/{deckId}"`  
+Gets the total number of cards inside a deck by `deckid`.     
+> *Example usage*:        
+> `http://localhost:1699/master_trainer/deck-builder/total-cards/1`      
+> Gets the total number of cards of deck with `deckId=1`.
+
+## <span id="deckcards-post" style="color:yellow;">POST</span>
+
+### <span id="deckcards-post-addcard">addCardToDeck</span>
+**Endpoint**: `http://localhost:1699/master_trainer/deck-builder/add-card?idDeck={param value}&idCard={param value}&quantity={param value}"`  
+Adds a positive quantity `quantity` of a card `idCard` in the deck `deckid`.     
+> *Example usage*:        
+> `http://localhost:1699/master_trainer/deck-builder/add-card?idDeck=1&idCard=base1-3&quantity=4`      
+> Add `4` cards with id `base1-3` inside `deckId=1`.
+
+
+## <span id="deckcards-put" style="color:orange;">PUT</span>
+
+### <span id="deckcards-put-updatecardquantityindeck">updateCardQuantityInDeck</span>
+**Endpoint**: `http://localhost:1699/master_trainer/deck-builder/add-card?idDeck={param value}&idCard={param value}&newQuantity={param value}"`  
+Changes the quantity `quantity` of a card `idCard` in the deck `deckid`.     
+> *Example usage*:        
+> `http://localhost:1699/master_trainer/deck-builder/update-quantity?deckId=1&cardId=base1-2&newQuantity=1`      
+> Changes the card's with id `base1-3` quantity to `1` inside `deckId=1`.
+
+## <span id="deckcards-delete" style="color:red;">DELETE</span>
+
+### <span id="deckcards-delete-deletecardfromdeck">removeCardFromDeck</span>
+**Endpoint**: `http://localhost:1699/master_trainer/deck-builder/add-card?idDeck={param value}&idCard={param value}&newQuantity={param value}"`  
+Changes the quantity `quantity` of a card `idCard` in the deck `deckid`.     
+> *Example usage*:        
+> `http://localhost:1699/master_trainer/deck-builder/delete-card/1/base1-2`      
+> Deletes the card with id `base1-2` inside `deckId=1`.
