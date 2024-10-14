@@ -29,10 +29,11 @@ public class DeckCardsServiceImpl implements DeckCardsService{
     @Override
     public void addCardToDeck(Integer deckId, String cardId, Integer quantity) throws IllegalArgumentException {
     	// Checks if the deck has slots available
-    	if (getTotalCardsInDeck(deckId) >= 60) {
-    		throw new IllegalArgumentException("The deck is full.");
-    	}
-
+	    if (getTotalCardsInDeck(deckId) >= 60) {
+	    	throw new IllegalArgumentException("The deck already has 60 cards. You can't add any more cards.");
+	    } else if (getTotalCardsInDeck(deckId) + quantity > 60) {
+	        throw new IllegalArgumentException("Adding " + quantity + " card(s) would exceed the deck's limit of 60 cards.");
+	    }
     	// Creates a DeckCardsId
     	DeckCardsId deckCardsId = new DeckCardsId(cardId,deckId);
 
@@ -47,6 +48,7 @@ public class DeckCardsServiceImpl implements DeckCardsService{
 
         // Create the DeckCards object and set its attributes
         DeckCards deckCards = new DeckCards();
+        deckCards.setId(deckCardsId);
         deckCards.setCard(card);  // Set the card
         deckCards.setDeck(deck);  // Set the deck
         deckCards.setQuantity(quantity);  // Set the quantity
@@ -77,8 +79,8 @@ public class DeckCardsServiceImpl implements DeckCardsService{
     // Updates the quantity of a card in a deck
     public DeckCards updateCardQuantityInDeck(Integer deckId, String cardId, Integer newQuantity) throws IllegalArgumentException {
     	// Validate that the new quantity is a positive integer
-        if (newQuantity <= 0) {
-            throw new IllegalArgumentException("Quantity must be a positive integer.");
+        if (newQuantity < 1) {
+            throw new IllegalArgumentException("Quantity must be bigger than 1.");
         }
 
         // Create a DeckCardsId using the provided deckId and cardId
@@ -96,7 +98,7 @@ public class DeckCardsServiceImpl implements DeckCardsService{
         // Update the quantity
         existingDeckCards.setQuantity(newQuantity);
 
-        // Validate the updated data (if you have specific validation rules for the quantity)
+        // Validate the updated data
         validateDeckCards(existingDeckCards);
 
         // Save the updated DeckCards entry to the database
@@ -106,7 +108,7 @@ public class DeckCardsServiceImpl implements DeckCardsService{
     @Override
 	public int getTotalCardsInDeck(Integer deckId) {
     	// Creates a list of DeckCards
-		List<DeckCards> cardList = getCardsInDeck(deckId);
+		List<DeckCards> cardList = deckCardDao.findByDeck_IdDeck(deckId);
 
 		// Adds for each card the corresponding quantity to the total
 		int result = 0;
@@ -119,7 +121,7 @@ public class DeckCardsServiceImpl implements DeckCardsService{
 	@Override
 	public boolean isDeckValid(Integer deckId) {
 		// Creates a list of DeckCards
-		List<DeckCards> cardList = getCardsInDeck(deckId);
+		List<DeckCards> cardList = deckCardDao.findByDeck_IdDeck(deckId);
 
 		// Returns false if the deck doesn't contain 60 cards
 		if (getTotalCardsInDeck(deckId) != 60) {
@@ -194,7 +196,7 @@ public class DeckCardsServiceImpl implements DeckCardsService{
 	// Counts the number of cards with the same name
 	public int countCardsWithName(Integer deckId, String name) {
 	    // Creates a list of DeckCards
-	    List<DeckCards> cardList = getCardsInDeck(deckId);
+	    List<DeckCards> cardList = deckCardDao.findByDeck_IdDeck(deckId);
 
 	    int count = 0;
 	    for (DeckCards deckCards : cardList) {
