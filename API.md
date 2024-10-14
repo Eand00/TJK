@@ -154,6 +154,130 @@ This request deletes the user with the id given.
 
 
 # Deck
+Go to:
+- [GET](#deck-get)
+    - [getDeckByName](#deck-get-getdeckbyname)
+    - [getDeckByIdUser](#deck-get-getdeckbyiduser)
+    - [getPublicDecks](#deck-get-getpublicdecks)
+    - [getLegalDecks](#deck-get-getlegaldecks)
+    - [getDeckByIdDeck](#deck-get-getdeckbyiddeck)
+- [POST](#deck-post)
+    - [createDeck](#deck-post-createdeck)
+- [PUT](#deck-put)
+    - [updateDeck](#deck-put-updatedeck)
+- [DELETE](#deck-delete)
+    - [deleteDeck](#deck-delete-deletedeck)
+- [Top of the document](#)
+
+<!--  -->
+## <span id="deck-get" style="color:lightblue;">GET</span>
+
+### <span id="deck-get-getdeckbyname">getDeckByName:</span>
+**Endpoint**: `http://localhost:1699/master_trainer/decks/name/{deckName}`           
+This request gets the deck by its name.  
+> *Example usage*:        
+> `http://localhost:1699/master_trainer/decks/name/Charizard`      
+> Gets the deck with the name `Charizard`.
+
+---
+### <span id="deck-get-getdeckbyiduser">getDeckByIdUser:</span>
+**Endpoint**: `http://localhost:1699/master_trainer/decks/user/{idUser}`           
+This request gets all the decks for the user given.  
+> *Example usage*:        
+> `http://localhost:1699/master_trainer/decks/user/2`      
+> Gets the decks for the user with the id `2`.
+
+---
+### <span id="deck-get-getpublicdecks">getPublicDecks:</span>
+**Endpoint**: `http://localhost:1699/master_trainer/decks/public`           
+This request gets all the decks marked as public.  
+
+---
+### <span id="deck-get-getlegaldecks">getLegalDecks:</span>
+**Endpoint**: `http://localhost:1699/master_trainer/decks/legal`           
+This request gets all the decks marked as legal.  
+
+---
+### <span id="deck-get-getdeckbyiddeck">getDeckByIdDeck:</span>
+**Endpoint**: `http://localhost:1699/master_trainer/decks/{idDeck}`           
+This request gets the deck with the id given.  
+> *Example usage*:        
+> `http://localhost:1699/master_trainer/decks/4`      
+> Gets the deck with the id `4`.
+
+---
+[Go back to the selection](#deck)     
+
+---
+
+## <span id="deck-post" style="color:yellow;">POST</span>
+
+### <span id="deck-post-createdeck">createDeck:</span>
+**Endpoint**: `http://localhost:1699/master_trainer/decks/create_deck`      
+This request adds a deck for a user.              
+In the **body** of the request you should add a json like this:
+```json
+{
+    "deckName": "Charizard",
+    "format": "Legal",
+    "legal": true,
+    "isPrivate": false,
+    "user": {
+        "idUser": 2
+    },
+    "coverCard": {
+        "idCard": "base1-100"
+    }
+}
+```
+
+---
+[Go back to the selection](#deck)     
+
+---
+
+## <span id="deck-put" style="color:orange;">PUT</span>
+
+### <span id="deck-put-updatedeck">updateDeck:</span>
+**Endpoint**: `http://localhost:1699/master_trainer/decks/update_deck/{idDeck}`       
+This request edits the deck with the id given.              
+In the **body** of the request you should add a json like this:
+```json
+{
+    "deckName": "Arcanine",
+    "format": "Legal",
+    "legal": true,
+    "isPrivate": true,
+    "user": {
+        "idUser": 3
+    },
+    "coverCard": {
+        "idCard": "base1-100"
+    }
+}
+```
+> *Example usage*:        
+> `http://localhost:1699/master_trainer/decks/update_deck/4`      
+> Edits the deck with the id `4`.
+
+---
+[Go back to the selection](#deck)     
+
+---
+
+## <span id="deck-delete" style="color:red;">DELETE</span>
+
+### <span id="deck-delete-deletedeck">deleteDeck:</span>
+**Endpoint**: `http://localhost:1699/master_trainer/decks/delete_deck/{idDeck}`  
+This request deletes the deck with the id given.
+> *Example usage*:        
+> `http://localhost:1699/master_trainer/decks/delete_deck/3`      
+> Deletes the deck with the id `2`.
+
+---
+[Go back to the selection](#deck)     
+
+---
 
 
 # Collection
