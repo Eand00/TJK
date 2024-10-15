@@ -1,5 +1,7 @@
 package com.tjk.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -21,6 +23,7 @@ import lombok.ToString;
 @ToString
 public class Card {
 
+	@JsonIgnore
     @Id
     @Column(name = "id_card", nullable = false)
     private String idCard;
