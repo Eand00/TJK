@@ -255,7 +255,7 @@ Go to:
     - [deleteDeck](#deck-delete-deletedeck)
 - [Top of the document](#)
 
-<!--  -->
+
 ## <span id="deck-get" style="color:lightblue;">GET</span>
 
 ### <span id="deck-get-getdeckbyname">getDeckByName:</span>
