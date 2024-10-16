@@ -71,4 +71,9 @@ public interface CardDAO extends JpaRepository<Card, String>{
              @Param("legalities") String legalities,
              @Param("regulationMark") String regulationMark);
 
+	@Query("SELECT c from Card c WHERE "
+			+ "evolvesFrom = :pokemon OR"
+			+ "evolvesTo = :pokemon")
+	List<Card> findRelatedCard(@Param("pokemon") String pokemon);
+	
 }
