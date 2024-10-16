@@ -10,7 +10,7 @@ These are the different requests that can be made in the platform to use the API
 - [DeckCards](#deckcards)
 
 # Authentication
-To use the APIs let's setup the **Authentication**(Basic Authentication
+To use the APIs let's setup the **Authentication** (Basic Authentication
 ) section with the *Username* and *Password*.
 
 ```
@@ -39,6 +39,7 @@ Go to:
     - [getCardByLegalities](#card-getcardbysinglefilter)
     - [getCardByRegulationMark](#card-getcardbysinglefilter)
     - [filterCards](#card-getcardbymultiplefilter)
+    - [getRelatedCards](#card-getrelatedcards)
 - [Top of the document](#)
 
 ## <span id="card-get" style="color:lightblue;">GET</span>
@@ -56,7 +57,7 @@ This request gets a specific card by its id.
 > Gets the card with the id `base1-1`.
 
 ---
-## <span id="card-getcardbysinglefilter">getCardBy{Parameter}</span>
+## <span id="card-getcardbysinglefilter">getCardBy{Parameter}:</span>
 **Endpoint**: `http://localhost:1699/master_trainer/cards/[parameter]/{parameter value}`
 > *Example usage*:        
 > `http://localhost:1699/master_trainer/cards/generation/third`      
@@ -65,7 +66,7 @@ This request gets a specific card by its id.
 [Parameter list](#card-filterparamlist)
 
 ---
-## <span id="card-getcardbymultiplefilter">filterCards</span>  
+## <span id="card-getcardbymultiplefilter">filterCards:</span>  
 **Endpoint**: `http://localhost:1699/master_trainer/cards/filter?[parammeter]={parameter value}&[other parammeter]={other parameter value}`
 > *Example usage*:  
 > `http://localhost:1699/master_trainer/cards/filter?nameCard=Chespin&subtypes=Basic&legalities=unlimited`  
@@ -92,6 +93,17 @@ This request gets a specific card by its id.
 | `rarity`        | Promo                    | No       | Filters by the rarity.             |
 | `legalities`    | unlimited                | No       | Filters by the card's legalities.  |
 | `regulationMark`| G                        | No       | Filters by the regulation mark.    |
+
+---
+## <span id="car-getrelatedcards">getRelatedCards:</span>
+**Endpoint**: `http://localhost:1699/master_trainer/cards/related/{pokemonName}`      
+This request gets the related cards (evolutions or pre evolutions) given the pokemon name.
+> *Example usage*:        
+> `http://localhost:1699/master_trainer/cards/related/wartortle`      
+> Gets the related cards to `wartortle`.
+
+---
+[Go back to the selection](#card)     
 
 ---
 
@@ -243,7 +255,7 @@ Go to:
     - [deleteDeck](#deck-delete-deletedeck)
 - [Top of the document](#)
 
-<!--  -->
+
 ## <span id="deck-get" style="color:lightblue;">GET</span>
 
 ### <span id="deck-get-getdeckbyname">getDeckByName:</span>
