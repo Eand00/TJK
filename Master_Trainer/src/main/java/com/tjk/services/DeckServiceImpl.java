@@ -1,15 +1,15 @@
 package com.tjk.services;
 
-import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.tjk.entities.Deck;
 import com.tjk.repos.DeckDAO;
+import com.tjk.exceptions.DeckNotFoundException;
+import com.tjk.exceptions.DeckValidationException;
 
 import jakarta.transaction.Transactional;
+import java.util.Optional;
+import java.util.List;
 
 @Service
 public class DeckServiceImpl implements DeckService {
@@ -21,11 +21,11 @@ public class DeckServiceImpl implements DeckService {
     @Override
     public List<Deck> getDeckByName(String deckName) {
         List<Deck> decks = dao.findByDeckName(deckName);
-
+        
         if (decks.isEmpty()) {
-            throw new IllegalArgumentException("No decks found with the name: " + deckName);
+            throw new DeckNotFoundException("No decks found with the name: " + deckName);
         }
-
+        
         return decks;
     }
 
@@ -36,7 +36,7 @@ public class DeckServiceImpl implements DeckService {
         if (!decks.isEmpty()) {
             return decks;
         }
-        throw new IllegalArgumentException("User doesn't have any decks");
+        throw new DeckNotFoundException("User doesn't have any decks");
     }
 
     // Get public decks
@@ -46,7 +46,7 @@ public class DeckServiceImpl implements DeckService {
         if (!publicDecks.isEmpty()) {
             return publicDecks;
         }
-        throw new IllegalArgumentException("User doesn't have any public decks");
+        throw new DeckNotFoundException("User doesn't have any public decks");
     }
 
     // Get legal decks
@@ -56,7 +56,7 @@ public class DeckServiceImpl implements DeckService {
         if (!legalDecks.isEmpty()) {
             return legalDecks;
         }
-        throw new IllegalArgumentException("User doesn't have any legal decks");
+        throw new DeckNotFoundException("User doesn't have any legal decks");
     }
 
     // Get deck by ID
@@ -66,32 +66,32 @@ public class DeckServiceImpl implements DeckService {
         if (deck.isPresent()) {
             return deck;
         }
-        throw new IllegalArgumentException("No deck found with id: " + idDeck);
+        throw new DeckNotFoundException("No deck found with id: " + idDeck);
     }
 
     // Validate deck fields
     @Override
     public boolean isDeckValid(Deck deck) {
         if (deck == null) {
-            throw new IllegalArgumentException("Deck cannot be null");
+            throw new DeckValidationException("Deck cannot be null");
         }
         if (deck.getDeckName() == null || deck.getDeckName().trim().isEmpty()) {
-            throw new IllegalArgumentException("Deck name cannot be null or empty");
+            throw new DeckValidationException("Deck name cannot be null or empty");
         }
         if (deck.getFormat() == null || deck.getFormat().trim().isEmpty()) {
-            throw new IllegalArgumentException("Deck format cannot be null or empty");
+            throw new DeckValidationException("Deck format cannot be null or empty");
         }
         if (deck.getLegal() == null) {
-            throw new IllegalArgumentException("Legal status must be specified");
+            throw new DeckValidationException("Legal status must be specified");
         }
         if (deck.getIsPrivate() == null) {
-            throw new IllegalArgumentException("Privacy status must be specified");
+            throw new DeckValidationException("Privacy status must be specified");
         }
         if (deck.getUser() == null) {
-            throw new IllegalArgumentException("User not found with id: " + deck.getUser().getIdUser());
+            throw new DeckValidationException("User not found with id: " + deck.getUser().getIdUser());
         }
         if (deck.getCoverCard() == null) {
-            throw new IllegalArgumentException("Cover card not found with id: " + deck.getCoverCard().getIdCard());
+            throw new DeckValidationException("Cover card not found with id: " + deck.getCoverCard().getIdCard());
         }
         return true;
     }
@@ -103,7 +103,7 @@ public class DeckServiceImpl implements DeckService {
         if (isDeckValid(deck)) {
             return dao.save(deck);
         }
-        throw new IllegalArgumentException("Deck could not be created!");
+        throw new DeckValidationException("Deck could not be created!");
     }
 
     // Delete deck by ID
@@ -114,7 +114,7 @@ public class DeckServiceImpl implements DeckService {
             dao.delete(deckOptional.get());
             return true;
         } else {
-            throw new IllegalArgumentException("Deck with id " + idDeck + " not found.");
+            throw new DeckNotFoundException("Deck with id " + idDeck + " not found.");
         }
     }
 
@@ -135,6 +135,6 @@ public class DeckServiceImpl implements DeckService {
                 return dao.save(existingDeck);
             }
         }
-        throw new IllegalArgumentException("Deck with id " + idDeck + " not found.");
+        throw new DeckNotFoundException("Deck with id " + idDeck + " not found.");
     }
 }

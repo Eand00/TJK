@@ -16,15 +16,10 @@ import com.tjk.repos.UserDAO;
 public class CustomUserDetailsService implements UserDetailsService {
 
     @Autowired
-    private UserDAO userDAO; // DAO for accessing User data
+    private UserDAO userDAO;
 
-    /**
-     * Loads user details by username for authentication.
-     *
-     * @param username the username of the user to load
-     * @return UserDetails containing user information for authentication
-     * @throws UsernameNotFoundException if the user is not found
-     */
+    
+     //Loads user details by username for authentication.
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         // Retrieve the user from the database by username
