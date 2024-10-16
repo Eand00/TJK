@@ -128,7 +128,7 @@ This request gets a specific user by their id.
 
 ---
 ## <span id="user-get-getuserbyusername">getUserByUsername:</span>
-**Endpoint**: `http://localhost:1699/master_trainer/users/{username}`      
+**Endpoint**: `http://localhost:1699/master_trainer/users/username/{username}`      
 This request gets a user by their username.
 > *Example usage*:        
 > `http://localhost:1699/master_trainer/users/TestAPI`      
