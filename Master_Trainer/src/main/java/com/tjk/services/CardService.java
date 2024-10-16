@@ -26,6 +26,6 @@ public interface CardService {
     public List<Card> getCardsByRegulationMark(String regulation);
 
     public List<Card> filterCards(String nameCard, String setName, String series, String publisher, String generation, String artist, String typesCard, String supertype, String subtype,  String evolvesFrom, String evolvesTo, String rarity, String legalities, String regulationMark);
-    public List<Card> getRelatedCards(String pokemon);
+    public List<Card> getRelatedCards(String pokemonName);
     
 }

@@ -119,9 +119,9 @@ public class CardREST {
         return service.filterCards(nameCard, setName, series, publisher, generation, artist, typesCard, supertype, subtypes, evolvesFrom, evolvesTo, rarity, legalities, regulationMark);
     }
     
-    @GetMapping("/related/{pokemon}")
-    public List<Card> getRelatedCards(@PathVariable String pokemon){
-    	return service.getRelatedCards(pokemon);
+    @GetMapping("/related/{pokemonName}")
+    public List<Card> getRelatedCards(@PathVariable String pokemonName){
+    	return service.getRelatedCards(pokemonName);
     }
     
 }

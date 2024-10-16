@@ -100,7 +100,7 @@ public class CardServiceImpl implements CardService{
     }
 
 	@Override
-	public List<Card> getRelatedCards(String pokemon) {
-		return dao.findRelatedCard(pokemon);
+	public List<Card> getRelatedCards(String pokemonName) {
+		return dao.findRelatedCard(pokemonName);
 	}
 }
