@@ -220,4 +220,9 @@ public class CardServiceImpl implements CardService {
     public List<Card> filterCards(String nameCard, String setName, String series, String publisher, String generation, String artist, String typesCard, String supertype, String subtype, String evolvesFrom, String evolvesTo, String rarity, String legalities, String regulationMark) {
         return dao.findCardsWithFilters(nameCard, setName, series, publisher, generation, artist, typesCard, supertype, subtype, evolvesFrom, evolvesTo, rarity, legalities, regulationMark);
     }
+    // Retrieves related cards based on if they evolve from or evolve to the given pokemon name.
+	  @Override
+	  public List<Card> getRelatedCards(String pokemonName) {
+		  return dao.findRelatedCard(pokemonName);
+	  }
 }
