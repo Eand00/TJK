@@ -58,6 +58,9 @@ public class DeckCardsServiceImpl implements DeckCardsService{
 
         // Saves the new DeckCards entry
         deckCardDao.save(deckCards);
+        
+        // Checks if after adding a new card the deck is valid
+        deck.setLegal(isDeckValid(deckId));
     }
 
     // Removes a card from a deck

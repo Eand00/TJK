@@ -102,6 +102,8 @@ public class DeckServiceImpl implements DeckService {
     @Transactional
     @Override
     public Deck createDeck(Deck deck) {
+    	// Sets deck as illegal by default
+    	deck.setLegal(false);
         if (isDeckValid(deck)) {
             return dao.save(deck);
         }
@@ -130,7 +132,7 @@ public class DeckServiceImpl implements DeckService {
             if (isDeckValid(updatedDeck)) {
                 existingDeck.setDeckName(updatedDeck.getDeckName());
                 existingDeck.setFormat(updatedDeck.getFormat());
-                existingDeck.setLegal(updatedDeck.getLegal());
+                existingDeck.setLegal(false);
                 existingDeck.setIsPrivate(updatedDeck.getIsPrivate());
                 existingDeck.setUser(updatedDeck.getUser());
                 existingDeck.setCoverCard(updatedDeck.getCoverCard());
