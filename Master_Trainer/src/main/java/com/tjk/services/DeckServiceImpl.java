@@ -1,15 +1,17 @@
 package com.tjk.services;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.tjk.entities.Deck;
-import com.tjk.repos.DeckDAO;
 import com.tjk.exceptions.DeckNotFoundException;
 import com.tjk.exceptions.DeckValidationException;
+import com.tjk.repos.DeckDAO;
 
 import jakarta.transaction.Transactional;
-import java.util.Optional;
-import java.util.List;
 
 @Service
 public class DeckServiceImpl implements DeckService {
@@ -21,11 +23,11 @@ public class DeckServiceImpl implements DeckService {
     @Override
     public List<Deck> getDeckByName(String deckName) {
         List<Deck> decks = dao.findByDeckName(deckName);
-        
+
         if (decks.isEmpty()) {
             throw new DeckNotFoundException("No decks found with the name: " + deckName);
         }
-        
+
         return decks;
     }
 

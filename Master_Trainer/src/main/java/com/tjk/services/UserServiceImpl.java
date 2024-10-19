@@ -1,35 +1,38 @@
 package com.tjk.services;
 
-import com.tjk.entities.User;
-import com.tjk.repos.UserDAO;
-import com.tjk.exceptions.UserNotFoundException;
-
-import jakarta.transaction.Transactional;
+import java.util.List;
+import java.util.Optional;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.regex.Pattern;
+import com.tjk.entities.User;
+import com.tjk.exceptions.UserNotFoundException;
+import com.tjk.repos.UserDAO;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserDAO dao; 
-    
+    private UserDAO dao;
+
     @Autowired
     private PasswordEncoder passwordEncoder; // Encoder for hashing passwords before saving to the database
 
     // Validates if the given password meets complexity requirements (length, uppercase, lowercase, digit, and special character)
     private boolean isValidPassword(String password) {
-        if (password.length() < 8) return false; // Password should be at least 8 characters long
-        if (!Pattern.compile("[A-Z]").matcher(password).find()) return false; // Must contain an uppercase letter
-        if (!Pattern.compile("[a-z]").matcher(password).find()) return false; // Must contain a lowercase letter
-        if (!Pattern.compile("[0-9]").matcher(password).find()) return false; // Must contain a digit
-        if (!Pattern.compile("[^a-zA-Z0-9]").matcher(password).find()) return false; // Must contain a special character
+        if ((password.length() < 8) || !Pattern.compile("[A-Z]").matcher(password).find() || !Pattern.compile("[a-z]").matcher(password).find() || !Pattern.compile("[0-9]").matcher(password).find())
+		 {
+			return false; // Must contain a digit
+		}
+        if (!Pattern.compile("[^a-zA-Z0-9]").matcher(password).find())
+		 {
+			return false; // Must contain a special character
+		}
         return true;
     }
 
@@ -95,7 +98,7 @@ public class UserServiceImpl implements UserService {
     public Optional<User> updateUser(Integer id, User userDetails) {
         User existingUser = dao.findById(id)
             .orElseThrow(() -> new UserNotFoundException("User with ID " + id + " not found."));
-        
+
         // Ensure username is unique if it's being changed
         if (!existingUser.getUsername().equals(userDetails.getUsername()) &&
             dao.findByUsername(userDetails.getUsername()).isPresent()) {
@@ -164,7 +167,7 @@ public class UserServiceImpl implements UserService {
     public Optional<String> changeUserPassword(Integer id, String newPassword) {
         User user = dao.findById(id)
             .orElseThrow(() -> new UserNotFoundException("User with ID " + id + " not found."));
-        
+
         // Validate the new password
         if (!isValidPassword(newPassword)) {
             throw new IllegalArgumentException("Password must be at least 8 characters long, contain an uppercase letter, a lowercase letter, a digit, and a symbol.");

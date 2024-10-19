@@ -1,5 +1,7 @@
 package com.tjk.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,14 +10,13 @@ import com.tjk.entities.Collection;
 import com.tjk.entities.CollectionId;
 import com.tjk.entities.User;
 import com.tjk.exceptions.CardNotFoundException;
-import com.tjk.exceptions.UserNotFoundException;
 import com.tjk.exceptions.EmptyCollectionException;
+import com.tjk.exceptions.UserNotFoundException;
 import com.tjk.repos.CardDAO;
 import com.tjk.repos.CollectionDAO;
 import com.tjk.repos.UserDAO;
 
 import jakarta.transaction.Transactional;
-import java.util.List;
 
 @Service
 public class CollectionServiceImpl implements CollectionService {
@@ -27,7 +28,7 @@ public class CollectionServiceImpl implements CollectionService {
     private CardDAO cardDAO;
 
     @Autowired
-    private UserDAO userDAO; 
+    private UserDAO userDAO;
 
     // Retrieves all collection records
     public List<Collection> getAll() {
@@ -55,7 +56,7 @@ public class CollectionServiceImpl implements CollectionService {
                             .orElseThrow(() -> new CardNotFoundException("Card not found with ID: " + idCard));
                     User user = userDAO.findById(idUser)
                             .orElseThrow(() -> new UserNotFoundException("User not found with ID: " + idUser));
-                    
+
                     // Create a new collection entry
                     Collection newCollection = new Collection();
                     newCollection.setId(new CollectionId(idCard, idUser));
@@ -76,7 +77,7 @@ public class CollectionServiceImpl implements CollectionService {
     public Collection updateCardQuantity(Integer idUser, String idCard, Integer newQuantity) {
         Collection collection = collectionDAO.findByUser_IdUserAndCard_IdCard(idUser, idCard)
                 .orElseThrow(() -> new CardNotFoundException("Card not found for the user"));
-        
+
         // Set new quantity or default to 1 if new quantity is invalid
         collection.setQuantity(newQuantity > 0 ? newQuantity : 1);
         return collectionDAO.save(collection);

@@ -5,8 +5,9 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.tjk.entities.Card;
-import com.tjk.exceptions.CardNotFoundException; 
+import com.tjk.exceptions.CardNotFoundException;
 import com.tjk.repos.CardDAO;
 
 @Service
@@ -33,7 +34,7 @@ public class CardServiceImpl implements CardService {
         }
         return cards;
     }
-    
+
     // Retrieves a card by its ID. Throws an exception if the ID is null/empty or the card is not found.
     @Override
     public Optional<Card> getCardsByCardId(String id) {
@@ -45,7 +46,7 @@ public class CardServiceImpl implements CardService {
                     throw new CardNotFoundException("Card not found with ID: " + id);
                 });
     }
-    
+
     // Retrieves cards by set name. Throws an exception if the set name is null/empty or no cards are found.
     @Override
     public List<Card> getCardsBySetName(String set) {

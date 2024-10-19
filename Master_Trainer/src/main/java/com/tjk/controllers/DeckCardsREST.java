@@ -54,7 +54,7 @@ public class DeckCardsREST {
 	public List<DeckCards> getCardsInDeck(@PathVariable Integer deckId) {
         return service.getCardsInDeck(deckId);
     }
-	
+
 	//Checks if the deck is valid or not
 	@GetMapping("is-deck-valid/{deckId}")
 	public ResponseEntity<String> isDeckValid(@PathVariable Integer deckId) {
