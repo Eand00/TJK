@@ -1,5 +1,8 @@
 package com.tjk.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -20,6 +23,7 @@ import lombok.ToString;
 @ToString
 public class Collection {
 
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @EmbeddedId
     private CollectionId id;
 
