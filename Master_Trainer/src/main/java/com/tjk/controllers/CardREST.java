@@ -118,4 +118,10 @@ public class CardREST {
             @RequestParam(required = false) String regulationMark) {
         return service.filterCards(nameCard, setName, series, publisher, generation, artist, typesCard, supertype, subtypes, evolvesFrom, evolvesTo, rarity, legalities, regulationMark);
     }
+    
+    @GetMapping("/related/{pokemonName}")
+    public List<Card> getRelatedCards(@PathVariable String pokemonName){
+    	return service.getRelatedCards(pokemonName);
+    }
+    
 }
