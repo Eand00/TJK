@@ -1,6 +1,7 @@
 package com.tjk.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
@@ -22,8 +23,7 @@ import lombok.ToString;
 @ToString
 public class DeckCards {
 
-	@JsonIgnore
-	@EmbeddedId
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)	@EmbeddedId
     private DeckCardsId id;
 
     @ManyToOne
