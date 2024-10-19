@@ -1,5 +1,7 @@
 package com.tjk.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,6 +28,7 @@ import lombok.ToString;
 public class Deck {
 
     // Primary key: Deck ID
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_deck", nullable = false)
