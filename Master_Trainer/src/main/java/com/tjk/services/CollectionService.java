@@ -6,12 +6,67 @@ import com.tjk.entities.Collection;
 
 public interface CollectionService {
 
-	public Collection addCardToCollection(Integer idUser, String idCard, Integer quantity); // checks if card already in collection if it is adds quantity else add to collection
-	public Collection updateCardQuantity(Integer idUser, String idCard, Integer newQuantity); // checks if card already in collection if is updates quantity else add to collection
-	public boolean removeCardFromCollection(Integer idUser, String idCard); // checks if card already in collection, if it is removes it
-	public Collection markCardAsFavourite(Integer idUser, String idCard);// checks if card already in collection, if it is marks it as a favourite
-	public List<Collection> getFavouriteCards(Integer idUser); // get all the favourite cards in the collection
-	public List<Collection> getUserCollection(Integer idUser); // get all the cards in the collection
-	public Collection findByUserAndByCard(Integer idUser, String idCard); // get a collection by user id and card id
+    /**
+     * Adds a card to the user's collection or updates the quantity if it already exists.
+     *
+     * @param idUser the ID of the user
+     * @param idCard the ID of the card
+     * @param quantity the quantity of the card to add
+     * @return the updated or newly created Collection entry
+     */
+    public Collection addCardToCollection(Integer idUser, String idCard, Integer quantity);
 
+    /**
+     * Updates the quantity of a card in the user's collection or adds it if it doesn't exist.
+     *
+     * @param idUser the ID of the user
+     * @param idCard the ID of the card
+     * @param newQuantity the new quantity to set for the card
+     * @return the updated Collection entry
+     */
+    public Collection updateCardQuantity(Integer idUser, String idCard, Integer newQuantity);
+
+    /**
+     * Removes a card from the user's collection if it exists.
+     *
+     * @param idUser the ID of the user
+     * @param idCard the ID of the card
+     * @return true if the card was successfully removed, false otherwise
+     */
+    public boolean removeCardFromCollection(Integer idUser, String idCard);
+
+    /**
+     * Marks a card in the user's collection as a favourite.
+     *
+     * @param idUser the ID of the user
+     * @param idCard the ID of the card
+     * @return the updated Collection entry with the card marked as a favourite
+     */
+    public Collection markCardAsFavourite(Integer idUser, String idCard);
+
+    /**
+     * Retrieves all favourite cards in the user's collection.
+     *
+     * @param idUser the ID of the user
+     * @return a list of Collection entries representing the user's favourite cards
+     */
+    public List<Collection> getFavouriteCards(Integer idUser);
+
+    /**
+     * Retrieves all cards in the user's collection.
+     *
+     * @param idUser the ID of the user
+     * @return a list of Collection entries representing the user's entire collection
+     */
+    public List<Collection> getUserCollection(Integer idUser);
+
+    /**
+     * Retrieves a specific card in the user's collection by user ID and card ID.
+     *
+     * @param idUser the ID of the user
+     * @param idCard the ID of the card
+     * @return the Collection entry representing the card in the user's collection
+     */
+    public Collection findByUserAndByCard(Integer idUser, String idCard);
 }
+

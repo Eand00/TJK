@@ -32,7 +32,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
             // Set the password and roles for the user
             builder.password(user.getPassword()); // Set the user's password
-            builder.roles(user.getRole()); // Set the user's roles (assumed to be a String)
+            builder.roles(user.getRole()); // Set the user's roles
 
             return builder.build(); // Build and return the UserDetails object
         } else {

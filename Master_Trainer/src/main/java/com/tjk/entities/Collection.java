@@ -14,6 +14,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * Entity class representing a Collection in the database.
+ * This class maps to the "collections" table in the database.
+ */
 @Entity
 @Table(name = "collections")
 @Getter

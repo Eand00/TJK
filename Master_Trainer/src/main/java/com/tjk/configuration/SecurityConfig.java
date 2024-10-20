@@ -28,28 +28,27 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable()) // Disable CSRF for stateless services
             .authorizeHttpRequests(authorize -> authorize
-                .requestMatchers("/login", "/resources/**").permitAll()
-                .requestMatchers("/master_trainer/cards/**",
-                				"/master_trainer/users/create_user").permitAll()
-                .requestMatchers("/master_trainer/users/change_user_password").hasRole("ADMIN")
-                .anyRequest().authenticated()
+                .requestMatchers("/login", "/resources/**").permitAll() // Allow public access to login and resources
+                .requestMatchers("/master_trainer/cards/**", "/master_trainer/users/create_user").permitAll() // Allow public access to card and user creation
+                .requestMatchers("/master_trainer/users/change_user_password").hasRole("ADMIN") // Only admin can change user passwords
+                .anyRequest().authenticated() // All other requests require authentication
             )
-            .httpBasic(Customizer.withDefaults()) // Basic authentication
+            .httpBasic(Customizer.withDefaults()) // Enable Basic Authentication
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)); // Stateless session management
 
-        return http.build();
+        return http.build(); // Build and return the security filter chain
     }
 
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(userDetailsService);
-        authProvider.setPasswordEncoder(passwordEncoder());
-        return authProvider;
+        authProvider.setUserDetailsService(userDetailsService); // Set the user details service
+        authProvider.setPasswordEncoder(passwordEncoder()); // Set the password encoder
+        return authProvider; // Return the authentication provider
     }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        return new BCryptPasswordEncoder(); // Return the password encoder implementation
     }
 }
