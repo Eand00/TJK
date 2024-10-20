@@ -14,6 +14,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * Entity class representing a DeckCards in the database.
+ * This class maps to the "decks_cards" table and holds information about a cards of the deck.
+ */
 @Entity
 @Table(name = "decks_cards")
 @Getter

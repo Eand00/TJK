@@ -13,7 +13,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-// Annotating the class as a JPA entity to be mapped to a database table
+/**
+ * Entity class representing a User in the database.
+ * This class maps to the "userslogin" table in the database.
+ */
 @Entity
 @Table(name = "userslogin")
 @Getter
