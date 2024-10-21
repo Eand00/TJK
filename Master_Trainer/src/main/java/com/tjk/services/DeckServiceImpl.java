@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tjk.entities.Card;
 import com.tjk.entities.Deck;
 import com.tjk.exceptions.DeckNotFoundException;
 import com.tjk.exceptions.DeckValidationException;
@@ -138,5 +139,16 @@ public class DeckServiceImpl implements DeckService {
             }
         }
         throw new DeckNotFoundException("Deck with id " + idDeck + " not found.");
+    }
+    
+    // Generates a test hand of 7 random cards from a specific deck
+    public List<Card> testHand(Integer idDeck) {
+        Optional<Deck> deckOptional = dao.findById(idDeck);
+        if (deckOptional.isPresent()) {
+            
+            return dao.testHand(idDeck);
+        } else {
+            throw new DeckNotFoundException("Deck with id " + idDeck + " not found.");
+        }
     }
 }
