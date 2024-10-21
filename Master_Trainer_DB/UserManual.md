@@ -18,7 +18,7 @@ Here are the version used in the project:
 
 ## Creation of the tables
 
-These are the 5 tables created in the database:
+These are the 5 tables created in the database (more details in the next section):
 
 - `pokemoncards`: the table containing all the Pokemon cards records.
 - `userslogin`: the table containing all the users records.
@@ -33,6 +33,7 @@ These are the 5 tables created in the database:
 ## Tables fields and constraints
 
 <!-- inserire campi tabelle, PK FK UK -->
+
 <!-- breve descrizione con link al codice -->
 
 ## Data dump
