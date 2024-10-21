@@ -58,6 +58,9 @@ public class DeckCardsServiceImpl implements DeckCardsService{
 
         // Saves the new DeckCards entry
         deckCardDao.save(deckCards);
+        
+        // Checks if after adding a new card the deck is valid
+        deck.setLegal(isDeckValid(deckId));
     }
 
     // Removes a card from a deck
@@ -74,6 +77,9 @@ public class DeckCardsServiceImpl implements DeckCardsService{
 
         // Remove the card from the deck
         deckCardDao.delete(existingDeckCards.get());
+        
+        // Checks if after removing a card the deck is valid
+        existingDeckCards.get().getDeck().setLegal(isDeckValid(deckId));
     }
 
     // Updates the quantity of a card in a deck
@@ -100,6 +106,9 @@ public class DeckCardsServiceImpl implements DeckCardsService{
 
         // Validate the updated data
         validateDeckCards(existingDeckCards);
+        
+        // Checks if after updating a card's quantity the deck is valid
+        existingDeckCards.getDeck().setLegal(isDeckValid(deckId));
 
         // Save the updated DeckCards entry to the database
         return deckCardDao.save(existingDeckCards);

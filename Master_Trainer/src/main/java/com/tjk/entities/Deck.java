@@ -43,6 +43,7 @@ public class Deck {
     private String format;
 
     // Legal status of the deck (cannot be null)
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     @Column(name = "legal", nullable = false)
     private Boolean legal;
 
