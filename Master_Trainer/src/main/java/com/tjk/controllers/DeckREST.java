@@ -109,7 +109,7 @@ public class DeckREST {
         Deck deck = service.updateDeck(idDeck, updatedDeck);
         return ResponseEntity.ok(deck);
     }
-    
+
     // Get test hand from deck by ID
     @GetMapping("/{idDeck}/test_hand")
     public ResponseEntity<List<Card>> getTestHand(@PathVariable Integer idDeck) {

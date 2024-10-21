@@ -5,9 +5,7 @@ package com.tjk.repos;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 
-import com.tjk.entities.Card;
 import com.tjk.entities.Deck;
 /**
  * The {@code DeckDAO} interface provides methods for accessing and manipulating
@@ -51,8 +49,5 @@ public interface DeckDAO extends JpaRepository<Deck, Integer> {
      * @return a list of Deck objects that are legal or illegal based on the parameter.
      */
     List<Deck> findByLegal(boolean legal);
-    
-    // Retrieves a random hand of 7 cards from a specified deck
-    @Query(value = "SELECT * FROM pokemoncards pc INNER JOIN decks_cards dc ON pc.id_card = dc.id_card INNER JOIN decks d ON d.id_deck = dc.id_deck WHERE dc.id_deck = :idDeck ORDER BY RAND() Limit 7", nativeQuery = true)
-	List<Card> testHand(Integer idDeck);
+
 }

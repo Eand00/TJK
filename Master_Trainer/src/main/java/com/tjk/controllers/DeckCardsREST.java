@@ -33,12 +33,12 @@ public class DeckCardsREST {
         if (!service.isDeckValid(idDeck)) {
             throw new DeckNotFoundException("Deck with ID " + idDeck + " not found.");
         }
-        
+
         // Ensure quantity is positive
         if (quantity <= 0) {
             throw new IllegalArgumentException("Quantity must be greater than zero.");
         }
-        
+
         service.addCardToDeck(idDeck, idCard, quantity);
         return ResponseEntity.status(HttpStatus.CREATED).body("Card added to deck successfully.");
     }
