@@ -1,14 +1,20 @@
  package com.tjk.services;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tjk.entities.Card;
 import com.tjk.entities.Deck;
+import com.tjk.entities.DeckCards;
 import com.tjk.exceptions.DeckNotFoundException;
 import com.tjk.exceptions.DeckValidationException;
+import com.tjk.repos.DeckCardsDAO;
 import com.tjk.repos.DeckDAO;
 
 import jakarta.transaction.Transactional;
@@ -18,6 +24,8 @@ public class DeckServiceImpl implements DeckService {
 
     @Autowired
     private DeckDAO dao;
+    @Autowired
+    private DeckCardsDAO deckCardDAO;
 
     // Get decks by name
     @Override
@@ -140,5 +148,41 @@ public class DeckServiceImpl implements DeckService {
             }
         }
         throw new DeckNotFoundException("Deck with id " + idDeck + " not found.");
+    }
+
+    // Generates a test hand of 7 random cards from a specific deck
+    public List<Card> testHand(Integer idDeck) {
+        Optional<Deck> deckOptional = dao.findById(idDeck);
+        if (deckOptional.isPresent()) {
+
+        	Deck deck = deckOptional.get();
+
+            // Fetch the list of DeckCards
+            List<DeckCards> deckCards = deckCardDAO.findByDeck_IdDeck(idDeck);
+
+            // Create a list to represent the full pool of cards, considering quantities
+            List<Card> cardPool = new ArrayList<>();
+
+            for (DeckCards deckCard : deckCards) {
+                // Add each card to the pool based on its quantity in the deck
+                for (int i = 0; i < deckCard.getQuantity(); i++) {
+                    cardPool.add(deckCard.getCard());
+                }
+            }
+
+            // Shuffle the pool of cards
+            Collections.shuffle(cardPool, new Random());
+
+            // Draw the first 7 cards from the shuffled pool
+            List<Card> firstHand = new ArrayList<>();
+            for (int i = 0; i < 7 && i < cardPool.size(); i++) {
+                firstHand.add(cardPool.get(i));
+            }
+
+            // Return the first 7 cards drawn
+            return firstHand;
+        } else {
+            throw new DeckNotFoundException("Deck with id " + idDeck + " not found.");
+        }
     }
 }

@@ -189,5 +189,5 @@ public interface CardDAO extends JpaRepository<Card, String>{
             + "c.evolvesFrom LIKE CONCAT('%', :pokemonName, '%') OR "
             + "c.evolvesTo LIKE CONCAT('%', :pokemonName, '%')")
     List<Card> findRelatedCard(@Param("pokemonName") String pokemonName);
-    
+
 }

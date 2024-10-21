@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tjk.entities.Card;
 import com.tjk.entities.Deck;
 import com.tjk.exceptions.DeckNotFoundException;
 import com.tjk.exceptions.EmptyCollectionException;
@@ -107,5 +108,15 @@ public class DeckREST {
         }
         Deck deck = service.updateDeck(idDeck, updatedDeck);
         return ResponseEntity.ok(deck);
+    }
+
+    // Get test hand from deck by ID
+    @GetMapping("/{idDeck}/test_hand")
+    public ResponseEntity<List<Card>> getTestHand(@PathVariable Integer idDeck) {
+        List<Card> hand = service.testHand(idDeck);
+        if (hand.isEmpty()) {
+            throw new DeckNotFoundException("Deck with ID " + idDeck + " not found or has no cards.");
+        }
+        return ResponseEntity.ok(hand);
     }
 }

@@ -49,4 +49,5 @@ public interface DeckDAO extends JpaRepository<Deck, Integer> {
      * @return a list of Deck objects that are legal or illegal based on the parameter.
      */
     List<Deck> findByLegal(boolean legal);
+
 }
