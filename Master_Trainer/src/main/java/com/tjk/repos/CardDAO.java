@@ -70,5 +70,9 @@ public interface CardDAO extends JpaRepository<Card, String>{
              @Param("rarity") String rarity,
              @Param("legalities") String legalities,
              @Param("regulationMark") String regulationMark);
-
+	
+    @Query("SELECT c COUNT(dc) as cardUsage FROM Card c " +
+	           "GROUP BY Card c " +
+	           "ORDER BY cardUsage DESC")
+	    List<Object[]> findMostUsedCards();  // Object[] is used for returning both the card and the value
 }
