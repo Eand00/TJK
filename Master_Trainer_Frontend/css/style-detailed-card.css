@@ -61,8 +61,10 @@ body {
 
 .content-container {
     display: flex;
-    gap: 30px;
+    gap: 40px;
     align-items: flex-start;
+    margin-left:7%;
+    margin-top:5%;
 }
 
 .card-image-section {
@@ -90,7 +92,7 @@ body {
 .card-attributes {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 15px;
     margin: 20px 0;
 }
 
