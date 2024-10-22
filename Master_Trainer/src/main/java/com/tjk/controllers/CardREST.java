@@ -150,5 +150,10 @@ public class CardREST {
     public List<Card> getRelatedCards(@PathVariable String pokemonName) {
         return service.getRelatedCards(pokemonName);
     }
-
+    
+    @GetMapping("/most_used_cards")
+    public List<Object[]> getMethodName() {
+        return service.getMostUsed() ;
+    }
+    
 }

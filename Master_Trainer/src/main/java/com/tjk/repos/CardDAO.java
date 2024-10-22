@@ -189,5 +189,8 @@ public interface CardDAO extends JpaRepository<Card, String>{
             + "c.evolvesFrom LIKE CONCAT('%', :pokemonName, '%') OR "
             + "c.evolvesTo LIKE CONCAT('%', :pokemonName, '%')")
     List<Card> findRelatedCard(@Param("pokemonName") String pokemonName);
+    
+    @Query(value = "SELECT c.name_card, dc.id_card, COUNT(d.id_deck) AS card_count FROM decks_cards dc INNER JOIN decks d ON d.id_deck = dc.id_deck INNER JOIN pokemoncards c ON c.id_card = dc.id_card GROUP BY dc.id_card ORDER BY `card_count` DESC", nativeQuery = true)
+    List<Object[]> findMostUsed();
 
 }
