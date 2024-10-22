@@ -226,4 +226,8 @@ public class CardServiceImpl implements CardService {
 	  public List<Card> getRelatedCards(String pokemonName) {
 		  return dao.findRelatedCard(pokemonName);
 	  }
+	  
+	  public List<Object[]> getMostUsed() {
+		  return dao.findMostUsed();
+	}
 }
