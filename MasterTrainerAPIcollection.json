@@ -60,7 +60,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:1699/master_trainer/cards/nameCard/Pikachu",
+									"raw": "http://localhost:1699/master_trainer/cards/name/Pikachu",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -69,7 +69,7 @@
 									"path": [
 										"master_trainer",
 										"cards",
-										"nameCard",
+										"name",
 										"Pikachu"
 									]
 								}
@@ -192,7 +192,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:1699/master_trainer/cards/typesCard/Lightning",
+									"raw": "http://localhost:1699/master_trainer/cards/type/Lightning",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -201,7 +201,7 @@
 									"path": [
 										"master_trainer",
 										"cards",
-										"typesCard",
+										"type",
 										"Lightning"
 									]
 								}
@@ -236,7 +236,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:1699/master_trainer/cards/subtypes/Basic",
+									"raw": "http://localhost:1699/master_trainer/cards/subtype/Basic",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -245,7 +245,7 @@
 									"path": [
 										"master_trainer",
 										"cards",
-										"subtypes",
+										"subtype",
 										"Basic"
 									]
 								}
@@ -346,7 +346,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:1699/master_trainer/cards/regulationMark/G",
+									"raw": "http://localhost:1699/master_trainer/cards/regulation/G",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -355,7 +355,7 @@
 									"path": [
 										"master_trainer",
 										"cards",
-										"regulationMark",
+										"regulation",
 										"G"
 									]
 								}
@@ -497,7 +497,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:1699/master_trainer/users/TestAPI",
+									"raw": "http://localhost:1699/master_trainer/users/username/aleali",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -506,7 +506,8 @@
 									"path": [
 										"master_trainer",
 										"users",
-										"TestAPI"
+										"username",
+										"aleali"
 									]
 								}
 							},
@@ -724,7 +725,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:1699/master_trainer/decks/user/2",
+									"raw": "http://localhost:1699/master_trainer/decks/user/4",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -734,7 +735,7 @@
 										"master_trainer",
 										"decks",
 										"user",
-										"2"
+										"4"
 									]
 								}
 							},
@@ -837,7 +838,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"deckName\": \"Charizard\",\r\n    \"format\": \"Legal\",\r\n    \"legal\": true,\r\n    \"isPrivate\": false,\r\n    \"user\": {\r\n        \"idUser\": 2\r\n    },\r\n    \"coverCard\": {\r\n        \"idCard\": \"base1-100\"\r\n    }\r\n}",
+									"raw": "{\r\n    \"deckName\": \"Prova\",\r\n    \"format\": \"Legal\",\r\n    \"legal\": true,\r\n    \"isPrivate\": false,\r\n    \"user\": {\r\n        \"idUser\": 9\r\n    },\r\n    \"coverCard\": {\r\n        \"idCard\": \"base1-100\"\r\n    }\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1003,7 +1004,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:1699/master_trainer/collections/get_card/1/base1-1",
+									"raw": "http://localhost:1699/master_trainer/collections/get_card/1/swsh12-45",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -1014,7 +1015,7 @@
 										"collections",
 										"get_card",
 										"1",
-										"base1-1"
+										"swsh12-45"
 									]
 								}
 							},

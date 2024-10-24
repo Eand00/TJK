@@ -120,20 +120,20 @@ This request gets a specific card by its id.
 
 | Parameter       |Example                   | Required | Description                        |
 |-----------------|--------------------------|----------|------------------------------------|
-| `nameCard`      | Pikachu                  | No       | Filters by the card's name.        |
+| `name`          | Pikachu                  | No       | Filters by the card's name.        |
 | `setName`       | Wizards Black Star Promos| No       | Filters by the set.                |
 | `series`        | Base                     | No       | Filters by the serie.              |
 | `publisher`     | WOTC                     | No       | Filters by the publisher.          |
 | `generation`    | First                    | No       | Filters by the generation.         |
 | `artist`        | Kagemaru Himeno          | No       | Filters by the artist.             |
-| `typesCard`     | Lightning                | No       | Filters by the card's types.       |
+| `type`          | Lightning                | No       | Filters by the card's types.       |
 | `supertype`     | Pokémon                  | No       | Filters by the card's supertype.   |
-| `subtypes`      | Basic                    | No       | Filters by the card's subtypes.    |
+| `subtype`       | Basic                    | No       | Filters by the card's subtypes.    |
 | `evolvesFrom`   | Zubat                    | No       | Filters by the card's evolution.   |
 | `evolvesTo`     | Raichu                   | No       | Filters by the card's prevolution. |
 | `rarity`        | Promo                    | No       | Filters by the rarity.             |
 | `legalities`    | unlimited                | No       | Filters by the card's legalities.  |
-| `regulationMark`| G                        | No       | Filters by the regulation mark.    |
+| `regulation`    | G                        | No       | Filters by the regulation mark.    |
 
 ---
 ## <span id="car-getrelatedcards">getRelatedCards:</span>
