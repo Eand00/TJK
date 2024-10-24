@@ -97,6 +97,18 @@ body {
   flex-shrink: 0;
 }
 
+.search-bar button,
+.test-btn {
+  padding: 10px 15px;
+  background-color: #555;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  max-width: 100px;
+  flex-shrink: 0;
+}
+
 .search-bar button:hover,
 .save-btn:hover {
   background-color: #777;
@@ -364,4 +376,50 @@ button[type="submit"]:hover {
 .lang-switch-btn a {
   color: white;
   text-decoration: none;
+}
+
+
+/* Styles for the Test Hand Popup */
+#testHandPopup {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5); 
+}
+
+#testHandPopup h2 {
+  color: white; 
+}
+
+#testHandPopup .form-content {
+  background-color: #444;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+#testHandPopup .card-grid {
+  grid-template-columns: repeat(7, 1fr); 
+}
+
+#testHandPopup .close {
+  color: #fffdfd;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+#testHandPopup .close:hover,
+#testHandPopup .close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
