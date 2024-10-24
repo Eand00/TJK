@@ -30,7 +30,7 @@ public class SecurityConfig {
             .authorizeHttpRequests(authorize -> authorize
                 .requestMatchers("/login", "/resources/**").permitAll() // Allow public access to login and resources
                 .requestMatchers("/master_trainer/cards/**", "/master_trainer/users/create_user").permitAll() // Allow public access to card and user creation
-                .requestMatchers("/master_trainer/users/change_user_password").hasRole("ADMIN") // Only admin can change user passwords
+                .requestMatchers("/master_trainer/users/change_user_password", "/master_trainer/collection/get_all").hasRole("ADMIN") // Only admin can change user passwords
                 .anyRequest().authenticated() // All other requests require authentication
             )
             .httpBasic(Customizer.withDefaults()) // Enable Basic Authentication
