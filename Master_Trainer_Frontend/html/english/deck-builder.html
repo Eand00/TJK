@@ -101,7 +101,6 @@
           <option value="basic">Basic</option>
           <option value="stage1">Stage 1</option>
           <option value="stage2">Stage 2</option>
-          <!-- More options -->
         </select>
 
         <label for="pack">Pack:</label>
@@ -146,6 +145,17 @@
       </div>
     </div>
 
+    <!-- Test Hand Popup -->
+    <div id="testHandPopup" class="form-container">
+      <div class="form-content">
+        <span class="close">&times;</span>
+        <h2>Test Hand</h2>
+        <div id="handContainer" class="card-grid">
+          
+        </div>
+      </div>
+    </div>
+
     <!-- Cards sections -->
     <div class="deck-builder">
       <!-- Left Section (Deck creation Section) -->
@@ -154,6 +164,7 @@
         <div class="deck-name">
           <input type="text" placeholder="Deck Name" class="deck-input" />
           <button class="save-btn">Save</button>
+          <button id="testHandBtn" class="test-btn">Test Hand</button>
         </div>
         <!-- Cards preview -->
         <div class="card-preview">
