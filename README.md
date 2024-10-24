@@ -10,8 +10,6 @@
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Setup Instructions](#setup-instructions)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## TEAM
 
