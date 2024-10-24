@@ -420,7 +420,7 @@ Go to:
     - [editCard](#collection-put-editcard)
     - [markCardAsFavourite](#collection-put-markcardasfavourite)
 - [DELETE](#collection-delete)
-    - [deleteCard](#collection-delete-deletecard)
+    - [removeCardFromCollection](#collection-delete-deletecard)
 - [Top of the document](#)
 
 
@@ -525,7 +525,7 @@ This request marks as a favourite a card for the user. If the collection is not 
 
 ## <span id="collection-delete" style="color:red;">DELETE</span>
 
-### <span id="collection-delete-deletecard">deleteCard:</span>
+### <span id="collection-delete-deletecard">removeCardFromCollection:</span>
 **Endpoint**: `http://localhost:1699/master_trainer/collections/delete_card/{userId}/{cardId}`      
 This request removes a card from the collection of the user.
 > *Example usage*:        
@@ -561,7 +561,7 @@ Gets all the cards of the given deck by `deckid`.
 > `http://localhost:1699/master_trainer/deck-builder/cards-in-deck/1`      
 > Gets all the cards of deck with `deckId=1`.
 
-### <span id="deckcard-get-gettotalcardindeck">getTotalCardsInDeck</span>
+### <span id="deckcard-get-gettotalcardindeck">getTotalCardsInDeck:</span>
 **Endpoint**: `http://localhost:1699/master_trainer/deck-builder/total-cards/{deckId}"`  
 Gets the total number of cards inside a deck by `deckid`.     
 > *Example usage*:        
@@ -570,7 +570,7 @@ Gets the total number of cards inside a deck by `deckid`.
 
 ## <span id="deckcards-post" style="color:yellow;">POST</span>
 
-### <span id="deckcards-post-addcard">addCardToDeck</span>
+### <span id="deckcards-post-addcard">addCardToDeck:</span>
 **Endpoint**: `http://localhost:1699/master_trainer/deck-builder/add-card?idDeck={param value}&idCard={param value}&quantity={param value}"`  
 Adds a positive quantity `quantity` of a card `idCard` in the deck `deckid`.     
 > *Example usage*:        
@@ -580,7 +580,7 @@ Adds a positive quantity `quantity` of a card `idCard` in the deck `deckid`.
 
 ## <span id="deckcards-put" style="color:orange;">PUT</span>
 
-### <span id="deckcards-put-updatecardquantityindeck">updateCardQuantityInDeck</span>
+### <span id="deckcards-put-updatecardquantityindeck">updateCardQuantityInDeck:</span>
 **Endpoint**: `http://localhost:1699/master_trainer/deck-builder/add-card?idDeck={param value}&idCard={param value}&newQuantity={param value}"`  
 Changes the quantity `quantity` of a card `idCard` in the deck `deckid`.     
 > *Example usage*:        
@@ -589,7 +589,7 @@ Changes the quantity `quantity` of a card `idCard` in the deck `deckid`.
 
 ## <span id="deckcards-delete" style="color:red;">DELETE</span>
 
-### <span id="deckcards-delete-deletecardfromdeck">removeCardFromDeck</span>
+### <span id="deckcards-delete-deletecardfromdeck">removeCardFromDeck:</span>
 **Endpoint**: `http://localhost:1699/master_trainer/deck-builder/add-card?idDeck={param value}&idCard={param value}&newQuantity={param value}"`  
 Changes the quantity `quantity` of a card `idCard` in the deck `deckid`.     
 > *Example usage*:        
