@@ -1,0 +1,1379 @@
+{
+	"info": {
+		"_postman_id": "c5e0d9e6-1792-4a0b-88ab-542ccf63a35a",
+		"name": "Master Trainer API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32783510"
+	},
+	"item": [
+		{
+			"name": "Card",
+			"item": [
+				{
+					"name": "GET",
+					"item": [
+						{
+							"name": "getAllCards",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/cards",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"cards"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getCardByCardId",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/cards/cardId/base1-1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"cards",
+										"cardId",
+										"base1-1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getCardByName",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/cards/nameCard/Pikachu",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"cards",
+										"nameCard",
+										"Pikachu"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getCardBySetName",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/cards/setName/Jungle",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"cards",
+										"setName",
+										"Jungle"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getCardBySeries",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/cards/series/Base",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"cards",
+										"series",
+										"Base"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getCardByPublisher",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/cards/publisher/WOTC",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"cards",
+										"publisher",
+										"WOTC"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getCardByGeneration",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/cards/generation/First",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"cards",
+										"generation",
+										"First"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getCardByArtist",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/cards/artist/Kagemaru%20Himeno",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"cards",
+										"artist",
+										"Kagemaru%20Himeno"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getCardByTypesCard",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/cards/typesCard/Lightning",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"cards",
+										"typesCard",
+										"Lightning"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getCardBySupertype",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/cards/supertype/Pokémon",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"cards",
+										"supertype",
+										"Pokémon"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getCardBySubtypes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/cards/subtypes/Basic",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"cards",
+										"subtypes",
+										"Basic"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getCardByEvolvesFrom",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/cards/evolvesFrom/Zubat",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"cards",
+										"evolvesFrom",
+										"Zubat"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getCardByEvolvesTo",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/cards/evolvesTo/Raichu",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"cards",
+										"evolvesTo",
+										"Raichu"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getCardByRarity",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/cards/rarity/Promo",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"cards",
+										"rarity",
+										"Promo"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getCardByLegalities",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/cards/legalities/unlimited",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"cards",
+										"legalities",
+										"unlimited"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getCardByRegulationMark",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/cards/regulationMark/G",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"cards",
+										"regulationMark",
+										"G"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "filterCards",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/cards/filter?nameCard=Chespin&subtypes=Basic&legalities=unlimited",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"cards",
+										"filter"
+									],
+									"query": [
+										{
+											"key": "nameCard",
+											"value": "Chespin"
+										},
+										{
+											"key": "subtypes",
+											"value": "Basic"
+										},
+										{
+											"key": "legalities",
+											"value": "unlimited"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getRelatedCards",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/cards/related/wartortle",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"cards",
+										"related",
+										"wartortle"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getMostUsedCards",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/cards/most_used_cards",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"cards",
+										"most_used_cards"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "GET",
+					"item": [
+						{
+							"name": "getAllUsers",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getUserById",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/users/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"users",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getUserByUsername",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/users/TestAPI",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"users",
+										"TestAPI"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "POST",
+					"item": [
+						{
+							"name": "createUser",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"privateProfile\": false,\r\n    \"firstName\": \"Mario\",\r\n    \"username\": \"user99\",\r\n    \"surname\": \"Rossi\",\r\n    \"password\": \"Password1!\",\r\n    \"role\": \"user\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/users/create_user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"users",
+										"create_user"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "PUT",
+					"item": [
+						{
+							"name": "updateUser",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"user1updated\",\r\n    \"password\": \"Password123!\",\r\n    \"firstName\": \"MarioUpdated\",\r\n    \"surname\": \"RossiUpdated\",\r\n    \"privateProfile\": false,\r\n    \"role\": \"USER\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/users/update-user/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"users",
+										"update-user",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "changePassword",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "Password123*",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "aleali",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"oldPassword\": \"Password123*\",\r\n    \"newPassword\": \"NewPassword123?\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/users/change_password",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"users",
+										"change_password"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "changeUserPassword",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"newPassword\": \"NewPassword123?\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/users/change_user_password/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"users",
+										"change_user_password",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "DELETE",
+					"item": [
+						{
+							"name": "deleteUser",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/users/delete-user/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"users",
+										"delete-user",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Deck",
+			"item": [
+				{
+					"name": "GET",
+					"item": [
+						{
+							"name": "getDeckByName",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/decks/name/Charizard",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"decks",
+										"name",
+										"Charizard"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getDeckByIdUser",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/decks/user/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"decks",
+										"user",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getPublicDecks",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/decks/public",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"decks",
+										"public"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getLegalDecks",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/decks/legal",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"decks",
+										"legal"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getDeckByIdDeck",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/decks/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"decks",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getTestHand",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/decks/4/test_hand",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"decks",
+										"4",
+										"test_hand"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "POST",
+					"item": [
+						{
+							"name": "createDeck",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"deckName\": \"Charizard\",\r\n    \"format\": \"Legal\",\r\n    \"legal\": true,\r\n    \"isPrivate\": false,\r\n    \"user\": {\r\n        \"idUser\": 2\r\n    },\r\n    \"coverCard\": {\r\n        \"idCard\": \"base1-100\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/decks/create_deck",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"decks",
+										"create_deck"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "PUT",
+					"item": [
+						{
+							"name": "updateDeck",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"deckName\": \"Arcanine\",\r\n    \"format\": \"Legal\",\r\n    \"legal\": true,\r\n    \"isPrivate\": true,\r\n    \"user\": {\r\n        \"idUser\": 3\r\n    },\r\n    \"coverCard\": {\r\n        \"idCard\": \"base1-100\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/decks/update_deck/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"decks",
+										"update_deck",
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "DELETE",
+					"item": [
+						{
+							"name": "deleteDeck",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/decks/delete_deck/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"decks",
+										"delete_deck",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Collection",
+			"item": [
+				{
+					"name": "GET",
+					"item": [
+						{
+							"name": "getAll",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/collections/get_all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"collections",
+										"get_all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getUserCollection",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/collections/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"collections",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getFavouriteCards",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/collections/favourite/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"collections",
+										"favourite",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getByUserAndByCard",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/collections/get_card/1/base1-1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"collections",
+										"get_card",
+										"1",
+										"base1-1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "POST",
+					"item": [
+						{
+							"name": "addCard",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": {\r\n        \"idCard\": \"base1-1\",\r\n        \"idUser\": 1\r\n    },\r\n    \"card\": {\r\n            \"idCard\": \"base1-1\"\r\n    },\r\n     \"user\": {\r\n            \"idUser\": 1\r\n     },\r\n    \"favourite\": false,\r\n    \"quantity\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/collections/add_card",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"collections",
+										"add_card"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "PUT",
+					"item": [
+						{
+							"name": "editCard",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": {\r\n        \"idCard\": \"base1-1\",\r\n        \"idUser\": 1\r\n    },\r\n    \"card\": {\r\n            \"idCard\": \"base1-1\"\r\n    },\r\n     \"user\": {\r\n            \"idUser\": 1\r\n     },\r\n    \"favourite\": false,\r\n    \"quantity\": 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/collections/edit_card",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"collections",
+										"edit_card"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "markCardAsFavourite",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": {\r\n        \"idCard\": \"base1-1\",\r\n        \"idUser\": 1\r\n    },\r\n    \"card\": {\r\n            \"idCard\": \"base1-1\"\r\n    },\r\n     \"user\": {\r\n            \"idUser\": 1\r\n     },\r\n    \"favourite\": false,\r\n    \"quantity\": 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/collections/mark_favourite/1/base1-1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"collections",
+										"mark_favourite",
+										"1",
+										"base1-1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "DELETE",
+					"item": [
+						{
+							"name": "removeCardFromCollection",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/collections/delete_card/1/base1-1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"collections",
+										"delete_card",
+										"1",
+										"base1-1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "DeckCards",
+			"item": [
+				{
+					"name": "GET",
+					"item": [
+						{
+							"name": "getCardsInDeck",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/deck-builder/cards-in-deck/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"deck-builder",
+										"cards-in-deck",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getTotalCardsInDeck",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/deck-builder/total-cards/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"deck-builder",
+										"total-cards",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "isDeckValid",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/deck-builder/is-deck-valid/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"deck-builder",
+										"is-deck-valid",
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "POST",
+					"item": [
+						{
+							"name": "addCardToDeck",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/deck-builder/add-card?idDeck=1&idCard=base1-3&quantity=4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"deck-builder",
+										"add-card"
+									],
+									"query": [
+										{
+											"key": "idDeck",
+											"value": "1"
+										},
+										{
+											"key": "idCard",
+											"value": "base1-3"
+										},
+										{
+											"key": "quantity",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "PUT",
+					"item": [
+						{
+							"name": "updateCardQuantityInDeck",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/deck-builder/update-quantity?deckId=1&cardId=base1-2&newQuantity=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"deck-builder",
+										"update-quantity"
+									],
+									"query": [
+										{
+											"key": "deckId",
+											"value": "1"
+										},
+										{
+											"key": "cardId",
+											"value": "base1-2"
+										},
+										{
+											"key": "newQuantity",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "DELETE",
+					"item": [
+						{
+							"name": "removeCardFromDeck",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1699/master_trainer/deck-builder/delete-card/1/base1-2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1699",
+									"path": [
+										"master_trainer",
+										"deck-builder",
+										"delete-card",
+										"1",
+										"base1-2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "username",
+				"value": "TestAPI",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "Password123*",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
