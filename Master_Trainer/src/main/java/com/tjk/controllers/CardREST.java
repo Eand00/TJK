@@ -152,8 +152,8 @@ public class CardREST {
     }
     
     @GetMapping("/most_used_cards")
-    public List<Object[]> getMethodName() {
-        return service.getMostUsed() ;
+    public List<Object[]> getMostUsedCards() {
+        return service.getMostUsed();
     }
     
 }

@@ -85,7 +85,7 @@ Before starting, ensure that you have the following installed on your system:
    CREATE DATABASE master_trainer;
    ```
    Import `master_trainter.sql` provided in the Master_Trainer_DB directory to the database you just created  to set up your tables, all the cards and some testing data.  
-   **For more information on the Database and its Setup ->** [Database](./Master_Trainer_DB/UserManual.md)
+   **For more information on the Database and its Setup ->** [Database](./Master_Trainer_DB/DatabaseManual.md)
 
 3. **Configure the Application**   
    Open the application.properties file in Master_Trainer/src/main/resources and update the database credentials if necessary.
@@ -106,7 +106,7 @@ Before starting, ensure that you have the following installed on your system:
    mvn spring-boot:run
    ```
    The application will be available at http://localhost:1699.  
-   **For more information on the API and its Setup ->** [API](./Master_Trainer/UsersManual.md)
+   **For more information on the API and its Setup ->** [API](./Master_Trainer/ApiManual.md)
 
 5. **Frontend**  
    To reach the homepage of our frontend you need to go to Master_Trainer_Frontend/html/{your prefered language}/home.html from there you can explore on your own and test our intuitive design or click [here](Master_Trainer_Frontend/UserManual.md) for more detailed information on our Frontend.

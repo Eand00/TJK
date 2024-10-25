@@ -81,6 +81,7 @@ Go to:
     - [getCardByRegulationMark](#card-getcardbysinglefilter)
     - [filterCards](#card-getcardbymultiplefilter)
     - [getRelatedCards](#card-getrelatedcards)
+    - [getMostUsedCards](#card-getmostusedcards)
 - [Top of the document](#)
 
 ## <span id="card-get" style="color:lightblue;">GET</span>
@@ -136,7 +137,7 @@ This request gets a specific card by its id.
 | `regulationMark`| G                        | No       | Filters by the regulation mark.    |
 
 ---
-## <span id="car-getrelatedcards">getRelatedCards:</span>
+## <span id="card-getrelatedcards">getRelatedCards:</span>
 **Endpoint**: `http://localhost:1699/master_trainer/cards/related/{pokemonName}`      
 This request gets the related cards (evolutions or pre evolutions) given the pokemon name.
 > *Example usage*:        
@@ -186,6 +187,11 @@ This request gets a user by their username.
 > *Example usage*:        
 > `http://localhost:1699/master_trainer/users/TestAPI`      
 > Gets the user with the username `TestAPI`.
+
+---
+## <span id="card-getmostusedcards">getMostUsedCards:</span>
+**Endpoint**: `http://localhost:1699/master_trainer/cards/most_used_cards`  
+This request returns a list cosisting of the name, id and quantity(In how many decks is cards found) of the most used cards.
 
 ---
 [Go back to the selection](#user)     
@@ -288,6 +294,7 @@ Go to:
     - [getPublicDecks](#deck-get-getpublicdecks)
     - [getLegalDecks](#deck-get-getlegaldecks)
     - [getDeckByIdDeck](#deck-get-getdeckbyiddeck)
+    - [testHand](#deck-get-testhand)
 - [POST](#deck-post)
     - [createDeck](#deck-post-createdeck)
 - [PUT](#deck-put)
@@ -331,6 +338,11 @@ This request gets the deck with the id given.
 > *Example usage*:        
 > `http://localhost:1699/master_trainer/decks/4`      
 > Gets the deck with the id `4`.
+
+---
+### <span id="deck-get-testhand">testHand</span>
+**Endpoint**: `http://localhost:1699/master_trainer/decks/{idDeck}/test_hand`  
+This request returns 7 reandom cards from the given deck, simulating the first hand draw.
 
 ---
 [Go back to the selection](#deck)     
@@ -420,7 +432,7 @@ Go to:
     - [editCard](#collection-put-editcard)
     - [markCardAsFavourite](#collection-put-markcardasfavourite)
 - [DELETE](#collection-delete)
-    - [deleteCard](#collection-delete-deletecard)
+    - [removeCardFromCollection](#collection-delete-deletecard)
 - [Top of the document](#)
 
 
@@ -525,7 +537,7 @@ This request marks as a favourite a card for the user. If the collection is not 
 
 ## <span id="collection-delete" style="color:red;">DELETE</span>
 
-### <span id="collection-delete-deletecard">deleteCard:</span>
+### <span id="collection-delete-deletecard">removeCardFromCollection:</span>
 **Endpoint**: `http://localhost:1699/master_trainer/collections/delete_card/{userId}/{cardId}`      
 This request removes a card from the collection of the user.
 > *Example usage*:        
@@ -561,7 +573,7 @@ Gets all the cards of the given deck by `deckid`.
 > `http://localhost:1699/master_trainer/deck-builder/cards-in-deck/1`      
 > Gets all the cards of deck with `deckId=1`.
 
-### <span id="deckcard-get-gettotalcardindeck">getTotalCardsInDeck</span>
+### <span id="deckcard-get-gettotalcardindeck">getTotalCardsInDeck:</span>
 **Endpoint**: `http://localhost:1699/master_trainer/deck-builder/total-cards/{deckId}"`  
 Gets the total number of cards inside a deck by `deckid`.     
 > *Example usage*:        
@@ -570,7 +582,7 @@ Gets the total number of cards inside a deck by `deckid`.
 
 ## <span id="deckcards-post" style="color:yellow;">POST</span>
 
-### <span id="deckcards-post-addcard">addCardToDeck</span>
+### <span id="deckcards-post-addcard">addCardToDeck:</span>
 **Endpoint**: `http://localhost:1699/master_trainer/deck-builder/add-card?idDeck={param value}&idCard={param value}&quantity={param value}"`  
 Adds a positive quantity `quantity` of a card `idCard` in the deck `deckid`.     
 > *Example usage*:        
@@ -580,7 +592,7 @@ Adds a positive quantity `quantity` of a card `idCard` in the deck `deckid`.
 
 ## <span id="deckcards-put" style="color:orange;">PUT</span>
 
-### <span id="deckcards-put-updatecardquantityindeck">updateCardQuantityInDeck</span>
+### <span id="deckcards-put-updatecardquantityindeck">updateCardQuantityInDeck:</span>
 **Endpoint**: `http://localhost:1699/master_trainer/deck-builder/add-card?idDeck={param value}&idCard={param value}&newQuantity={param value}"`  
 Changes the quantity `quantity` of a card `idCard` in the deck `deckid`.     
 > *Example usage*:        
@@ -589,7 +601,7 @@ Changes the quantity `quantity` of a card `idCard` in the deck `deckid`.
 
 ## <span id="deckcards-delete" style="color:red;">DELETE</span>
 
-### <span id="deckcards-delete-deletecardfromdeck">removeCardFromDeck</span>
+### <span id="deckcards-delete-deletecardfromdeck">removeCardFromDeck:</span>
 **Endpoint**: `http://localhost:1699/master_trainer/deck-builder/add-card?idDeck={param value}&idCard={param value}&newQuantity={param value}"`  
 Changes the quantity `quantity` of a card `idCard` in the deck `deckid`.     
 > *Example usage*:        
