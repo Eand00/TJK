@@ -19,7 +19,7 @@ In this <b>.md</b> file you will find the complete guide for each feature of the
 To reach the `home page`:
 ```
 - Open the TJK directory
-- Follow the path: Master-Trainer-Frontend/html
+- Follow the path: Master_Trainer_Frontend/html
 - Choose the language by going into 'Italian' or 'English' folder (you can change it directly on the site anyway)
 - Select home.html
 ```
@@ -46,12 +46,12 @@ The buttons in the middle allow the user to navigate to the other sections where
 ```
 ## Personal Area ##
 
-The section dedicated to the `personal area` contains all the user information: <b>profile image, name, surname, date of birth and password</b>. You can find the username under the profile image. All the information can be changed and saved using the two buttons at the bottom of the page. In addition, the user can choose to keep his account information private by turning on the <b>private</b> button.
-> **Note**: Users can navigate the site without logging in but cannot access their collection, the Deck Builder, or the Top Cards page. <br><br>
+The section dedicated to the `personal area` contains all the user information: <b>profile image, name, surname and password</b>. You can find the username under the profile image. All the information can be changed and saved using the two buttons near the bottom of the page. In addition, the user can choose to keep his account information private by turning on the <b>private</b> toggle. You can also search of other users by username using the search bar at the end of the page which once you have found a user will show you their full name and username if their account is set to public or just theri username if their account is set to private.
+> **Note**: Users can navigate the site without logging in but cannot access the collection, the Decks Builder, or the Deck Builder. <br><br>
 
 ## Pokedex ##
 
-The `pokedex` page contains all the existing pokemon cards, showed by an image and the correlated name.
+The `pokedex` page just like the pokedex in the pokemon games contains all the pokemon that the user has encountered or in this case this in full collor the cards in his collection of cards and grayed out cards the user does not own yet, showed by an image and the correlated name.
 On top of the page there is a <b>search bar </b>and a <b>filter button</b>. The filer button opens a menu containing:
 ```
 - type
@@ -98,12 +98,12 @@ If the user does not know the rules, they can check the `Regulation Page`.<br><b
 At the top of the page there are three buttons and a searchbar where the user can:
 ```
 - create a new deck using the 'new' button
-- <b>modify</b> an existing deck using the 'edit' button
+- modify an existing deck using the 'edit' button
 - search an existing deck using the searchbar and the 'search' button
 ```
 ## Series & Sets ##
 
-The `series & sets` page is a very simple display of all the Pokemon card sets, where the user can find a card by knowing the set. The page is composed by six sections (one for each generation) and by clicking  on one of them the user can access all the sets that are part of the specified series (they will be divided in sections too), and then the user will be able to access all the cards of the set he chose.
+The `series & sets` page is a very simple display of all the Pokemon card sets, where the user can find a card by knowing the set. By clicking  on one of them the user can access all the sets that are part of the specified series, and then the user will be able to access all the cards of the set he chose.
 
 ## Top Cards ##
 
@@ -121,4 +121,4 @@ The `regulation page` is a paragraph where the basic rules used in pokemon tourn
 - V-Uninon specific rules
 - Regular pokemon rules
 ```
-At the bottom of the page there is a <a>link</a> that brings to the complete regulation.
+At the bottom of the page there is a link that brings to the complete regulation.
