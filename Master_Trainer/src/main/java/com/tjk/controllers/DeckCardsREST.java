@@ -1,6 +1,7 @@
 package com.tjk.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,52 +15,56 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tjk.entities.Deck;
 import com.tjk.entities.DeckCards;
 import com.tjk.exceptions.DeckNotFoundException;
 import com.tjk.exceptions.EmptyCollectionException;
 import com.tjk.services.DeckCardsServiceImpl;
+import com.tjk.services.DeckServiceImpl;
 
 @RestController
 @RequestMapping("/master_trainer/deck-builder")
 public class DeckCardsREST {
 
     @Autowired
-    private DeckCardsServiceImpl service;
+    private DeckCardsServiceImpl deckCardService;
+    @Autowired
+    private DeckServiceImpl deckService;
 
     // Adds a card to a deck with a specified quantity
     @PostMapping("/add-card")
     public ResponseEntity<String> addCardToDeck(@RequestParam Integer idDeck, @RequestParam String idCard, @RequestParam Integer quantity) {
         // Check if the deck exists before adding a card
-        if (!service.isDeckValid(idDeck)) {
-            throw new DeckNotFoundException("Deck with ID " + idDeck + " not found.");
-        }
-
+    	if (!deckService.getDeckByIdDeck(idDeck).isPresent()) {
+    	    throw new DeckNotFoundException("Deck with ID " + idDeck + " not found.");
+    	}
         // Ensure quantity is positive
         if (quantity <= 0) {
             throw new IllegalArgumentException("Quantity must be greater than zero.");
         }
 
-        service.addCardToDeck(idDeck, idCard, quantity);
+        deckCardService.addCardToDeck(idDeck, idCard, quantity);
         return ResponseEntity.status(HttpStatus.CREATED).body("Card added to deck successfully.");
     }
 
     // Removes a card from a deck
     @DeleteMapping("/delete-card/{deckId}/{cardId}")
     public ResponseEntity<String> removeCardFromDeck(@PathVariable Integer deckId, @PathVariable String cardId) {
-        if (!service.isDeckValid(deckId)) {
+        if (!deckService.getDeckByIdDeck(deckId).isPresent()) {
             throw new DeckNotFoundException("Deck with ID " + deckId + " not found.");
         }
 
         // Attempt to remove the card from the deck
-        service.removeCardFromDeck(deckId, cardId);
+        deckCardService.removeCardFromDeck(deckId, cardId);
         return ResponseEntity.ok("Card removed from deck successfully.");
     }
 
+
     // Updates the quantity of a card in a deck
     @PutMapping("/update-quantity")
-    public ResponseEntity<DeckCards> updateCardQuantityInDeck(@RequestParam Integer deckId, @RequestParam String cardId, @RequestParam Integer newQuantity) {
-        if (!service.isDeckValid(deckId)) {
-            throw new DeckNotFoundException("Deck with ID " + deckId + " not found.");
+    public ResponseEntity<String> updateCardQuantityInDeck(@RequestParam Integer idDeck, @RequestParam String cardId, @RequestParam Integer newQuantity) {
+    	if (!deckService.getDeckByIdDeck(idDeck).isPresent()) {
+            throw new DeckNotFoundException("Deck with ID " + idDeck + " not found.");
         }
 
         // Ensure new quantity is positive
@@ -67,29 +72,29 @@ public class DeckCardsREST {
             throw new IllegalArgumentException("New quantity must be greater than zero.");
         }
 
-        DeckCards updatedDeckCard = service.updateCardQuantityInDeck(deckId, cardId, newQuantity);
-        return ResponseEntity.ok(updatedDeckCard);
+        deckCardService.updateCardQuantityInDeck(idDeck, cardId, newQuantity);
+        return ResponseEntity.ok("Card quantity updated to " + newQuantity + ".");
     }
 
     // Retrieves the number of cards in a specific deck
     @GetMapping("/total-cards/{deckId}")
     public ResponseEntity<Integer> getTotalCardsInDeck(@PathVariable Integer deckId) {
-        if (!service.isDeckValid(deckId)) {
+        if (!deckCardService.isDeckValid(deckId)) {
             throw new DeckNotFoundException("Deck with ID " + deckId + " not found.");
         }
 
-        int totalCards = service.getTotalCardsInDeck(deckId);
+        int totalCards = deckCardService.getTotalCardsInDeck(deckId);
         return ResponseEntity.ok(totalCards);
     }
 
     // Retrieves all cards in a specific deck
     @GetMapping("/cards-in-deck/{deckId}")
     public ResponseEntity<List<DeckCards>> getCardsInDeck(@PathVariable Integer deckId) {
-        if (!service.isDeckValid(deckId)) {
+        if (!deckCardService.isDeckValid(deckId)) {
             throw new DeckNotFoundException("Deck with ID " + deckId + " not found.");
         }
 
-        List<DeckCards> cardsInDeck = service.getCardsInDeck(deckId);
+        List<DeckCards> cardsInDeck = deckCardService.getCardsInDeck(deckId);
         // Check if the deck is empty
         if (cardsInDeck.isEmpty()) {
             throw new EmptyCollectionException("No cards found in deck with ID " + deckId + ".");
@@ -101,7 +106,7 @@ public class DeckCardsREST {
     // Checks if the deck is valid or not
     @GetMapping("/is-deck-valid/{deckId}")
     public ResponseEntity<String> isDeckValid(@PathVariable Integer deckId) {
-        if (service.isDeckValid(deckId)) {
+        if (deckCardService.isDeckValid(deckId)) {
             return ResponseEntity.ok("The given deck is valid.");
         } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)

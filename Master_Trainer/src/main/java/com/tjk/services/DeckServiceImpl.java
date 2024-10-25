@@ -91,9 +91,6 @@ public class DeckServiceImpl implements DeckService {
         if (deck.getFormat() == null || deck.getFormat().trim().isEmpty()) {
             throw new DeckValidationException("Deck format cannot be null or empty");
         }
-        if (deck.getLegal() == null) {
-            throw new DeckValidationException("Legal status must be specified");
-        }
         if (deck.getIsPrivate() == null) {
             throw new DeckValidationException("Privacy status must be specified");
         }
@@ -140,7 +137,6 @@ public class DeckServiceImpl implements DeckService {
             if (isDeckValid(updatedDeck)) {
                 existingDeck.setDeckName(updatedDeck.getDeckName());
                 existingDeck.setFormat(updatedDeck.getFormat());
-                existingDeck.setLegal(false);
                 existingDeck.setIsPrivate(updatedDeck.getIsPrivate());
                 existingDeck.setUser(updatedDeck.getUser());
                 existingDeck.setCoverCard(updatedDeck.getCoverCard());
