@@ -81,6 +81,7 @@ Go to:
     - [getCardByRegulationMark](#card-getcardbysinglefilter)
     - [filterCards](#card-getcardbymultiplefilter)
     - [getRelatedCards](#card-getrelatedcards)
+    - [getMostUsedCards](#card-getmostusedcards)
 - [Top of the document](#)
 
 ## <span id="card-get" style="color:lightblue;">GET</span>
@@ -120,23 +121,23 @@ This request gets a specific card by its id.
 
 | Parameter       |Example                   | Required | Description                        |
 |-----------------|--------------------------|----------|------------------------------------|
-| `name`          | Pikachu                  | No       | Filters by the card's name.        |
+| `nameCard`      | Pikachu                  | No       | Filters by the card's name.        |
 | `setName`       | Wizards Black Star Promos| No       | Filters by the set.                |
 | `series`        | Base                     | No       | Filters by the serie.              |
 | `publisher`     | WOTC                     | No       | Filters by the publisher.          |
 | `generation`    | First                    | No       | Filters by the generation.         |
 | `artist`        | Kagemaru Himeno          | No       | Filters by the artist.             |
-| `type`          | Lightning                | No       | Filters by the card's types.       |
+| `typesCard`     | Lightning                | No       | Filters by the card's types.       |
 | `supertype`     | Pokémon                  | No       | Filters by the card's supertype.   |
-| `subtype`       | Basic                    | No       | Filters by the card's subtypes.    |
+| `subtypes`      | Basic                    | No       | Filters by the card's subtypes.    |
 | `evolvesFrom`   | Zubat                    | No       | Filters by the card's evolution.   |
 | `evolvesTo`     | Raichu                   | No       | Filters by the card's prevolution. |
 | `rarity`        | Promo                    | No       | Filters by the rarity.             |
 | `legalities`    | unlimited                | No       | Filters by the card's legalities.  |
-| `regulation`    | G                        | No       | Filters by the regulation mark.    |
+| `regulationMark`| G                        | No       | Filters by the regulation mark.    |
 
 ---
-## <span id="car-getrelatedcards">getRelatedCards:</span>
+## <span id="card-getrelatedcards">getRelatedCards:</span>
 **Endpoint**: `http://localhost:1699/master_trainer/cards/related/{pokemonName}`      
 This request gets the related cards (evolutions or pre evolutions) given the pokemon name.
 > *Example usage*:        
@@ -186,6 +187,11 @@ This request gets a user by their username.
 > *Example usage*:        
 > `http://localhost:1699/master_trainer/users/TestAPI`      
 > Gets the user with the username `TestAPI`.
+
+---
+## <span id="card-getmostusedcards">getMostUsedCards:</span>
+**Endpoint**: `http://localhost:1699/master_trainer/cards/most_used_cards`  
+This request returns a list cosisting of the name, id and quantity(In how many decks is cards found) of the most used cards.
 
 ---
 [Go back to the selection](#user)     
@@ -288,6 +294,7 @@ Go to:
     - [getPublicDecks](#deck-get-getpublicdecks)
     - [getLegalDecks](#deck-get-getlegaldecks)
     - [getDeckByIdDeck](#deck-get-getdeckbyiddeck)
+    - [testHand](#deck-get-testhand)
 - [POST](#deck-post)
     - [createDeck](#deck-post-createdeck)
 - [PUT](#deck-put)
@@ -331,6 +338,11 @@ This request gets the deck with the id given.
 > *Example usage*:        
 > `http://localhost:1699/master_trainer/decks/4`      
 > Gets the deck with the id `4`.
+
+---
+### <span id="deck-get-testhand">testHand</span>
+**Endpoint**: `http://localhost:1699/master_trainer/decks/{idDeck}/test_hand`  
+This request returns 7 reandom cards from the given deck, simulating the first hand draw.
 
 ---
 [Go back to the selection](#deck)     
