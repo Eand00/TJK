@@ -56,23 +56,37 @@
     <div>
         <form id="user-input">
             <img src="../../images/immagine-profilo.png" alt="Foto profilo" id="propic" />
-            <label for="name">Nome:</label>
-            <input type="text" id="name" name="name">
-            <label for="surname">Cognome:</label>
-            <input type="text" id="surname" name="surname">
-            <label for="dob">Data di nascita:</label>
-            <input type="date" id="dob" name="dob">
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+            <label for="name"></label>
+            <input type="text" id="name" name="name" placeholder="Ash">
+            <label for="surname"></label>
+            <input type="text" id="surname" name="surname" placeholder="Ketchum">
+            <label for="password"></label>
+            <input type="password" id="password" name="password" placeholder="********" required>
             <label>Privato:</label>
             <label class="switch">
                 <input type="checkbox">
                 <span class="slider round"></span>
             </label>
-            <label for="username">Nome Utente:</label>
-            <input type="text" id="username" name="username" required>
+            <label for="username"></label>
+            <input type="text" id="username" name="username" placeholder="Maestro_Pokémon" required>
             <button type="submit">Cambia</button>
             <button type="submit">Salva</button>
+        </form>
+    </div>
+
+    <!-- Barra di ricerca per gli utenti -->
+    <div class="user-search">
+        <h3>Cerca gli Utenti</h3>
+        <form id="search-users">
+            <label for="search">Inserisci Username:</label>
+            <input type="text" id="search" name="search" required>
+            <button type="submit">Cerca</button>
+
+            <div class="small-btn-container">
+                <button onclick="window.location.href='lucas1.html'" type="button" class="small-btn">_lucas_97</button>
+                <button onclick="window.location.href='bellocchio1.html'" type="button" class="small-btn">Bellocchio</button>
+            </div>
+
         </form>
     </div>
 
