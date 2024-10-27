@@ -1,7 +1,6 @@
 package com.tjk.controllers;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tjk.entities.Deck;
 import com.tjk.entities.DeckCards;
 import com.tjk.exceptions.DeckNotFoundException;
 import com.tjk.exceptions.EmptyCollectionException;
