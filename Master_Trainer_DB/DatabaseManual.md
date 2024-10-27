@@ -101,8 +101,8 @@ Since they are thousands of lines, here is a list of links to easily get to the 
 <!-- TODO update links when the db is finished -->
 
 - [Creation and data dump of the table `collections`](./master_trainer.sql#L27)
-- [Creation and data dump of the table `decks`](./master_trainer.sql#L61)
-- [Creation and data dump of the table `decks_cards`](./master_trainer.sql#L107)
-- [Creation and data dump of the table `pokemoncards`](./master_trainer.sql#L214)
-- [Creation and data dump of the table `userslogin`](./master_trainer.sql#L17736)
-- [Indexes, auto increment and constraints of the tables](./master_trainer.sql#L17771)
+- [Creation and data dump of the table `decks`](./master_trainer.sql#L357)
+- [Creation and data dump of the table `decks_cards`](./master_trainer.sql#L403)
+- [Creation and data dump of the table `pokemoncards`](./master_trainer.sql#L915)
+- [Creation and data dump of the table `userslogin`](./master_trainer.sql#L18437)
+- [Indexes, auto increment and constraints of the tables](./master_trainer.sql#L18472)
